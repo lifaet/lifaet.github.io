@@ -20369,7 +20369,7 @@
         }, {
             name: "davidImage",
             type: "texture",
-            path: "images/david.png"
+            path: "images/pngegg.png"
         }];
         class Qm extends Ql {
             scrollAnimationDuration = .7;
