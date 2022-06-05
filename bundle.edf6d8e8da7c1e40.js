@@ -20681,10 +20681,10 @@
             }, {
                 id: 3,
                 name: "Portfolio 2022",
-                description: 'A case study for this project is currently being written. Follow me on <a tabindex="-1" href="https://twitter.com/DavidHckh" target="_blank">Twitter</a> to stay up to date.',
+                description: 'A case study for this project is currently being written. Follow me on <a tabindex="-1" href="https://twitter.com/lifaeth" target="_blank">Twitter</a> to stay up to date.',
                 image: "images/projects/portfolio.jpg",
                 tags: ["webgl", "javascript", "html", "css"],
-                twitter: "https://twitter.com/DavidHckh",
+                twitter: "https://twitter.com/lifaeth",
                 alt: "david heckhoff portfolio project 2022 threejs blender 3d design",
                 bannerIcons: [{
                     src: "images/cssda-icon.png",
@@ -20696,7 +20696,7 @@
                 description: "Play as Jelly and fight against three other Jellys in a multiplayer free-for-all game",
                 image: "images/projects/jelly-battle.jpg",
                 tags: ["react", "webgl", "javascript", "html", "css"],
-                twitter: "https://twitter.com/DavidHckh",
+                twitter: "https://twitter.com/lifaeth",
                 alt: "work in progress portfolio project jelly battle strategy game flash multiplayer"
             }],
             rf = {
