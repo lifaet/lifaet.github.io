@@ -18200,7 +18200,7 @@
                 this.sizes.portrait ? (this.sprite.scale.set(2.61, 5.05), this.sprite.position.set(-.05, 2.7, 0)) : (this.sprite.scale.set(2.61, 5.05), this.sprite.position.set(-.05, 2.15, 0))
             }
             setSprite() {
-                this.texture = this.resources.items.davidImage, this.material = new Es({
+                this.texture = this.resources.items.avatar, this.material = new Es({
                     map: this.texture,
                     depthTest: !1,
                     fog: !1,
@@ -20367,7 +20367,7 @@
             type: "texture",
             path: "models/contact/shadow-baked.jpg"
         }, {
-            name: "davidImage",
+            name: "avatar",
             type: "texture",
             path: "images/pngegg.png"
         }];
@@ -20653,60 +20653,64 @@
         }
         const nf = [{
                 id: 0,
-                name: "Pokedex",
-                description: "A collection and description of all 898 Pokémon",
-                image: "images/projects/pokedex.jpg",
-                tags: ["javascript", "api", "html", "css"],
-                liveview: "https://js-pokedex-virid.vercel.app/",
-                github: "https://github.com/davidhckh/pokedex",
-                alt: "pokedex design detailed design portfolio project"
+                name: "AI Door Unlocker",
+                description: "Python and SQL based Artificial Intelligence door unlocker",
+                image: "images/projects/aidorlock.jpg",
+                tags: ["python", "sql"],
+                liveview: "#",
+                // github: "#",
+                alt: "Python and SQL based Artificial Intelligence door unlocker"
             }, {
                 id: 1,
-                name: "Join",
-                description: "Group managment tool to optimize workflows",
-                image: "images/projects/join.jpg",
-                tags: ["javascript", "backend", "html", "css"],
-                liveview: "https://join.david-hckh.com/",
-                github: "https://github.com/davidhckh/join",
-                alt: "Group management tool to optimize workflows portfolio project"
+                name: "Key Logger",
+                description: "C++ based KeyLogger Software for WindowsOS",
+                image: "images/projects/keylogger.jpg",
+                tags: ["cpp","vs"],
+                liveview: "https://youtu.be/mJWK4g9Qr4M",
+                github: "https://github.com/lifaet/KeyLoggerProject",
+                alt: "C++ based Key Logger"
             }, {
                 id: 2,
-                name: "Sharkie",
-                description: "JavaScript based jump-and-run game",
-                image: "images/projects/sharkie.jpg",
-                tags: ["javascript", "html", "css"],
-                liveview: "https://sharkie-game.vercel.app/",
-                github: "https://github.com/davidhckh/sharkie-game",
-                alt: "javascript based jump-and-run game portfolio project"
+                name: "Movies Bay",
+                description: "HTML,CSS and Bootstrap based movies download site",
+                image: "images/projects/moviesbay.jpg",
+                tags: ["javascript","bootstrap","html", "css"],
+                liveview: "https://moviesbay.live",
+                github: "#",
+                alt: "HTML,CSS and Bootstrap based movies download site"
             }, {
                 id: 3,
-                name: "Portfolio 2022",
-                description: 'A case study for this project is currently being written. Follow me on <a tabindex="-1" href="https://twitter.com/lifaeth" target="_blank">Twitter</a> to stay up to date.',
+                name: "Portfolio",
+                description: 'My very first portfolio project with a little help from some open source project on github',
                 image: "images/projects/portfolio.jpg",
                 tags: ["webgl", "javascript", "html", "css"],
                 twitter: "https://twitter.com/lifaeth",
-                alt: "david heckhoff portfolio project 2022 threejs blender 3d design",
+                alt: "My very first portfolio project",
                 bannerIcons: [{
                     src: "images/cssda-icon.png",
                     alt: "cssda icon site of the day"
                 }]
-            }, {
-                id: 4,
-                name: "Jelly Battle",
-                description: "Play as Jelly and fight against three other Jellys in a multiplayer free-for-all game",
-                image: "images/projects/jelly-battle.jpg",
-                tags: ["react", "webgl", "javascript", "html", "css"],
-                twitter: "https://twitter.com/lifaeth",
-                alt: "work in progress portfolio project jelly battle strategy game flash multiplayer"
-            }],
+            }
+            // , {
+            //     id: 4,
+            //     name: "Jelly Battle",
+            //     description: "Python and SQL based Artificial Intelligence door unlocker",
+            //     image: "images/projects/jelly-battle.jpg",
+            //     tags: ["webgl", "javascript", "html", "css"],
+            //     twitter: "https://twitter.com/lifaeth",
+            //     alt: "Python and SQL based Artificial Intelligence door unlocker"
+            // }
+        ],
             rf = {
                 html: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">HTML</div>',
                 css: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">CSS</div>',
+                vs: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">Visual Studio</div>',
+                sql: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">SQL</div>',
                 javascript: '<div class="work-item-tag" style="background: #FFB800;">JavaScript</div>',
-                react: '<div class="work-item-tag" style="background: #21BAEB;">ReactJS</div>',
+                python: '<div class="work-item-tag" style="background: #FFB800;">Python</div>',
                 webgl: '<div class="work-item-tag" style="background: #5A69EC;">WebGL</div>',
-                api: '<div class="work-item-tag" style="background: #CA49F8;">API</div>',
-                backend: '<div class="work-item-tag" style="background: #8433CC;">Backend</div>'
+                bootstrap: '<div class="work-item-tag" style="background: #CA49F8;">Bootstrap</div>',
+                cpp: '<div class="work-item-tag" style="background: #8433CC;">C++</div>'
             };
         class sf {
             domElements = {
@@ -21526,7 +21530,8 @@
             }
             async sendMail() {
                 const e = new FormData;
-                e.append("name", this.fields[0].input.value), e.append("message", `Email: ${this.fields[1].input.value}\n            \n            Message: \n\n            ${this.fields[2].input.value}`), this.showContainer("loading"), this.showResult(await fetch("https://david-hckh.com/dvPUgZZmtUufcKM59gv9zX4NiNKQqGs5.php", {
+ //make change               
+                e.append("name", this.fields[0].input.value), e.append("message", `Email: ${this.fields[1].input.value}\n            \n            Message: \n\n            ${this.fields[2].input.value}`), this.showContainer("loading"), this.showResult(await fetch("#", {
                     method: "POST",
                     body: e
                 }))
