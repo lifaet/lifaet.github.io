@@ -20747,19 +20747,19 @@
             }
         }
         const af = [{
-            name: "WebGL",
+            name: "Python",
             width: "60%"
         }, {
-            name: "ReactJS",
-            width: "65%"
+            name: "C & C++",
+            width: "85%"
         }, {
             name: "JavaScript",
-            width: "85%"
+            width: "40%"
         }, {
             name: "HTML + CSS",
             width: "90%"
         }, {
-            name: "3D Modelling",
+            name: "Ethical Hacking",
             width: "60%"
         }];
         class of {
