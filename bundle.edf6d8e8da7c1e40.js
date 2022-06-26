@@ -20752,10 +20752,10 @@
         }
         const af = [{
             name: "Python",
-            width: "40%"
+            width: "35%"
         }, {
             name: "C & C++",
-            width: "70%"
+            width: "65%"
         }, {
             name: "JavaScript",
             width: "25%"
@@ -20764,7 +20764,7 @@
             width: "75%"
         }, {
             name: "Ethical Hacking",
-            width: "45%"
+            width: "40%"
         }];
         class of {
             domElements = {
