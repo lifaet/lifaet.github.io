@@ -20691,15 +20691,16 @@
                     alt: "cssda icon site of the day"
                 }]
             }
-            // , {
-            //     id: 4,
-            //     name: "Jelly Battle",
-            //     description: "Python and SQL based Artificial Intelligence door unlocker",
-            //     image: "images/projects/jelly-battle.jpg",
-            //     tags: ["webgl", "javascript", "html", "css"],
-            //     twitter: "https://twitter.com/lifaeth",
-            //     alt: "Python and SQL based Artificial Intelligence door unlocker"
-            // }
+            , {
+                id: 4,
+                name: "Smart Dog",
+                description: "A smart dog. That can follow human.",
+                image: "images/projects/p6.jpeg",
+                tags: ["cpp"],
+                // liveview : "#",
+                // github : "#",
+                alt: "Smart dog, That can follow human."
+            }
         ],
             rf = {
                 html: '<div class="work-item-tag" style="background: white; border: 1px solid #7C8594; color: #7C8594">HTML</div>',
