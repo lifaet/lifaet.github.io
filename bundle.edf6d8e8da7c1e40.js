@@ -20693,13 +20693,13 @@
             }
             , {
                 id: 4,
-                name: "Smart Dog",
-                description: "A smart dog. That can follow human.",
-                image: "images/projects/p6.jpeg",
+                name: "WALL·E Jr.",
+                description: "A basic smart robot that can follow object and run behind",
+                image: "images/projects/p7.jpg",
                 tags: ["cpp"],
                 // liveview : "#",
-                // github : "#",
-                alt: "Smart dog, That can follow human."
+                github : "https://github.com/lifaet/Follow-Me-Robot",
+                alt: "WALL·E Jr., That can follow object"
             }
         ],
             rf = {
