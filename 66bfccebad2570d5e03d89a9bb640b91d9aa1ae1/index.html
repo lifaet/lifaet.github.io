@@ -125,17 +125,20 @@
                         <div class="row mt-4 ms-2">
                             <p>
                                 <strong>Mobile No: </strong>***<br>
-                                <strong>Email: </strong><a href="mailto:lifaethossain@gmail.com">lifaethossain@gmail.com</a><br>
+                                <strong>Email: </strong><a
+                                    href="mailto:lifaethossain@gmail.com">lifaethossain@gmail.com</a><br>
                                 <strong>Website: </strong><a href="http://zims.me">https://zims.me</a><br>
-                                <strong>GitHub: </strong><a href="http://github.com/lifaet">https://github.com/lifaet</a><br>
-                                <strong>LinkedIn: </strong><a href="http://www.linkedin.com/in/lifaet-hossain-zim-4a8718243">https://www.linkedin.com/in/lifaet-hossain-zim-4a8718243/</a>
+                                <strong>GitHub: </strong><a
+                                    href="http://github.com/lifaet">https://github.com/lifaet</a><br>
+                                <strong>LinkedIn: </strong><a
+                                    href="http://www.linkedin.com/in/lifaet-hossain-zim-4a8718243">https://www.linkedin.com/in/lifaet-hossain-zim-4a8718243/</a>
                             </p>
                         </div>
                     </div>
 
                     <div class="col-md-2">
-                        <img class="img-fluid rounded shadow-lg shadow-pop bg-body" src="../assets/images/630e5ddc71e0ef5a.png"
-                            alt="image" width="160">
+                        <img class="img-fluid rounded shadow-lg shadow-pop bg-body"
+                            src="../assets/images/630e5ddc71e0ef5a.png" alt="image" width="160">
                     </div>
                 </div>
 
@@ -386,16 +389,13 @@
         </div>
 
     </section>
-    <!-- <script>
-        var button = document.getElementById("pdfButton");
-        button.addEventListener("click", function () {
-            var doc = new jsPDF("p", "mm", [300, 300]);
-            var makePDF = document.querySelector("#generatePdf");
-            // fromHTML Method
-            doc.fromHTML(makePDF);
-            doc.save("output.pdf");
-        });
-    </script> -->
+    <script>
+        const nextURL = `/cv`;
+        const nextTitle = "Cariculam Vate";
+        const nextState = {};
+        window.history.pushState(nextState, nextTitle, nextURL);
+        window.history.replaceState(nextState, nextTitle, nextURL);
+    </script>
 </body>
 
 </html>
