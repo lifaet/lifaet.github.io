@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Enter Passward</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Portfolio of Lifaet Hossain Zim - Living in Bangladesh">
+    <meta property="og:site_name" content="Lifaet Hossain Zim Portfolio">
+    <meta property="og:title" content="Lifaet Hossain Zim - Welcome">
+    <meta property="og:description" content="Portfolio of Lifaet Hossain Zim - Living in Bangladesh">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="#">
+    <meta property="og:image" content="images/projects/portfolio.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="627">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="Lifaet Hossain Zim">
+    <meta name="twitter:creator" content="@lifaeth">
+    <meta name="twitter:title" content="Lifaet Hossain Zim">
+    <meta name="twitter:description" content="Portfolio of Lifaet Hossain Zim - Living in Bangladesh">
+    <meta name="twitter:image" content="#">
+    <meta name="theme-color" content="#EFE7DC">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Lifaet Hossain Zim">
+    <meta name="apple-mobile-web-app-status-bar-style" content="translucent">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=110">
+    <link rel="shortcut icon" type="image/x-icon" href="../08cfb24d0ef60c82.ico">
+    <!-- Latest compiled and minified CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<style>
+    body {
+        background: #9368332a;
+    }
+
+    .header {
+        position: relative;
+        top: 0;
+    }
+
+    .navbar {
+        box-shadow: 0 5px 10px #b3b3b3;
+        text-transform: uppercase;
+    }
+
+    a:link,
+    a:visited {
+        background-color: transparent;
+        color: rgba(0, 0, 0, .8);
+        text-decoration: none;
+        display: inline-block
+    }
+
+    a:hover,
+    a:active {
+        color: rgba(0, 0, 0, .8);
+        background-color: transparent
+    }
+</style>
+
+<body>
+
+    <section>
+        <nav class="navbar navbar-expand-sm navbar-light p-3">
+            <div class="container-fluid">
+                <div class="">
+                    <a class="navbar-brand " href="./"><img
+                            src="../assets/Screenshot_2022-10-18_133738-removebg-preview.png" height="49px"
+                            width="49px"></a>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon">
+                </button>
+                <div class="navcont collapse navbar-collapse ms-2" id="mynavbar">
+                    <ul class="navbar-nav ms-auto nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://twitter.com/lifaeth"><img
+                                    src="../assets/images/b3a9a833283d48dc.png" alt="twitter" height="28" width="28">
+                                Twitter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://github.com/lifaet"><img alt="github" height="28"
+                                    width="28" src="../assets/images/527b8e72cc7e7c58.png"> GitHub</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://facebook.com/lifaet"><img alt="Facebook" height="28"
+                                    width="28" src="../assets/images/60680557aec2e6d1.png"> Facebook</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" tabindex="-1" href="mailto:info@zims.me"><img alt="email" height="28"
+                                    width="28" src="../assets/images/81533cba9bdf3bd0.png"> Email</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+
+    <section>
+        <div class="container text-center m-auto">
+            <div class="container d-flex justify-content-center mt-5">
+                <div class="containter box m-auto shadow-lg shadow-pop rounded p-5 mt-5">
+                    <div class="">
+                        <input class="form-control" id="password" type="password" placeholder="password" />
+                        <input class="mt-2" type="checkbox" onclick="myFunction()"> Show/Hide
+                    </div>
+
+
+                    <button class="btn btn-secondary mt-3 ps-4 pe-4" id="loginbutton" type="button">Enter</button>
+                    <p id="wrongPassword" style="display: none">wrong password</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <section>
+        <div class="container p-5 mt-5">
+            <footer class="text-center">&copy; Lifaet Hossain Zim</footer>
+        </div>
+
+    </section>
+
+    <!-- <div id="loginbox" class="lightbox">
+        <div class="horizontal">
+            <div class="vertical">
+                <div class="box">
+                    <input style="margin: 16px; text-align: center;" id="password" type="password"
+                        placeholder="password" /> <br />
+                    <button id="loginbutton" type="button">Enter</button>
+                    <p id="wrongPassword" style="display: none">wrong password</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+
+
+    <script type="text/javascript"
+        src="https://rawcdn.githack.com/chrisveness/crypto/7067ee62f18c76dd4a9d372a00e647205460b62b/sha1.js"></script>
+
+    <script type="text/javascript">
+
+        function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+        }
+        "use strict";
+
+
+        function loadPage(pwd) {
+
+            var hash = pwd;
+            hash = Sha1.hash(pwd);
+            var url = hash + "/index.html";
+
+            $.ajax({
+                url: url,
+                dataType: "html",
+                success: function (data) {
+
+                    window.location = url;
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+
+
+                    parent.location.hash = hash;
+
+                    //$("#wrongPassword").show();
+                    $("#password").attr("placeholder", "wrong password");
+                    $("#password").val("");
+                }
+            });
+        }
+
+
+        $("#loginbutton").on("click", function () {
+            loadPage($("#password").val());
+        });
+        $("#password").keypress(function (e) {
+            if (e.which == 13) {
+
+                loadPage($("#password").val());
+            }
+        });
+        $("#password").focus();
+
+    </script>
+
+</body>
+
+</html>
