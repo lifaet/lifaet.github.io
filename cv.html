@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Enter Passward</title>
+    <title>Curriculum Vitae (CV)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="description" content="Portfolio of Lifaet Hossain Zim - Living in Bangladesh">
     <meta property="og:site_name" content="Lifaet Hossain Zim Portfolio">
@@ -106,16 +106,18 @@
 
     <section>
         <div class="container text-center m-auto">
-            <div class="container d-flex justify-content-center mt-5">
+            <h2 class="mt-5">Enter the secret key to view my curriculum vitae. Contact me if you don't have the key.</h2>
+            <div class="container d-flex justify-content-center">
+
                 <div class="containter box m-auto shadow-lg shadow-pop rounded p-5 mt-5">
                     <div class="">
-                        <input class="form-control" id="password" type="password" placeholder="password" />
+                        <input class="form-control" id="password" type="password" placeholder="Secret Key" />
                         <input class="mt-2" type="checkbox" onclick="myFunction()"> Show/Hide
                     </div>
 
 
                     <button class="btn btn-secondary mt-3 ps-4 pe-4" id="loginbutton" type="button">Enter</button>
-                    <p id="wrongPassword" style="display: none">wrong password</p>
+                    <p id="wrongPassword" style="display: none">wrong Key</p>
                 </div>
             </div>
         </div>
@@ -179,7 +181,7 @@
                     parent.location.hash = hash;
 
                     //$("#wrongPassword").show();
-                    $("#password").attr("placeholder", "wrong password");
+                    $("#password").attr("placeholder", "wrong Key");
                     $("#password").val("");
                 }
             });
