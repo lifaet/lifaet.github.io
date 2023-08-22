@@ -63,6 +63,10 @@
         color: rgba(0, 0, 0, .8);
         background-color: transparent
     }
+
+    .plcRed::-webkit-input-placeholder {
+        color: #ff0000;
+    }
 </style>
 
 <body>
@@ -71,9 +75,7 @@
         <nav class="navbar navbar-expand-lg navbar-light p-3 font-monospace">
             <div class="container-fluid">
                 <div class="">
-                    <a class="navbar-brand " href="./"><img
-                            src="../assets/Screenshot_2022-10-18_133738-removebg-preview.png" height="49px"
-                            width="49px"></a>
+                    <a class="navbar-brand " href="./"><img src="../assets/logo.png" height="49px" width="49px"></a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -104,8 +106,8 @@
                                 Twitter</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://t.me/lifaet"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24">
+                            <a class="nav-link" href="https://t.me/lifaet"><svg xmlns="http://www.w3.org/2000/svg"
+                                    width="2em" height="2em" viewBox="0 0 24 24">
                                     <path fill="currentColor"
                                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19c-.14.75-.42 1-.68 1.03c-.58.05-1.02-.38-1.58-.75c-.88-.58-1.38-.94-2.23-1.5c-.99-.65-.35-1.01.22-1.59c.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02c-.09.02-1.49.95-4.22 2.79c-.4.27-.76.41-1.08.4c-.36-.01-1.04-.2-1.55-.37c-.63-.2-1.12-.31-1.08-.66c.02-.18.27-.36.74-.55c2.92-1.27 4.86-2.11 5.83-2.51c2.78-1.16 3.35-1.36 3.73-1.36c.08 0 .27.02.39.12c.1.08.13.19.14.27c-.01.06.01.24 0 .38z" />
                                 </svg>
@@ -141,42 +143,31 @@
 
     <section>
         <div class="container text-center m-auto">
-            <h2 class="mt-5">Enter the secret key to view my curriculum vitae. Contact me if you don't have the key.</h2>
+            <h2 class="mt-5">Enter the secret key to view my curriculum vitae. Contact me if you don't have the key.
+            </h2>
             <div class="container d-flex justify-content-center">
 
                 <div class="containter box m-auto shadow-lg shadow-pop rounded p-5 mt-5">
                     <div class="">
-                        <input class="form-control" id="password" type="password" placeholder="Secret Key" />
+                        <input class="form-control" id="password" type="password" placeholder="Enter Secret Key" />
                         <input class="mt-2" type="checkbox" onclick="myFunction()"> Show/Hide
                     </div>
 
 
                     <button class="btn btn-secondary mt-3 ps-4 pe-4" id="loginbutton" type="button">Enter</button>
-                    <p id="wrongPassword" style="display: none">wrong Key</p>
                 </div>
             </div>
         </div>
 
     </section>
     <section>
-        <div class="container p-5 mt-5">
-            <footer class="text-center">&copy; Lifaet Hossain Zim</footer>
+        <div class="container p-5">
+            <footer class="row text-center">
+                <p class="text-secondary">&copy; Lifaet Hossain Zim</p>
+            </footer>
         </div>
-
     </section>
 
-    <!-- <div id="loginbox" class="lightbox">
-        <div class="horizontal">
-            <div class="vertical">
-                <div class="box">
-                    <input style="margin: 16px; text-align: center;" id="password" type="password"
-                        placeholder="password" /> <br />
-                    <button id="loginbutton" type="button">Enter</button>
-                    <p id="wrongPassword" style="display: none">wrong password</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 
 
@@ -214,9 +205,8 @@
 
 
                     parent.location.hash = hash;
-
-                    //$("#wrongPassword").show();
                     $("#password").attr("placeholder", "wrong Key");
+                    $("#password").addClass('plcRed');
                     $("#password").val("");
                 }
             });
