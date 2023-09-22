@@ -102,14 +102,14 @@
         }
 
         .canvous {
-            font-family: Arial, sans-serif;
+            font-family: Arial;
 
         }
 
         @media screen and (min-width: 1000px) {
             .canvous {
-                padding-left: 10%;
-                padding-right: 10%;
+                padding-left: 13%;
+                padding-right: 13%;
             }
         }
     </style>
@@ -377,8 +377,7 @@
             </div>
         </section>
         <div class="text-end mt-4">
-            <div class="btn btn-secondary ms-2"><a href="#" Download="./curriculum-vitae.pdf">Download PDF</a></div>
-
+            <div class="btn btn-secondary ms-2"><a href="javascript:void(0);" onclick="cvdl()">Download As PDF</a></div>
         </div>
     </section>
 
@@ -389,7 +388,12 @@
             </footer>
         </div>
     </section>
-    <script>
+
+    <script type="text/javascript">
+        const loc = window.location.pathname.split("/")[1];
+        function cvdl() {
+            window.location.replace(loc + '/curriculum-vitae.pdf');
+        }
         const nextURL = `/cv`;
         const nextTitle = "Cariculam Vate";
         const nextState = {};
