@@ -121,9 +121,7 @@
         <nav class="navbar navbar-expand-lg navbar-light p-3 font-monospace">
             <div class="container-fluid">
                 <div class="">
-                    <a class="navbar-brand " href="./"><img
-                            src="../assets/logo.png" height="49px"
-                            width="49px"></a>
+                    <a class="navbar-brand " href="./"><img src="../assets/logo.png" height="49px" width="49px"></a>
                 </div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
@@ -379,7 +377,8 @@
             </div>
         </section>
         <div class="text-end mt-4">
-            <div class="btn btn-secondary ms-2"><a href="./curriculum-vitae.pdf">Download As PDF</a></div>
+            <div class="btn btn-secondary ms-2"><div onclick="dlcv()"> </div></div>
+
         </div>
     </section>
 
@@ -391,6 +390,9 @@
         </div>
     </section>
     <script>
+        function dlcv() {
+            document.getElementById("download").src = "./curriculum-vitae.pdf";
+        }
         const nextURL = `/cv`;
         const nextTitle = "Cariculam Vate";
         const nextState = {};
