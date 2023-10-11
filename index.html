@@ -32,15 +32,48 @@
 </head>
 
 <body><canvas id="main-canvas"></canvas>
-    <div id="intro-container" class="center column"><svg id="intro-svg" viewBox="0 0 56 61"
-            xmlns="http://www.w3.org/2000/svg" height="120" width="120">
-            <mask id="intro-mask">
-                <rect fill="black" height="61" width="61"></rect>
-                <rect fill="white" height="61" width="61" id="loading-rect"></rect>
-            </mask>
-            <use href="#logo-path" fill="#091434" opacity=".1"></use>
-            <use href="#logo-path" fill="#091434" mask="url(#intro-mask)"></use>
-        </svg></div>
+    <div id="intro-container" class="center column">
+        <svg id="intro-svg" height="12em" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g fill="none" fill-rule="evenodd" transform="translate(0 8)">
+                <g transform="translate(11 33)">
+                    <circle cx="79" cy="26.5" fill="hsla(207,60%,54%,1)" fill-rule="nonzero" r="17">
+                    </circle>
+                    <path id="red-path" stroke="hsla(0,0%,75%,1)"
+                        d="M0,27.5 C2.09693998e-14,42.6878306 35.3695048,55 79,55 C122.630495,55 158,42.6878306 158,27.5 C158,12.3121694 122.630495,9.22353014e-16 79,0 C35.3695048,-9.22353014e-16 2.09693998e-14,12.3121694 1.54991216e-14,27.5">
+                    </path>
+                    <circle transform="translate(-76 -27.5)" cx="79" cy="26.5" r="7" fill="hsla(0,60%,53%,1)"
+                        fill-rule="nonzero">
+                        <animateMotion dur="1.8s" repeatCount="indefinite">
+                            <mpath xlink:href="#red-path"></mpath>
+                        </animateMotion>
+                    </circle>
+                    <g transform="rotate(45, 79, 26.5)">
+                        <path id="yellow-path" stroke="hsla(0,0%,75%,1)"
+                            d="M0,26.8648666 C2.08194561e-14,41.7019227 35.1165918,53.7297332 78.4351031,53.7297332 C121.753614,53.7297332 156.870206,41.7019227 156.870206,26.8648666 C156.870206,12.0278105 121.753614,9.01050571e-16 78.4351031,0 C35.1165918,-9.01050571e-16 2.08194561e-14,12.0278105 1.53882936e-14,26.8648666">
+                        </path>
+                        <circle transform="translate(-76 -27.5)" cx="79" cy="26.5" fill="hsla(44,100%,20%,1)"
+                            fill-rule="nonzero" r="7">
+                            <animateMotion dur="2s" repeatCount="indefinite">
+                                <mpath xlink:href="#yellow-path"></mpath>
+                            </animateMotion>
+                        </circle>
+                    </g>
+                    <g transform="rotate(-45, 79, 26.5)">
+                        <path id="green-path" stroke="hsla(0,0%,75%,1)"
+                            d="M0,26.8648666 C2.08194561e-14,41.7019227 35.1165918,53.7297332 78.4351031,53.7297332 C121.753614,53.7297332 156.870206,41.7019227 156.870206,26.8648666 C156.870206,12.0278105 121.753614,9.01050571e-16 78.4351031,0 C35.1165918,-9.01050571e-16 2.08194561e-14,12.0278105 1.53882936e-14,26.8648666">
+                        </path>
+                        <circle transform="translate(-76 -27.5)" cx="79" cy="26.5" fill="hsla(155,60%,43%,1)"
+                            fill-rule="nonzero" r="7">
+                            <animateMotion dur="2.3s" repeatCount="indefinite">
+                                <mpath xlink:href="#green-path"></mpath>
+                            </animateMotion>
+                        </circle>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </div>
     <div id="transition-container" class="hide"><svg id="transition-wave-svg" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 320">
             <defs>
@@ -56,12 +89,10 @@
         </svg>
     </div>
     <div id="overlay-container" class="content-width">
-        <header id="header-container"><svg id="header-logo-svg" viewBox="0 0 56 61" xmlns="http://www.w3.org/2000/svg"
-                height="60" width="56">
+        <header id="header-container">
+            <svg id="header-logo-svg" viewBox="0 0 56 61" xmlns="http://www.w3.org/2000/svg" height="60" width="56">
                 <defs>
-                    <path id="logo-path"
-                        d="M3 14 24 2C28 0 28 0 32 2L53 14C56 16 56 17 56 19L56 43C56 46 55 47 51 49L32 59C28 61 28 61 24 59L5 49C1 47 0 46 0 43L0 19C0 17 0 16 3 14M28 4 5 17 28 28 51 17 28 4M53 20 30 31 30 56 53 44 53 20M40 42 33 35C33 35 32 34 33 33 34 32 35 33 36 34L36 34 43 41C44 42 44 42 43 43L35 51C35 51 34 52 33 51 32 50 33 49 33 49L40 42M16 42 23 35C23 35 24 34 23 33 22 32 21 33 20 34L13 41C12 42 12 42 13 43L21 51C21 51 22 52 23 51 24 50 23 49 23 49L16 42">
-                    </path>
+
                     <clipPath id="logo-clip-path">
                         <use fill="white" href="#logo-path" transform="scale(0.87)"></use>
                     </clipPath>
@@ -70,7 +101,48 @@
             <div id="logo-dark-background">
                 <div id="logo-white-background"></div>
             </div>
-            <div id="logo-click-container"></div>
+            <div id="logo-click-container">
+                <svg height="4em" viewBox="0 0 730 130" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g fill="none" fill-rule="evenodd" transform="translate(0 8)">
+                        <g transform="translate(11 33)">
+                            <circle cx="79" cy="26.5" fill="hsla(207,60%,54%,1)" fill-rule="nonzero" r="17">
+                            </circle>
+                            <path id="red-path" stroke="hsla(0,0%,75%,1)"
+                                d="M0,27.5 C2.09693998e-14,42.6878306 35.3695048,55 79,55 C122.630495,55 158,42.6878306 158,27.5 C158,12.3121694 122.630495,9.22353014e-16 79,0 C35.3695048,-9.22353014e-16 2.09693998e-14,12.3121694 1.54991216e-14,27.5">
+                            </path>
+                            <circle transform="translate(-76 -27.5)" cx="79" cy="26.5" r="7" fill="hsla(0,60%,53%,1)"
+                                fill-rule="nonzero">
+                                <animateMotion dur="1.8s" repeatCount="indefinite">
+                                    <mpath xlink:href="#red-path"></mpath>
+                                </animateMotion>
+                            </circle>
+                            <g transform="rotate(45, 79, 26.5)">
+                                <path id="yellow-path" stroke="hsla(0,0%,75%,1)"
+                                    d="M0,26.8648666 C2.08194561e-14,41.7019227 35.1165918,53.7297332 78.4351031,53.7297332 C121.753614,53.7297332 156.870206,41.7019227 156.870206,26.8648666 C156.870206,12.0278105 121.753614,9.01050571e-16 78.4351031,0 C35.1165918,-9.01050571e-16 2.08194561e-14,12.0278105 1.53882936e-14,26.8648666">
+                                </path>
+                                <circle transform="translate(-76 -27.5)" cx="79" cy="26.5" fill="hsla(44,100%,20%,1)"
+                                    fill-rule="nonzero" r="7">
+                                    <animateMotion dur="2s" repeatCount="indefinite">
+                                        <mpath xlink:href="#yellow-path"></mpath>
+                                    </animateMotion>
+                                </circle>
+                            </g>
+                            <g transform="rotate(-45, 79, 26.5)">
+                                <path id="green-path" stroke="hsla(0,0%,75%,1)"
+                                    d="M0,26.8648666 C2.08194561e-14,41.7019227 35.1165918,53.7297332 78.4351031,53.7297332 C121.753614,53.7297332 156.870206,41.7019227 156.870206,26.8648666 C156.870206,12.0278105 121.753614,9.01050571e-16 78.4351031,0 C35.1165918,-9.01050571e-16 2.08194561e-14,12.0278105 1.53882936e-14,26.8648666">
+                                </path>
+                                <circle transform="translate(-76 -27.5)" cx="79" cy="26.5" fill="hsla(155,60%,43%,1)"
+                                    fill-rule="nonzero" r="7">
+                                    <animateMotion dur="2.3s" repeatCount="indefinite">
+                                        <mpath xlink:href="#green-path"></mpath>
+                                    </animateMotion>
+                                </circle>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
             <div id="sound-button-scale-container">
                 <div id="sound-button" class="center overlay-button"><svg id="header-sound-svg" viewBox="0 0 18 9"
                         xmlns="http://www.w3.org/2000/svg">
