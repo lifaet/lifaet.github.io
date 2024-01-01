@@ -20653,7 +20653,7 @@
         const nf = [{
             id: 0,
             name: "Keylogger Surveillance System",
-            description: "Keylogger Surveillance System is a type of surveillance technology used to monitor and record each keystroke as well as every DNS quarry made by the system on a specific computer.",
+            description: "It is a surveillance app used to monitor and record each keystroke as well as every DNS quarry made by the system on a specific computer.",
             image: "assets/projects/keylogger.jpg",
             tags: ["python", "vs"],
             // liveview: "https://youtu.be/mJWK4g9Qr4M",
