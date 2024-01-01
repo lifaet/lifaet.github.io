@@ -20654,43 +20654,39 @@
             id: 0,
             name: "Keylogger Surveillance System",
             description: "It is a surveillance app used to monitor and record each keystroke as well as every DNS quarry made by the system on a specific computer.",
-            image: "assets/projects/keylogger.jpg",
+            image: "assets/projects/kss.jpg",
             tags: ["python", "vs"],
-            // liveview: "https://youtu.be/mJWK4g9Qr4M",
             github: "https://github.com/lifaet/Keylogger-Surveillance-System",
             alt: "Keylogger Surveillance System"
         }, {
             id: 1,
             name: "WALL·E Jr.",
             description: "A basic smart robot that can follow object and run behind",
-            image: "assets/projects/p7.jpg",
+            image: "assets/projects/wej.jpg",
             tags: ["cpp","arduino"],
-            // liveview : "#",
             github: "https://github.com/lifaet/Follow-Me-Robot",
             alt: "WALL·E Jr., That can follow object"
         }, {
             id: 2,
             name: "RC Surveillance Car",
             description: "A basic RC Surveillance Car that can be used in Security, surveillance, Education, entertainment, Research, development, Media and journalism",
-            image: "assets/projects/rccc.jpg",
+            image: "assets/projects/rcsc.jpg",
             tags: ["cpp", "arduino"],
-            // liveview : "#",
             github: "https://github.com/lifaet/Remote-Control-Car",
             alt: "RC Surveillance Car"
         }, {
             id: 3,
-            name: "MoviesBay",
-            description: "HTML,CSS and Bootstrap based movies download site",
-            image: "assets/projects/moviesbay.jpg",
-            tags: ["javascript", "bootstrap", "html", "css"],
-            liveview: "https://moviesbay.xyz",
-            github: "https://gitfront.io/r/zroot/ENR6NNuJJ6eY/MoviesBay/",
-            alt: "HTML,CSS and Bootstrap based movies download site"
+            name: "Optical Communication",
+            description: "Optical-Communication simply Li-Fi communication (Light Fidelity) is an advanced technology that allows transferring data using optical communication such as visible light.",
+            image: "assets/projects/oc.jpg",
+            tags: ["cpp","arduino"],
+            github: "https://github.com/lifaet/Optical-Communication",
+            alt: "Optical Communication"
         }, {
             id: 4,
             name: "Portfolio",
             description: 'My very first portfolio project with a little help from some open source project on github',
-            image: "assets/projects/portfolio.jpg",
+            image: "assets/projects/pf.jpg",
             tags: ["webgl", "javascript", "html", "css"],
             twitter: "https://twitter.com/lifaeth",
             alt: "My very first portfolio project",
