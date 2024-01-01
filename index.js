@@ -20652,13 +20652,13 @@
         }
         const nf = [{
             id: 0,
-            name: "Key Logger",
-            description: "C++ based KeyLogger Software for WindowsOS",
+            name: "Keylogger Surveillance System",
+            description: "Keylogger Surveillance System is a type of surveillance technology used to monitor and record each keystroke as well as every DNS quarry made by the system on a specific computer.",
             image: "assets/projects/keylogger.jpg",
-            tags: ["cpp", "vs"],
+            tags: ["python", "vs"],
             // liveview: "https://youtu.be/mJWK4g9Qr4M",
-            github: "https://github.com/lifaet/KeyLoggerProject",
-            alt: "C++ based Key Logger"
+            github: "https://github.com/lifaet/Keylogger-Surveillance-System",
+            alt: "Keylogger Surveillance System"
         }, {
             id: 1,
             name: "WALL·E Jr.",
