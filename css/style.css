@@ -87,7 +87,10 @@ a:focus {
 img {
     max-width: 100%;
 }
-
+.block-centered {
+    display: table;
+    margin: 0 auto;
+}
 /* Padding Top Spaces */
 .pt-5 {
     padding-top: 5px;
