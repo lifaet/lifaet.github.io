@@ -1,53 +1,9 @@
-/*================================================
- [  Table of contents  ]
- ================================================
- :: Preloader
- :: Site Header
- :: Page loader
- :: Typing Text
- :: Text rotation
- :: Home Slider
- :: Counter - Fun Fact
- :: Testenomials
- :: Clients
- :: Portfolio Filter
- :: LightBox
- :: AJAX Contact Form
- :: Google Map
- :: WOW Animation
- ======================================
- [ End table content ]
- ======================================*/
-
 jQuery(document).ready(function () {
     "use strict";
 
     /*======================================
      Site Header
      ======================================*/
-    // $('#header-main-menu li a, .home-buttons a').on("click", function (e) {
-    //     if ($(e.target).is('.header-main-menu a, .home-buttons a')) {
-    //         $('.header-main-menu li a').removeClass('active');
-    //         $(this).addClass('active');
-    //         $(".sub-page").hide();
-    //         if (location.pathname.replace(/^\//, '') == e.target.pathname.replace(/^\//, '') && location.hostname == e.target.hostname) {
-    //             var target = $(e.target.hash);
-    //             target = target.length ? target : $('[name=' + e.target.hash.slice(1) + ']');
-    //             if (target.length) {
-    //                 var gap = 0;
-    //                 $(e.target.hash, 'html', 'body').animate({
-    //                     opacity: 'show',
-    //                     duration: "slow",
-    //                     scrollTop: target.offset().top - gap
-    //                 });
-    //             }
-    //         }
-    //         if ($(e.target).is('.home-buttons a')) {
-    //             $("#header-main-menu li a[href='#contact']").addClass('active');
-    //         }
-    //     }
-    // });
-
     $(document).ready(function () {
         // Function to handle click events
         function handleClick(e) {
@@ -88,19 +44,6 @@ jQuery(document).ready(function () {
             });
         }
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     /*************************
      Responsive Menu
@@ -158,112 +101,6 @@ jQuery(document).ready(function () {
     });
 
     /*======================================
-     Home Slider
-     ======================================*/
-    // $('.home-slides').owlCarousel({
-    //     navigation: false,
-    //     pagination: false,
-    //     items: 1,
-    //     loop: true,
-    //     dots: true,
-    //     autoplay: 10000,
-    //     autoplayTimeout: 10000,
-    //     smartSpeed: 1000,
-    //     responsiveClass: true,
-    //     responsive: {
-    //         0: {
-    //             items: 1
-    //         },
-    //         480: {
-    //             items: 1
-    //         },
-    //         768: {
-    //             items: 1
-    //         },
-    //         1200: {
-    //             items: 1
-    //         }
-    //     }
-    // });
-
-    /*======================================
-     Counter - Fun Fact
-     ======================================*/
-    // $('.counter-block-value').each(function () {
-    //     var $this = $(this),
-    //             countTo = $this.attr('data-count');
-    //     $({countNum: $this.text()}).animate({
-    //         countNum: countTo
-    //     },
-    //             {
-    //                 duration: 8000,
-    //                 easing: 'linear',
-    //                 step: function () {
-    //                     $this.text(Math.floor(this.countNum));
-    //                 },
-    //                 complete: function () {
-    //                     $this.text(this.countNum);
-    //                 }
-    //             });
-    // });
-
-
-    /*======================================
-     Testenomials
-     ======================================*/
-    // $('.testimonials').owlCarousel({
-    //     navigation: false,
-    //     pagination: false,
-    //     autoPlay: true,
-    //     items: 2,
-    //     loop: !1,
-    //     dots: true,
-    //     margin: 25,
-    //     responsive: {
-    //         0: {
-    //             items: 1
-    //         },
-    //         480: {
-    //             items: 1
-    //         },
-    //         768: {
-    //             items: 1
-    //         },
-    //         1200: {
-    //             items: 2
-    //         }
-    //     }
-    // });
-
-
-    /*======================================
-     Clients
-     ======================================*/
-    //     $('.clients').owlCarousel({
-    //         navigation: false,
-    //         pagination: false,
-    //         dots: false,
-    //         loop: true,
-    // //        autoplay: true,
-    //         autoplayTimeout: 2000,
-    //         autoplayHoverPause: true,
-    //         margin: 10,
-    //         autoHeight: !1,
-    //         responsive: {
-    //             0: {
-    //                 items: 2
-    //             },
-    //             768: {
-    //                 items: 4
-    //             },
-    //             1200: {
-    //                 items: 6
-    //             }
-    //         }
-    //     });
-
-
-    /*======================================
      Portfolio Filter
      ======================================*/
     $(function () {
@@ -311,9 +148,9 @@ jQuery(document).ready(function () {
 });
 
 
-
-// projet dom paint///
-
+/*======================================
+      Projet dom paint///
+     ======================================*/
 const projetDom = document.getElementById("project-dom");
 const projectsData =
     [
@@ -337,7 +174,7 @@ const projectsData =
             "image": "images/portfolio/3.jpg",
             "link": "https://moviesbay.xyz/",
             "cat": "website"
-        },{
+        }, {
             "name": "Optical Communication ",
             "details": "Optical-Communication simply Li-Fi communication (Light Fidelity) is an advanced technology that allows transferring data using optical communication such as visible light.",
             "image": "images/portfolio/4.jpg",
@@ -435,9 +272,9 @@ projectsData.map(data => {
     projetDom.innerHTML += dom;
 })
 
-
-
-// CV
+/*======================================
+     CV Function
+     ======================================*/
 
 function submitPassword(event) {
     event.preventDefault();
@@ -446,7 +283,7 @@ function submitPassword(event) {
 var button = document.getElementById('show-cv');
 button.addEventListener('click', submitPassword);
 
-if (window.location.href.split("=").pop()==="wrong-key") {
+if (window.location.href.split("=").pop() === "wrong-key") {
     var passwordField = document.getElementById('password');
     passwordField.placeholder = 'Error! Enter The Correct Secret Key';
     passwordField.classList.add('wrong-key');
