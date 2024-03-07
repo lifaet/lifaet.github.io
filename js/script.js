@@ -278,7 +278,7 @@ projectsData.map(data => {
 
 function submitPassword(event) {
     event.preventDefault();
-    window.location.href = `https://resume.lifaet.workers.dev/?password=${encodeURIComponent(document.getElementById('password').value)}`
+    window.location.href = `https://cv.lifaet.workers.dev/?password=${encodeURIComponent(document.getElementById('password').value)}`
 }
 var button = document.getElementById('show-cv');
 button.addEventListener('click', submitPassword);
