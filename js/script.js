@@ -156,7 +156,7 @@ const projectsData =
     [
         {
             "name": "Keylogger Surveillance System ",
-            "details": "The Keylogger Surveillance System is a type of surveillance technology used to monitor and record each keystroke and DNS query made by a system on a specific computer.",
+            "details": "Keylogger Surveillance System is a type of surveillance technology used to monitor and record each keystroke and DNS query made by a system on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files.",
             "image": "images/portfolio/1.jpg",
             "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
             "cat": "software"
