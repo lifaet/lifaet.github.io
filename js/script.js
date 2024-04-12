@@ -172,7 +172,7 @@ const projectsData =
             "name": "MoviesBay",
             "details": "This project was a movie download website. Developed based on HTML,BOOTSTRAP,CSS,JAVASCRIPT and database integration.",
             "image": "images/portfolio/3.jpg",
-            "link": "https://moviesbay.xyz/",
+            "link": "https://moviesbay.pages.dev",
             "cat": "website"
         }, {
             "name": "Optical Communication ",
