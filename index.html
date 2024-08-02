@@ -830,29 +830,26 @@
                         </div>
 
                         <!-- Contact Form -->
-                        <!-- <div class="row contact-form pb-30">
+                        <div class="row contact-form pb-30">
                             <div class="col-sm-12 col-md-5 col-lg-5 left-background">
                                 <img src="images/mailbox.png" alt="image" />
                             </div>
                             <div class="col-sm-12 col-md-7 col-lg-7">
                                 <div class="form-contact-me">
                                     <div id="show_contact_msg"></div>
-                                    <form id="contact-form-2"
-                                        action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSe60P_tiel7OEieZAkGFMKBR51yF3WJzDmZBUIWN1rUB5B72Q/formResponse"
-                                        method="POST">
-                                        <input name="name" id="name" type="text" placeholder="Name:" required
-                                            autocomplete="off" name="entry.719331718">
-                                        <input name="email" id="email" type="email" placeholder="Email:" required
-                                            autocomplete="off" name="entry.167507248">
-                                        <textarea name="comment" id="comment" placeholder="Message:" required rows="6"
-                                            name="entry.1190061815"></textarea>
-                                        <input class="bt-submit" type="submit" value="Send Message">
+                                    <form id="contact-form" method="POST">
+                                        <input id="name" type="text" placeholder="Name:" required autocomplete="off"
+                                            name="Name">
+                                        <input id="email" type="email" placeholder="Email:" required autocomplete="off"
+                                            name="Email">
+                                        <textarea id="comment" placeholder="Message:" required rows="6"
+                                            name="Message"></textarea>
+                                        <input id="submit-button" class="bt-submit" type="submit" value="Send Message">
                                     </form>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                         <!-- /Contact Form -->
-
 
                         <!-- Contact Details -->
                         <div class="pt-20 pb-20">
@@ -991,12 +988,13 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Contact Form -->
+
+                        <!-- CV Asking Form -->
                         <div class="row contact-form pb-30">
                             <div class="col-sm-12 col-md-7 col-lg-7 block-centered pt-20">
                                 <div class="form-contact-me">
-                                    <div id="show_contact_msg"></div>
-                                    <form id="contact-form">
+                                    <div id="show_cv_msg"></div>
+                                    <form id="cv-form">
                                         <p> Enter the secret key to view my curriculum vitae. Contact me if you don't
                                             have the key.</p>
                                         <input id="password" type="password" placeholder="Enter Secret Key" />

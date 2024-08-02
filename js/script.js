@@ -45,6 +45,130 @@ jQuery(document).ready(function () {
         }
     });
 
+    /*======================================
+     Contact Form Header
+     ======================================*/
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("show_contact_msg").textContent = "Submitting..";
+        document.getElementById("show_contact_msg").style.display = "block";
+        document.getElementById("submit-button").disabled = true;
+
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) {
+            keyValuePairs.push(pair[0] + "=" + pair[1]);
+        }
+
+        var formDataString = keyValuePairs.join("&");
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+            "https://script.google.com/macros/s/AKfycbwTnO3lXBe1RyfMECfWA4i-Z3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg/exec",
+            {
+                redirect: "follow",
+                method: "POST",
+                body: formDataString,
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
+            }
+        )
+            .then(function (response) {
+                // Check if the request was successful
+                if (response) {
+                    return response; // Assuming your script returns JSON response
+                } else {
+                    throw new Error("Failed to submit the form.");
+                }
+            })
+            .then(function (data) {
+                // Display a success message
+                document.getElementById("show_contact_msg").textContent =
+                    "Message Send successfully!";
+                document.getElementById("show_contact_msg").style.display = "block";
+                document.getElementById("show_contact_msg").style.backgroundColor = "green";
+                document.getElementById("show_contact_msg").style.color = "beige";
+                document.getElementById("submit-button").disabled = false;
+                document.getElementById("form").reset();
+
+                setTimeout(function () {
+                    document.getElementById("show_contact_msg").textContent = "";
+                    document.getElementById("show_contact_msg").style.display = "none";
+                }, 2600);
+            })
+            .catch(function (error) {
+                // Handle errors, you can display an error message here
+                console.error(error);
+                document.getElementById("show_contact_msg").textContent =
+                    "Error Occurred! Try Again.";
+                document.getElementById("show_contact_msg").style.display = "block";
+            });
+    });
+
+        /*======================================
+     cv Form Header
+     ======================================*/
+     document.getElementById("cv-form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("show_cv_msg").textContent = "Submitting..";
+        document.getElementById("show_cv_msg").style.display = "block";
+        document.getElementById("show_cv_msg").disabled = true;
+
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) {
+            keyValuePairs.push(pair[0] + "=" + pair[1]);
+        }
+
+        var formDataString = keyValuePairs.join("&");
+
+        // Send a POST request to your Google Apps Script
+        fetch(
+            "https://script.google.com/macros/s/AKfycbwTnO3lXBe1RyfMECfWA4i-Z3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg/exec",
+            {
+                redirect: "follow",
+                method: "POST",
+                body: formDataString,
+                headers: {
+                    "Content-Type": "text/plain;charset=utf-8",
+                },
+            }
+        )
+            .then(function (response) {
+                // Check if the request was successful
+                if (response) {
+                    return response; // Assuming your script returns JSON response
+                } else {
+                    throw new Error("Failed to submit the form.");
+                }
+            })
+            .then(function (data) {
+                // Display a success message
+                document.getElementById("show_cv_msg").textContent =
+                    "Message Send successfully!";
+                document.getElementById("show_cv_msg").style.display = "block";
+                document.getElementById("show_cv_msg").style.backgroundColor = "green";
+                document.getElementById("show_cv_msg").style.color = "beige";
+                document.getElementById("submit-button").disabled = false;
+                document.getElementById("form").reset();
+
+                setTimeout(function () {
+                    document.getElementById("show_cv_msg").textContent = "";
+                    document.getElementById("show_cv_msg").style.display = "none";
+                }, 2600);
+            })
+            .catch(function (error) {
+                // Handle errors, you can display an error message here
+                console.error(error);
+                document.getElementById("show_cv_msg").textContent =
+                    "Error Occurred! Try Again.";
+                document.getElementById("show_cv_msg").style.display = "block";
+            });
+    });
+
     /*************************
      Responsive Menu
      *************************/
