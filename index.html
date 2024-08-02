@@ -838,12 +838,25 @@
                                 <div class="form-contact-me">
                                     <div id="show_contact_msg"></div>
                                     <form id="contact-form" method="POST">
-                                        <input id="name" type="text" placeholder="Name:" required autocomplete="off"
-                                            name="Name">
-                                        <input id="email" type="email" placeholder="Email:" required autocomplete="off"
+                                        <div class="input-icon ">
+                                            <i class="lnr lnr-user"></i>
+                                            <input id="name" type="text" placeholder="Name:" required autocomplete="off"
+                                                name="Name">
+                                        </div>
+
+                                        <div class="input-icon ">
+                                            <i class="lnr lnr-envelope"></i>
+                                            <input id="email" type="email" placeholder="Email:" required autocomplete="off"
                                             name="Email">
-                                        <textarea id="comment" placeholder="Message:" required rows="6"
+                                        </div>
+
+                                        <div class="input-icon ">
+                                            <i class="lnr lnr-bubble message-icon"></i>
+                                            <textarea id="comment" placeholder="Message:" required rows="6"
                                             name="Message"></textarea>
+                                        </div>
+                                        
+                                        
                                         <input id="submit-button" class="bt-submit" type="submit" value="Send Message">
                                     </form>
                                 </div>

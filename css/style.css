@@ -2075,10 +2075,10 @@
      font-weight: 500;
      display: none;
      font-weight: bold;
-     background-color: beige; 
+     background-color: beige;
      border-color: aquamarine;
  }
- 
+
  /* 12.2 Contact Info*/
 
  .contact-info.d-flex {
@@ -2140,6 +2140,25 @@
 
  #google-map {
      height: 350px;
+ }
+
+ .input-icon {
+     position: relative;
+ }
+
+ .input-icon i {
+     position: absolute;
+     top: 17px;
+     color: #999;
+ }
+
+ .input-icon i.lnr.lnr-bubble.message-icon {
+     top: 7px;
+ }
+
+ .input-icon input,
+ .input-icon textarea {
+     padding-left: 30px;
  }
 
  /*12.3 Social Media*/
