@@ -2079,6 +2079,17 @@
      border-color: aquamarine;
  }
 
+ #show_cv_msg {
+    border-radius: 25px;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    display: none;
+    font-weight: bold;
+    background-color: beige;
+    border-color: aquamarine;
+}
+
  /* 12.2 Contact Info*/
 
  .contact-info.d-flex {

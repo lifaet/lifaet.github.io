@@ -91,7 +91,7 @@ jQuery(document).ready(function () {
                 document.getElementById("show_contact_msg").style.backgroundColor = "green";
                 document.getElementById("show_contact_msg").style.color = "beige";
                 document.getElementById("submit-button").disabled = false;
-                document.getElementById("form").reset();
+                document.getElementById("contact-form").reset();
 
                 setTimeout(function () {
                     document.getElementById("show_contact_msg").textContent = "";
@@ -112,9 +112,9 @@ jQuery(document).ready(function () {
      ======================================*/
      document.getElementById("cv-form").addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent the default form submission
-        document.getElementById("show_cv_msg").textContent = "Submitting..";
+        document.getElementById("show_cv_msg").textContent = "Saving Info...";
         document.getElementById("show_cv_msg").style.display = "block";
-        document.getElementById("show_cv_msg").disabled = true;
+        document.getElementById("cv-submit-button").disabled = true;
 
         // Collect the form data
         var formData = new FormData(this);
@@ -148,23 +148,24 @@ jQuery(document).ready(function () {
             .then(function (data) {
                 // Display a success message
                 document.getElementById("show_cv_msg").textContent =
-                    "Message Send successfully!";
+                    "Information Recorded. Loading CV...";
                 document.getElementById("show_cv_msg").style.display = "block";
                 document.getElementById("show_cv_msg").style.backgroundColor = "green";
                 document.getElementById("show_cv_msg").style.color = "beige";
-                document.getElementById("submit-button").disabled = false;
-                document.getElementById("form").reset();
+                document.getElementById("cv-submit-button").disabled = false;
+                document.getElementById("cv-form").reset();
 
                 setTimeout(function () {
                     document.getElementById("show_cv_msg").textContent = "";
                     document.getElementById("show_cv_msg").style.display = "none";
+                    window.location.href = `https://cv.lifaet.workers.dev/?cv=${grm()}`
                 }, 2600);
             })
             .catch(function (error) {
                 // Handle errors, you can display an error message here
                 console.error(error);
                 document.getElementById("show_cv_msg").textContent =
-                    "Error Occurred! Try Again.";
+                    "Newtork Error! Try Again.";
                 document.getElementById("show_cv_msg").style.display = "block";
             });
     });
@@ -269,6 +270,7 @@ jQuery(document).ready(function () {
     $('#preloader').fadeOut('slow', function () {
         $(this).remove();
     });
+
 });
 
 
@@ -400,15 +402,27 @@ projectsData.map(data => {
      CV Function
      ======================================*/
 
-function submitPassword(event) {
-    event.preventDefault();
-    window.location.href = `https://cv.lifaet.workers.dev/?password=${encodeURIComponent(document.getElementById('password').value)}`
-}
-var button = document.getElementById('show-cv');
-button.addEventListener('click', submitPassword);
+// function submitPassword(event) {
+//     event.preventDefault();
+//     window.location.href = `https://cv.lifaet.workers.dev/?password=${encodeURIComponent(document.getElementById('password').value)}`
+// }
+// var button = document.getElementById('show-cv');
+// button.addEventListener('click', submitPassword);
 
-if (window.location.href.split("=").pop() === "wrong-key") {
-    var passwordField = document.getElementById('password');
-    passwordField.placeholder = 'Error! Enter The Correct Secret Key';
-    passwordField.classList.add('wrong-key');
+// if (window.location.href.split("=").pop() === "wrong-key") {
+//     var passwordField = document.getElementById('password');
+//     passwordField.placeholder = 'Error! Enter The Correct Secret Key';
+//     passwordField.classList.add('wrong-key');
+// }
+
+function grm() {
+    const cc = 'AcEgIkMoQsUwY13579';
+    let rt = '';
+
+    for (let i = 0; i < 15; i++) {
+        const ri = Math.floor(Math.random() * cc.length);
+        rt += cc.charAt(ri);
+    }
+
+    return rt;
 }

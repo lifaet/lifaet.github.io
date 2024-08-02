@@ -841,22 +841,18 @@
                                         <div class="input-icon ">
                                             <i class="lnr lnr-user"></i>
                                             <input id="name" type="text" placeholder="Name:" required autocomplete="off"
-                                                name="Name">
+                                                name="Contact-Name">
                                         </div>
-
                                         <div class="input-icon ">
                                             <i class="lnr lnr-envelope"></i>
-                                            <input id="email" type="email" placeholder="Email:" required autocomplete="off"
-                                            name="Email">
+                                            <input id="email" type="email" placeholder="Email:" required
+                                                autocomplete="off" name="Contact-Email">
                                         </div>
-
                                         <div class="input-icon ">
                                             <i class="lnr lnr-bubble message-icon"></i>
                                             <textarea id="comment" placeholder="Message:" required rows="6"
-                                            name="Message"></textarea>
+                                                name="Message"></textarea>
                                         </div>
-                                        
-                                        
                                         <input id="submit-button" class="bt-submit" type="submit" value="Send Message">
                                     </form>
                                 </div>
@@ -1003,20 +999,29 @@
                         </div>
 
                         <!-- CV Asking Form -->
+
                         <div class="row contact-form pb-30">
                             <div class="col-sm-12 col-md-7 col-lg-7 block-centered pt-20">
+                                <p> Please give a few information to view my curriculum vitae.</p>
                                 <div class="form-contact-me">
                                     <div id="show_cv_msg"></div>
-                                    <form id="cv-form">
-                                        <p> Enter the secret key to view my curriculum vitae. Contact me if you don't
-                                            have the key.</p>
-                                        <input id="password" type="password" placeholder="Enter Secret Key" />
-                                        <div class="home-buttons" style="white-space: nowrap;">
-                                            <input type="submit" class="bt-submit" id="show-cv" value="View CV">
-                                            <a href="#contact" class="bt-submit" style="display: inline-block;"><i
-                                                    class="lnr lnr-envelope"></i>
-                                                Contact Me</a>
+                                    <form id="cv-form" method="POST">
+                                        <div class="input-icon ">
+                                            <i class="lnr lnr-user"></i>
+                                            <input id="name" type="text" placeholder="Name:" required autocomplete="off"
+                                                name="CV-Name">
                                         </div>
+                                        <div class="input-icon ">
+                                            <i class="lnr lnr-envelope"></i>
+                                            <input id="email" type="email" placeholder="Email:" required
+                                                autocomplete="off" name="CV-Email">
+                                        </div>
+                                        <div class="input-icon ">
+                                            <i class="lnr lnr-bubble message-icon"></i>
+                                            <textarea id="comment" placeholder="Notes for me:" required rows="3"
+                                                name="Cv-Notes"></textarea>
+                                        </div>
+                                        <input id="cv-submit-button" class="bt-submit" type="submit" value="View CV">
                                     </form>
                                 </div>
                             </div>
