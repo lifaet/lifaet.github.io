@@ -400,7 +400,6 @@ function grm() {
     const c2v = sId.substring(7, 11);
     const c5w = sId.substring(20, 23);
     const cc = c2v + "4299" + c5w;
-    console.log(cc)
     let rt = '';
     for (let i = 0; i < 20; i++) {
         const ri = Math.floor(Math.random() * cc.length);
@@ -408,4 +407,3 @@ function grm() {
     }
     return rt;
 }
-console.log(grm());
