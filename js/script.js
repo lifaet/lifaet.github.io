@@ -1,278 +1,273 @@
-jQuery(document).ready(function () {
-    "use strict";
-
-    /*======================================
-     Site Header
-     ======================================*/
-    $(document).ready(function () {
-        // Function to handle click events
-        function handleClick(e) {
-            if ($(e.target).is('.header-main-menu a, .home-buttons a')) {
-                $('.header-main-menu li a').removeClass('active');
-                $(this).addClass('active');
-                $(".sub-page").hide();
-                if (location.pathname.replace(/^\//, '') == e.target.pathname.replace(/^\//, '') && location.hostname == e.target.hostname) {
-                    // Get the hash without the query string
-                    var hash = e.target.hash.split('?')[0];
-                    var target = $(hash);
-                    target = target.length ? target : $('[name=' + hash.slice(1) + ']');
-                    if (target.length) {
-                        var gap = 0;
-                        $(hash, 'html', 'body').animate({
-                            opacity: 'show',
-                            duration: "slow",
-                            scrollTop: target.offset().top - gap
-                        });
-                    }
-                }
-                if ($(e.target).is('.home-buttons a')) {
-                    $("#header-main-menu li a[href='#contact']").addClass('active');
-                }
-            }
-        }
-
-        // Attach the click event handler
-        $('#header-main-menu li a, .home-buttons a').on("click", handleClick);
-
-        // Call the click event handler for the current hash
-        var hash = window.location.hash;
-        if (hash) {
-            // Get the hash without the query string
-            hash = hash.split('?')[0];
-            handleClick({
-                target: $('.header-main-menu a[href="' + hash + '"], .home-buttons a[href="' + hash + '"]')[0]
-            });
-        }
-    });
-
-    /*======================================
-     Contact Form Header
-     ======================================*/
-    document.getElementById("contact-form").addEventListener("submit", function (e) {
-        e.preventDefault(); // Prevent the default form submission
-        document.getElementById("show_contact_msg").textContent = "Submitting..";
-        document.getElementById("show_contact_msg").style.display = "block";
-        document.getElementById("submit-button").disabled = true;
-
-        // Collect the form data
-        var formData = new FormData(this);
-        var keyValuePairs = [];
-        for (var pair of formData.entries()) {
-            keyValuePairs.push(pair[0] + "=" + pair[1]);
-        }
-
-        var formDataString = keyValuePairs.join("&");
-
-        // Send a POST request to your Google Apps Script
-        fetch(
-            "https://script.google.com/macros/s/AKfycbwTnO3lXBe1RyfMECfWA4i-Z3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg/exec",
-            {
-                redirect: "follow",
-                method: "POST",
-                body: formDataString,
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8",
-                },
-            }
-        )
-            .then(function (response) {
-                // Check if the request was successful
-                if (response) {
-                    return response; // Assuming your script returns JSON response
-                } else {
-                    throw new Error("Failed to submit the form.");
-                }
-            })
-            .then(function (data) {
-                // Display a success message
-                document.getElementById("show_contact_msg").textContent =
-                    "Message Send successfully!";
-                document.getElementById("show_contact_msg").style.display = "block";
-                document.getElementById("show_contact_msg").style.backgroundColor = "green";
-                document.getElementById("show_contact_msg").style.color = "beige";
-                document.getElementById("submit-button").disabled = false;
-                document.getElementById("contact-form").reset();
-
-                setTimeout(function () {
-                    document.getElementById("show_contact_msg").textContent = "";
-                    document.getElementById("show_contact_msg").style.display = "none";
-                }, 2600);
-            })
-            .catch(function (error) {
-                // Handle errors, you can display an error message here
-                console.error(error);
-                document.getElementById("show_contact_msg").textContent =
-                    "Error Occurred! Try Again.";
-                document.getElementById("show_contact_msg").style.display = "block";
-            });
-    });
-
-        /*======================================
-     cv Form Header
-     ======================================*/
-     document.getElementById("cv-form").addEventListener("submit", function (e) {
-        e.preventDefault(); // Prevent the default form submission
-        document.getElementById("show_cv_msg").textContent = "Saving Info...";
-        document.getElementById("show_cv_msg").style.display = "block";
-        document.getElementById("cv-submit-button").disabled = true;
-
-        // Collect the form data
-        var formData = new FormData(this);
-        var keyValuePairs = [];
-        for (var pair of formData.entries()) {
-            keyValuePairs.push(pair[0] + "=" + pair[1]);
-        }
-
-        var formDataString = keyValuePairs.join("&");
-
-        // Send a POST request to your Google Apps Script
-        fetch(
-            "https://script.google.com/macros/s/AKfycbwTnO3lXBe1RyfMECfWA4i-Z3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg/exec",
-            {
-                redirect: "follow",
-                method: "POST",
-                body: formDataString,
-                headers: {
-                    "Content-Type": "text/plain;charset=utf-8",
-                },
-            }
-        )
-            .then(function (response) {
-                // Check if the request was successful
-                if (response) {
-                    return response; // Assuming your script returns JSON response
-                } else {
-                    throw new Error("Failed to submit the form.");
-                }
-            })
-            .then(function (data) {
-                // Display a success message
-                document.getElementById("show_cv_msg").textContent =
-                    "Information Recorded. Loading CV...";
-                document.getElementById("show_cv_msg").style.display = "block";
-                document.getElementById("show_cv_msg").style.backgroundColor = "green";
-                document.getElementById("show_cv_msg").style.color = "beige";
-                document.getElementById("cv-submit-button").disabled = false;
-                document.getElementById("cv-form").reset();
-
-                setTimeout(function () {
-                    document.getElementById("show_cv_msg").textContent = "";
-                    document.getElementById("show_cv_msg").style.display = "none";
-                    window.location.href = `https://cv.lifaet.workers.dev/?cv=${grm()}`
-                }, 2600);
-            })
-            .catch(function (error) {
-                // Handle errors, you can display an error message here
-                console.error(error);
-                document.getElementById("show_cv_msg").textContent =
-                    "Newtork Error! Try Again.";
-                document.getElementById("show_cv_msg").style.display = "block";
-            });
-    });
-
-    /*************************
-     Responsive Menu
-     *************************/
-    $('.responsive-icon').on("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (!$(this).hasClass('active')) {
+/*======================================
+ Site Header
+ ======================================*/
+$(document).ready(function () {
+    // Function to handle click events
+    function handleClick(e) {
+        if ($(e.target).is('.header-main-menu a, .home-buttons a')) {
+            $('.header-main-menu li a').removeClass('active');
             $(this).addClass('active');
-            $('.header').animate({ 'margin-left': 285 }, 300);
-        } else {
-            $(this).removeClass('active');
-            $('.header').animate({ 'margin-left': 0 }, 300);
+            $(".sub-page").hide();
+            if (location.pathname.replace(/^\//, '') == e.target.pathname.replace(/^\//, '') && location.hostname == e.target.hostname) {
+                // Get the hash without the query string
+                var hash = e.target.hash.split('?')[0];
+                var target = $(hash);
+                target = target.length ? target : $('[name=' + hash.slice(1) + ']');
+                if (target.length) {
+                    var gap = 0;
+                    $(hash, 'html', 'body').animate({
+                        opacity: 'show',
+                        duration: "slow",
+                        scrollTop: target.offset().top - gap
+                    });
+                }
+            }
+            if ($(e.target).is('.home-buttons a')) {
+                $("#header-main-menu li a[href='#contact']").addClass('active');
+            }
         }
-        return false;
-    });
+    }
 
-    $('.header a').on("click", function (e) {
-        $('.responsive-icon').removeClass('active');
-        $('.header').animate({ 'margin-left': 0 }, 300);
+    // Attach the click event handler
+    $('#header-main-menu li a, .home-buttons a').on("click", handleClick);
 
-    });
-    /*======================================
-     Typing Text
-     ======================================*/
-    $(".typed").typed({
-        stringsElement: $('.typed-strings'),
-        typeSpeed: 20,
-        backDelay: 500,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 500,
-        contentType: 'html',
-        loopCount: true,
-        resetCallback: function () {
-            newTyped();
-        }
-    });
-
-
-    /*======================================
-     Text rotation
-     ======================================*/
-    $('.text-rotation').owlCarousel({
-        dots: !1,
-        nav: !1,
-        margin: 0,
-        items: 1,
-        autoplay: true,
-        autoplayHoverPause: !1,
-        autoplayTimeout: 1000,
-        loop: true,
-        animateOut: 'zoomOut',
-        animateIn: 'zoomIn'
-    });
-
-    /*======================================
-     Portfolio Filter
-     ======================================*/
-    $(function () {
-        var selectedClass = "";
-        $(".filter-tabs").find('button:first-child').addClass('active-filter');
-        $(".fil-cat").click(function () {
-            $(".filter-tabs").find('button').removeClass('active-filter');
-            $(this).addClass('active-filter');
-            selectedClass = $(this).attr("data-rel");
-            $("#portfolio-page").fadeTo(100, 0.1);
-            $("#portfolio-page .portfolio-item").not("." + selectedClass).fadeOut().removeClass('portfolio-item');
-            setTimeout(function () {
-                $("." + selectedClass).fadeIn().addClass('portfolio-item');
-                $("#portfolio-page").fadeTo(300, 1);
-            }, 300);
-
+    // Call the click event handler for the current hash
+    var hash = window.location.hash;
+    if (hash) {
+        // Get the hash without the query string
+        hash = hash.split('?')[0];
+        handleClick({
+            target: $('.header-main-menu a[href="' + hash + '"], .home-buttons a[href="' + hash + '"]')[0]
         });
-    });
-
-
-    /*======================================
-     LightBox
-     ======================================*/
-    $('[data-rel^=lightcase]').lightcase({
-        maxWidth: 1100,
-        maxHeight: 800
-    });
-
-
-    /*======================================
-     WOW Animation
-     ======================================*/
-    new WOW().init();
-
-    $(".dark-mode").on("click", function (e) {
-        $("body").addClass("darkMode");
-    });
-
-    /*======================================
-     Preloader
-     ======================================*/
-    $('#preloader').fadeOut('slow', function () {
-        $(this).remove();
-    });
-
+    }
 });
 
+/*======================================
+ Contact Form Header
+ ======================================*/
+const gScript = `https://script.google.com/macros/s/`
+const idx = `AKfycbwTnO3lXBe1RyfMECfWA4i-Z`
+const sId = idx + `3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg`
+document.getElementById("contact-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+    document.getElementById("show_contact_msg").textContent = "Submitting..";
+    document.getElementById("show_contact_msg").style.display = "block";
+    document.getElementById("submit-button").disabled = true;
+
+    // Collect the form data
+    var formData = new FormData(this);
+    var keyValuePairs = [];
+    for (var pair of formData.entries()) {
+        keyValuePairs.push(pair[0] + "=" + pair[1]);
+    }
+
+    var formDataString = keyValuePairs.join("&");
+
+    // Send a POST request to your Google Apps Script
+    fetch(
+        gScript + sId + "/exec",
+        {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString,
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+            },
+        }
+    )
+        .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+                return response; // Assuming your script returns JSON response
+            } else {
+                throw new Error("Failed to submit the form.");
+            }
+        })
+        .then(function (data) {
+            // Display a success message
+            document.getElementById("show_contact_msg").textContent =
+                "Message Send successfully!";
+            document.getElementById("show_contact_msg").style.display = "block";
+            document.getElementById("show_contact_msg").style.backgroundColor = "green";
+            document.getElementById("show_contact_msg").style.color = "beige";
+            document.getElementById("submit-button").disabled = false;
+            document.getElementById("contact-form").reset();
+
+            setTimeout(function () {
+                document.getElementById("show_contact_msg").textContent = "";
+                document.getElementById("show_contact_msg").style.display = "none";
+            }, 2600);
+        })
+        .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("show_contact_msg").textContent =
+                "Error Occurred! Try Again.";
+            document.getElementById("show_contact_msg").style.display = "block";
+        });
+});
+
+/*======================================
+cv Form Header
+======================================*/
+document.getElementById("cv-form").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the default form submission
+    document.getElementById("show_cv_msg").textContent = "Saving Info...";
+    document.getElementById("show_cv_msg").style.display = "block";
+    document.getElementById("cv-submit-button").disabled = true;
+
+    // Collect the form data
+    var formData = new FormData(this);
+    var keyValuePairs = [];
+    for (var pair of formData.entries()) {
+        keyValuePairs.push(pair[0] + "=" + pair[1]);
+    }
+
+    var formDataString = keyValuePairs.join("&");
+
+    // Send a POST request to your Google Apps Script
+    fetch(
+        gScript + sId + "/exec",
+        {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString,
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+            },
+        }
+    )
+        .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+                return response; // Assuming your script returns JSON response
+            } else {
+                throw new Error("Failed to submit the form.");
+            }
+        })
+        .then(function (data) {
+            // Display a success message
+            document.getElementById("show_cv_msg").textContent =
+                "Information Recorded. Loading CV...";
+            document.getElementById("show_cv_msg").style.display = "block";
+            document.getElementById("show_cv_msg").style.backgroundColor = "green";
+            document.getElementById("show_cv_msg").style.color = "beige";
+            document.getElementById("cv-submit-button").disabled = false;
+            document.getElementById("cv-form").reset();
+
+            setTimeout(function () {
+                document.getElementById("show_cv_msg").textContent = "";
+                document.getElementById("show_cv_msg").style.display = "none";
+                window.location.href = `https://cv.lifaet.workers.dev/?cv=${grm()}`
+            }, 2600);
+        })
+        .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("show_cv_msg").textContent =
+                "Newtork Error! Try Again.";
+            document.getElementById("show_cv_msg").style.display = "block";
+        });
+});
+
+/*************************
+ Responsive Menu
+ *************************/
+$('.responsive-icon').on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!$(this).hasClass('active')) {
+        $(this).addClass('active');
+        $('.header').animate({ 'margin-left': 285 }, 300);
+    } else {
+        $(this).removeClass('active');
+        $('.header').animate({ 'margin-left': 0 }, 300);
+    }
+    return false;
+});
+
+$('.header a').on("click", function (e) {
+    $('.responsive-icon').removeClass('active');
+    $('.header').animate({ 'margin-left': 0 }, 300);
+
+});
+/*======================================
+ Typing Text
+ ======================================*/
+$(".typed").typed({
+    stringsElement: $('.typed-strings'),
+    typeSpeed: 20,
+    backDelay: 500,
+    loop: true,
+    autoplay: true,
+    autoplayTimeout: 500,
+    contentType: 'html',
+    loopCount: true,
+    resetCallback: function () {
+        newTyped();
+    }
+});
+
+/*======================================
+ Text rotation
+ ======================================*/
+$('.text-rotation').owlCarousel({
+    dots: !1,
+    nav: !1,
+    margin: 0,
+    items: 1,
+    autoplay: true,
+    autoplayHoverPause: !1,
+    autoplayTimeout: 1000,
+    loop: true,
+    animateOut: 'zoomOut',
+    animateIn: 'zoomIn'
+});
+
+/*======================================
+ Portfolio Filter
+ ======================================*/
+$(function () {
+    var selectedClass = "";
+    $(".filter-tabs").find('button:first-child').addClass('active-filter');
+    $(".fil-cat").click(function () {
+        $(".filter-tabs").find('button').removeClass('active-filter');
+        $(this).addClass('active-filter');
+        selectedClass = $(this).attr("data-rel");
+        $("#portfolio-page").fadeTo(100, 0.1);
+        $("#portfolio-page .portfolio-item").not("." + selectedClass).fadeOut().removeClass('portfolio-item');
+        setTimeout(function () {
+            $("." + selectedClass).fadeIn().addClass('portfolio-item');
+            $("#portfolio-page").fadeTo(300, 1);
+        }, 300);
+
+    });
+});
+
+/*======================================
+ LightBox
+ ======================================*/
+$('[data-rel^=lightcase]').lightcase({
+    maxWidth: 1100,
+    maxHeight: 800
+});
+
+
+/*======================================
+ WOW Animation
+ ======================================*/
+new WOW().init();
+
+$(".dark-mode").on("click", function (e) {
+    $("body").addClass("darkMode");
+});
+
+/*======================================
+ Preloader
+ ======================================*/
+$('#preloader').fadeOut('slow', function () {
+    $(this).remove();
+});
 
 /*======================================
       Projet dom paint///
@@ -401,28 +396,15 @@ projectsData.map(data => {
 /*======================================
      CV Function
      ======================================*/
-
-// function submitPassword(event) {
-//     event.preventDefault();
-//     window.location.href = `https://cv.lifaet.workers.dev/?password=${encodeURIComponent(document.getElementById('password').value)}`
-// }
-// var button = document.getElementById('show-cv');
-// button.addEventListener('click', submitPassword);
-
-// if (window.location.href.split("=").pop() === "wrong-key") {
-//     var passwordField = document.getElementById('password');
-//     passwordField.placeholder = 'Error! Enter The Correct Secret Key';
-//     passwordField.classList.add('wrong-key');
-// }
-
 function grm() {
-    const cc = 'AcEgIkMoQsUwY13579';
+    const c2v = sId.substring(7, 12);
+    const c5w = sId.substring(20, 25);
+    const c8x = sId.substring(50, 74);
+    const cc = c2v + sId.substring(69, 74) + c5w + c8x.substring(0, 5);
     let rt = '';
-
     for (let i = 0; i < 15; i++) {
         const ri = Math.floor(Math.random() * cc.length);
         rt += cc.charAt(ri);
     }
-
     return rt;
 }
