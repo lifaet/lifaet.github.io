@@ -397,14 +397,15 @@ projectsData.map(data => {
      CV Function
      ======================================*/
 function grm() {
-    const c2v = sId.substring(7, 12);
-    const c5w = sId.substring(20, 25);
-    const c8x = sId.substring(50, 74);
-    const cc = c2v + sId.substring(69, 74) + c5w + c8x.substring(0, 5);
+    const c2v = sId.substring(7, 11);
+    const c5w = sId.substring(20, 23);
+    const cc = c2v + "4299" + c5w;
+    console.log(cc)
     let rt = '';
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 20; i++) {
         const ri = Math.floor(Math.random() * cc.length);
         rt += cc.charAt(ri);
     }
     return rt;
 }
+console.log(grm());
