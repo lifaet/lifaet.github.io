@@ -2,6 +2,53 @@
  Site Header
  ======================================*/
 $(document).ready(function () {
+
+    function checkSectionScroll() {
+        let previousScrollY = window.scrollY;
+        let scrollTimeout;
+      
+        window.addEventListener('wheel', (event) => {
+          clearTimeout(scrollTimeout);
+      
+          const currentScrollY = window.scrollY;
+          const isScrollingDown = currentScrollY > previousScrollY;
+      
+          const sections = document.querySelectorAll('.sub-home-pages .sub-page');
+      
+          sections.forEach(section => {
+            const sectionRect = section.getBoundingClientRect();
+            const screenHeight = window.innerHeight;
+      
+            // Check for reaching the top while scrolling up
+            if (
+              !isScrollingDown && 
+              sectionRect.top >= 0 &&
+              sectionRect.top <= 1 &&
+              sectionRect.bottom > screenHeight
+            ) {
+              console.log(`Section "${section.id || 'unnamed'}" reached the top while scrolling up.`);
+            }
+      
+            // Check for reaching the bottom (regardless of scroll direction)
+            if (
+              sectionRect.bottom >= screenHeight - 1 &&
+              sectionRect.bottom <= screenHeight + 1
+            ) {
+              console.log(`Section "${section.id || 'unnamed'}" reached the end while scrolling down.`);
+            }
+          });
+      
+          previousScrollY = currentScrollY;
+      
+          scrollTimeout = setTimeout(() => {
+            previousScrollY = currentScrollY;
+          }, 100);
+        });
+      }
+      
+      checkSectionScroll();
+
+
     // Function to handle click events
     function handleClick(e) {
         if ($(e.target).is('.header-main-menu a, .home-buttons a')) {
