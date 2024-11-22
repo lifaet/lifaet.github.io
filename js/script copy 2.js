@@ -1,48 +1,80 @@
+/*======================================
+ Site Header
+ ======================================*/
 $(document).ready(function () {
-    // Function to handle click events
-    function handleClick(event) {
-        event.preventDefault(); // Prevent default link behavior
-        const target = event.currentTarget; // Use currentTarget to ensure correct element
 
-        console.log('Click event:', target); // Debug log to check click event
 
-        if ($(target).is('.header-main-menu a, .home-buttons a')) {
-            $('.header-main-menu li a').removeClass('active');
-            $(target).addClass('active');
 
-            if ($(target).is('.header-main-menu a')) {
-                $(".sub-page").hide(); // Hide all sections initially
-            }
 
-            if (location.pathname.replace(/^\//, '') === target.pathname.replace(/^\//, '') && location.hostname === target.hostname) {
-                // Get the hash without the query string
-                const hash = target.hash.split('?')[0];
-                const targetElement = $(hash);
+    function checkSectionScroll() {
+        let previousScrollY = window.scrollY;
+        let scrollTimeout;
 
-                if (targetElement.length) {
-                    // Show target section without animation and set initial opacity to 0
-                    targetElement.css('opacity', 0).show();
+        window.addEventListener('wheel', (event) => {
+            clearTimeout(scrollTimeout);
 
-                    // Calculate offset for accurate scrolling
-                    const offset = targetElement.offset().top;
+            const currentScrollY = window.scrollY;
+            const isScrollingDown = currentScrollY > previousScrollY;
 
-                    $('html, body').animate({
-                        scrollTop: offset
-                    }, 800, function() {
-                        // Apply fade-in effect after scrolling is done
-                        targetElement.animate({ opacity: 1 }, 'slow');
-                    });
+            const sections = document.querySelectorAll('.sub-home-pages .sub-page');
 
-                    // Update URL without reloading the page
-                    if (history.pushState) {
-                        history.pushState(null, null, hash);
-                    } else {
-                        window.location.hash = hash;
+            sections.forEach((section, index) => {
+                const sectionRect = section.getBoundingClientRect();
+                const screenHeight = window.innerHeight;
+
+                if (isScrollingDown) {
+                    if (
+                        sectionRect.bottom >= screenHeight - 1 &&
+                        sectionRect.bottom <= screenHeight + 1
+                    ) {
+                        // Trigger the button for the next section
+                        const nextSectionButton = $(`#header-main-menu li a[href="#${sections[index + 1]?.id}"]`);
+                        if (nextSectionButton.length) {
+                            nextSectionButton.trigger('click');
+                        }
+                    }
+                } else { // Scrolling up
+                    if (
+                        sectionRect.top >= 0 &&
+                        sectionRect.top <= 1 &&
+                        sectionRect.bottom > screenHeight
+                    ) {
+                        // Trigger the button for the previous section
+                        const prevSectionButton = $(`#header-main-menu li a[href="#${sections[index - 1]?.id}"]`);
+                        if (prevSectionButton.length) {
+                            prevSectionButton.trigger('click');
+                        }
                     }
                 }
-            }
+            });
 
-            if ($(target).is('.home-buttons a')) {
+            previousScrollY = currentScrollY;
+
+            scrollTimeout = setTimeout(() => {
+                previousScrollY = currentScrollY;
+            }, 100);
+        });
+    }
+
+    function handleClick(e) {
+        if ($(e.target).is('.header-main-menu a, .home-buttons a')) {
+            $('.header-main-menu li a').removeClass('active');
+            $(this).addClass('active');
+            $(".sub-page").hide();
+            if (location.pathname.replace(/^\//, '') == e.target.pathname.replace(/^\//, '') && location.hostname == e.target.hostname) {
+                var hash = e.target.hash.split('?')[0];
+                var target = $(hash);
+                target = target.length ? target : $('[name=' + hash.slice(1) + ']');
+                if (target.length) {
+                    var gap = 0;
+                    $(hash, 'html', 'body').animate({
+                        opacity: 'show',
+                        duration: "slow",
+                        scrollTop: target.offset().top - gap
+                    });
+                }
+            }
+            if ($(e.target).is('.home-buttons a')) {
                 $("#header-main-menu li a[href='#contact']").addClass('active');
             }
         }
@@ -52,130 +84,110 @@ $(document).ready(function () {
     $('#header-main-menu li a, .home-buttons a').on("click", handleClick);
 
     // Call the click event handler for the current hash
-    const hash = window.location.hash;
+    var hash = window.location.hash;
     if (hash) {
-        // Get the hash without the query string
-        const cleanedHash = hash.split('?')[0];
+        hash = hash.split('?')[0];
         handleClick({
-            preventDefault: () => {}, // Mock preventDefault method
-            currentTarget: document.querySelector(`.header-main-menu a[href="${cleanedHash}"], .home-buttons a[href="${cleanedHash}"]`)
+            target: $('.header-main-menu a[href="' + hash + '"], .home-buttons a[href="' + hash + '"]')[0]
         });
     }
+
+    checkSectionScroll(); // Call the scroll detection function
+
+
+
+
+
+
+
+
+
+
+    // function checkSectionScroll() {
+    //     let previousScrollY = window.scrollY;
+    //     let scrollTimeout;
+
+    //     window.addEventListener('wheel', (event) => {
+    //       clearTimeout(scrollTimeout);
+
+    //       const currentScrollY = window.scrollY;
+    //       const isScrollingDown = currentScrollY > previousScrollY;
+
+    //       const sections = document.querySelectorAll('.sub-home-pages .sub-page');
+
+    //       sections.forEach(section => {
+    //         const sectionRect = section.getBoundingClientRect();
+    //         const screenHeight = window.innerHeight;
+
+    //         // Check for reaching the top while scrolling up
+    //         if (
+    //           !isScrollingDown && 
+    //           sectionRect.top >= 0 &&
+    //           sectionRect.top <= 1 &&
+    //           sectionRect.bottom > screenHeight
+    //         ) {
+    //           console.log(`Section "${section.id || 'unnamed'}" reached the top while scrolling up.`);
+    //         }
+
+    //         // Check for reaching the bottom (regardless of scroll direction)
+    //         if (
+    //           sectionRect.bottom >= screenHeight - 1 &&
+    //           sectionRect.bottom <= screenHeight + 1
+    //         ) {
+    //           console.log(`Section "${section.id || 'unnamed'}" reached the end while scrolling down.`);
+    //         }
+    //       });
+
+    //       previousScrollY = currentScrollY;
+
+    //       scrollTimeout = setTimeout(() => {
+    //         previousScrollY = currentScrollY;
+    //       }, 100);
+    //     });
+    //   }
+
+    //   checkSectionScroll();
+
+
+    // // Function to handle click events
+    // function handleClick(e) {
+    //     if ($(e.target).is('.header-main-menu a, .home-buttons a')) {
+    //         $('.header-main-menu li a').removeClass('active');
+    //         $(this).addClass('active');
+    //         $(".sub-page").hide();
+    //         if (location.pathname.replace(/^\//, '') == e.target.pathname.replace(/^\//, '') && location.hostname == e.target.hostname) {
+    //             // Get the hash without the query string
+    //             var hash = e.target.hash.split('?')[0];
+    //             var target = $(hash);
+    //             target = target.length ? target : $('[name=' + hash.slice(1) + ']');
+    //             if (target.length) {
+    //                 var gap = 0;
+    //                 $(hash, 'html', 'body').animate({
+    //                     opacity: 'show',
+    //                     duration: "slow",
+    //                     scrollTop: target.offset().top - gap
+    //                 });
+    //             }
+    //         }
+    //         if ($(e.target).is('.home-buttons a')) {
+    //             $("#header-main-menu li a[href='#contact']").addClass('active');
+    //         }
+    //     }
+    // }
+
+    // // Attach the click event handler
+    // $('#header-main-menu li a, .home-buttons a').on("click", handleClick);
+
+    // // Call the click event handler for the current hash
+    // var hash = window.location.hash;
+    // if (hash) {
+    //     // Get the hash without the query string
+    //     hash = hash.split('?')[0];
+    //     handleClick({
+    //         target: $('.header-main-menu a[href="' + hash + '"], .home-buttons a[href="' + hash + '"]')[0]
+    //     });
+    // }
 });
-
-$('.responsive-icon').on("click", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!$(this).hasClass('active')) {
-        $(this).addClass('active');
-        $('.header').animate({ 'margin-left': 285 }, 300);
-    } else {
-        $(this).removeClass('active');
-        $('.header').animate({ 'margin-left': 0 }, 300);
-    }
-    return false;
-});
-
-$('.header a').on("click", function (e) {
-    $('.responsive-icon').removeClass('active');
-    $('.header').animate({ 'margin-left': 0 }, 300);
-});
-
-
-
-
-
-
-/*======================================
- Site Header
- ======================================*/
-// $(document).ready(function () {
-
-//     function checkSectionScroll() {
-//         let previousScrollY = window.scrollY;
-//         let scrollTimeout;
-      
-//         window.addEventListener('wheel', (event) => {
-//           clearTimeout(scrollTimeout);
-      
-//           const currentScrollY = window.scrollY;
-//           const isScrollingDown = currentScrollY > previousScrollY;
-      
-//           const sections = document.querySelectorAll('.sub-home-pages .sub-page');
-      
-//           sections.forEach(section => {
-//             const sectionRect = section.getBoundingClientRect();
-//             const screenHeight = window.innerHeight;
-      
-//             // Check for reaching the top while scrolling up
-//             if (
-//               !isScrollingDown && 
-//               sectionRect.top >= 0 &&
-//               sectionRect.top <= 1 &&
-//               sectionRect.bottom > screenHeight
-//             ) {
-//               console.log(`Section "${section.id || 'unnamed'}" reached the top while scrolling up.`);
-//             }
-      
-//             // Check for reaching the bottom (regardless of scroll direction)
-//             if (
-//               sectionRect.bottom >= screenHeight - 1 &&
-//               sectionRect.bottom <= screenHeight + 1
-//             ) {
-//               console.log(`Section "${section.id || 'unnamed'}" reached the end while scrolling down.`);
-//             }
-//           });
-      
-//           previousScrollY = currentScrollY;
-      
-//           scrollTimeout = setTimeout(() => {
-//             previousScrollY = currentScrollY;
-//           }, 100);
-//         });
-//       }
-      
-//       checkSectionScroll();
-
-
-//     // Function to handle click events
-//     function handleClick(e) {
-//         if ($(e.target).is('.header-main-menu a, .home-buttons a')) {
-//             $('.header-main-menu li a').removeClass('active');
-//             $(this).addClass('active');
-//             $(".sub-page").hide();
-//             if (location.pathname.replace(/^\//, '') == e.target.pathname.replace(/^\//, '') && location.hostname == e.target.hostname) {
-//                 // Get the hash without the query string
-//                 var hash = e.target.hash.split('?')[0];
-//                 var target = $(hash);
-//                 target = target.length ? target : $('[name=' + hash.slice(1) + ']');
-//                 if (target.length) {
-//                     var gap = 0;
-//                     $(hash, 'html', 'body').animate({
-//                         opacity: 'show',
-//                         duration: "slow",
-//                         scrollTop: target.offset().top - gap
-//                     });
-//                 }
-//             }
-//             if ($(e.target).is('.home-buttons a')) {
-//                 $("#header-main-menu li a[href='#contact']").addClass('active');
-//             }
-//         }
-//     }
-
-//     // Attach the click event handler
-//     $('#header-main-menu li a, .home-buttons a').on("click", handleClick);
-
-//     // Call the click event handler for the current hash
-//     var hash = window.location.hash;
-//     if (hash) {
-//         // Get the hash without the query string
-//         hash = hash.split('?')[0];
-//         handleClick({
-//             target: $('.header-main-menu a[href="' + hash + '"], .home-buttons a[href="' + hash + '"]')[0]
-//         });
-//     }
-// });
 
 /*======================================
  Contact Form Header
@@ -308,24 +320,24 @@ document.getElementById("cv-form").addEventListener("submit", function (e) {
 /*************************
  Responsive Menu
  *************************/
-// $('.responsive-icon').on("click", function (e) {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     if (!$(this).hasClass('active')) {
-//         $(this).addClass('active');
-//         $('.header').animate({ 'margin-left': 285 }, 300);
-//     } else {
-//         $(this).removeClass('active');
-//         $('.header').animate({ 'margin-left': 0 }, 300);
-//     }
-//     return false;
-// });
+$('.responsive-icon').on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!$(this).hasClass('active')) {
+        $(this).addClass('active');
+        $('.header').animate({ 'margin-left': 285 }, 300);
+    } else {
+        $(this).removeClass('active');
+        $('.header').animate({ 'margin-left': 0 }, 300);
+    }
+    return false;
+});
 
-// $('.header a').on("click", function (e) {
-//     $('.responsive-icon').removeClass('active');
-//     $('.header').animate({ 'margin-left': 0 }, 300);
+$('.header a').on("click", function (e) {
+    $('.responsive-icon').removeClass('active');
+    $('.header').animate({ 'margin-left': 0 }, 300);
 
-// });
+});
 /*======================================
  Typing Text
  ======================================*/
