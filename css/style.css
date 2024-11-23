@@ -1913,6 +1913,10 @@
  }
 
  @media (max-width: 991px) {
+    .portfolio-data h4 {
+        word-wrap: break-word ; 
+        white-space: normal !important;
+   }
      .portfolio-grid .portfolio-item .portfolio-data {
          max-width: calc(100% - 40px) !important;
      }
@@ -1993,6 +1997,9 @@
 
 
  @media (max-width: 480px) {
+        .meta{
+        display: none !important;
+    }
      .portfolio-item {
          width: 100% !important;
      }
@@ -2275,8 +2282,6 @@
          margin-bottom: 7px;
      }
  }
-
-
 
 
 
