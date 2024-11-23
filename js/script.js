@@ -67,24 +67,6 @@ $(document).ready(function () {
     }
 });
 
-$('.responsive-icon').on("click", function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (!$(this).hasClass('active')) {
-        $(this).addClass('active');
-        $('.header').animate({ 'margin-left': 285 }, 300);
-    } else {
-        $(this).removeClass('active');
-        $('.header').animate({ 'margin-left': 0 }, 300);
-    }
-    return false;
-});
-
-$('.header a').on("click", function (e) {
-    $('.responsive-icon').removeClass('active');
-    $('.header').animate({ 'margin-left': 0 }, 300);
-});
-
 /*======================================
  Contact Form Header
  ======================================*/
