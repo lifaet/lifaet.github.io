@@ -1,3 +1,7 @@
+/*======================================
+ Site Header
+ ======================================*/
+
 $(document).ready(function () {
     // Function to handle click events
     function handleClick(event) {
@@ -63,120 +67,23 @@ $(document).ready(function () {
     }
 });
 
+$('.responsive-icon').on("click", function (e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!$(this).hasClass('active')) {
+        $(this).addClass('active');
+        $('.header').animate({ 'margin-left': 285 }, 300);
+    } else {
+        $(this).removeClass('active');
+        $('.header').animate({ 'margin-left': 0 }, 300);
+    }
+    return false;
+});
 
-// $('.responsive-icon').on("click", function (e) {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     if (!$(this).hasClass('active')) {
-//         $(this).addClass('active');
-//         $('.header').animate({ 'margin-left': 285 }, 300);
-//     } else {
-//         $(this).removeClass('active');
-//         $('.header').animate({ 'margin-left': 0 }, 300);
-//     }
-//     return false;
-// });
-
-// $('.header a').on("click", function (e) {
-//     $('.responsive-icon').removeClass('active');
-//     $('.header').animate({ 'margin-left': 0 }, 300);
-// });
-
-
-
-
-
-
-/*======================================
- Site Header
- ======================================*/
-// $(document).ready(function () {
-
-//     function checkSectionScroll() {
-//         let previousScrollY = window.scrollY;
-//         let scrollTimeout;
-      
-//         window.addEventListener('wheel', (event) => {
-//           clearTimeout(scrollTimeout);
-      
-//           const currentScrollY = window.scrollY;
-//           const isScrollingDown = currentScrollY > previousScrollY;
-      
-//           const sections = document.querySelectorAll('.sub-home-pages .sub-page');
-      
-//           sections.forEach(section => {
-//             const sectionRect = section.getBoundingClientRect();
-//             const screenHeight = window.innerHeight;
-      
-//             // Check for reaching the top while scrolling up
-//             if (
-//               !isScrollingDown && 
-//               sectionRect.top >= 0 &&
-//               sectionRect.top <= 1 &&
-//               sectionRect.bottom > screenHeight
-//             ) {
-//               console.log(`Section "${section.id || 'unnamed'}" reached the top while scrolling up.`);
-//             }
-      
-//             // Check for reaching the bottom (regardless of scroll direction)
-//             if (
-//               sectionRect.bottom >= screenHeight - 1 &&
-//               sectionRect.bottom <= screenHeight + 1
-//             ) {
-//               console.log(`Section "${section.id || 'unnamed'}" reached the end while scrolling down.`);
-//             }
-//           });
-      
-//           previousScrollY = currentScrollY;
-      
-//           scrollTimeout = setTimeout(() => {
-//             previousScrollY = currentScrollY;
-//           }, 100);
-//         });
-//       }
-      
-//       checkSectionScroll();
-
-
-//     // Function to handle click events
-//     function handleClick(e) {
-//         if ($(e.target).is('.header-main-menu a, .home-buttons a')) {
-//             $('.header-main-menu li a').removeClass('active');
-//             $(this).addClass('active');
-//             $(".sub-page").hide();
-//             if (location.pathname.replace(/^\//, '') == e.target.pathname.replace(/^\//, '') && location.hostname == e.target.hostname) {
-//                 // Get the hash without the query string
-//                 var hash = e.target.hash.split('?')[0];
-//                 var target = $(hash);
-//                 target = target.length ? target : $('[name=' + hash.slice(1) + ']');
-//                 if (target.length) {
-//                     var gap = 0;
-//                     $(hash, 'html', 'body').animate({
-//                         opacity: 'show',
-//                         duration: "slow",
-//                         scrollTop: target.offset().top - gap
-//                     });
-//                 }
-//             }
-//             if ($(e.target).is('.home-buttons a')) {
-//                 $("#header-main-menu li a[href='#contact']").addClass('active');
-//             }
-//         }
-//     }
-
-//     // Attach the click event handler
-//     $('#header-main-menu li a, .home-buttons a').on("click", handleClick);
-
-//     // Call the click event handler for the current hash
-//     var hash = window.location.hash;
-//     if (hash) {
-//         // Get the hash without the query string
-//         hash = hash.split('?')[0];
-//         handleClick({
-//             target: $('.header-main-menu a[href="' + hash + '"], .home-buttons a[href="' + hash + '"]')[0]
-//         });
-//     }
-// });
+$('.header a').on("click", function (e) {
+    $('.responsive-icon').removeClass('active');
+    $('.header').animate({ 'margin-left': 0 }, 300);
+});
 
 /*======================================
  Contact Form Header
@@ -306,27 +213,6 @@ document.getElementById("cv-form").addEventListener("submit", function (e) {
         });
 });
 
-/*************************
- Responsive Menu
- *************************/
-// $('.responsive-icon').on("click", function (e) {
-//     e.preventDefault();
-//     e.stopPropagation();
-//     if (!$(this).hasClass('active')) {
-//         $(this).addClass('active');
-//         $('.header').animate({ 'margin-left': 285 }, 300);
-//     } else {
-//         $(this).removeClass('active');
-//         $('.header').animate({ 'margin-left': 0 }, 300);
-//     }
-//     return false;
-// });
-
-// $('.header a').on("click", function (e) {
-//     $('.responsive-icon').removeClass('active');
-//     $('.header').animate({ 'margin-left': 0 }, 300);
-
-// });
 /*======================================
  Typing Text
  ======================================*/
@@ -413,7 +299,7 @@ const projectsData =
     [
         {
             "name": "Keylogger Surveillance System ",
-            "details": "Keylogger Surveillance System is a type of surveillance technology used to monitor and record each keystroke and DNS query made by a system on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files.",
+            "details": "This type of surveillance technology monitors and records each keystroke and DNS query made by a system on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files.",
             "image": "images/portfolio/1.jpg",
             "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
             "cat": "software"
@@ -433,7 +319,7 @@ const projectsData =
             "cat": "website"
         }, {
             "name": "Optical Communication ",
-            "details": "Optical-Communication simply Li-Fi communication (Light Fidelity) is an advanced technology that allows transferring data using optical communication such as visible light.",
+            "details": "This demonstrates an advanced technology that transfers data using optical signals.",
             "image": "images/portfolio/4.jpg",
             "link": "https://github.com/lifaet/Optical-Communication",
             "cat": "hardware"
@@ -447,14 +333,14 @@ const projectsData =
         },
         {
             "name": "Rotten Food Detection System",
-            "details": "\"Rotten Food Detection System\" is an innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste.",
+            "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste.",
             "image": "images/portfolio/6.jpg",
             "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
             "cat": "hardware"
         },
         {
             "name": "Auto Toll Collection System",
-            "details": "The \"Auto Toll Collection System using RFID\" is an automated, efficient, and cashless system for toll collection on highways. It uses Radio Frequency Identification (RFID) technology to identify vehicles and deduct toll charges, reducing congestion and travel time.",
+            "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.",
             "image": "images/portfolio/7.jpg",
             "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
             "cat": "hardware"
@@ -468,7 +354,7 @@ const projectsData =
         },
         {
             "name": "Solar Tracker",
-            "details": "The \"Solar Tracker using LDR and Arduino\" is an intelligent system that uses Light Dependent Resistors (LDRs) and Arduino to track the sun's position. It adjusts the orientation of solar panels to maximize solar energy absorption, enhancing the efficiency of solar power generation.",
+            "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency.",
             "image": "images/portfolio/9.jpg",
             "link": "https://github.com/lifaet/Solar-Tracker",
             "cat": "hardware"
