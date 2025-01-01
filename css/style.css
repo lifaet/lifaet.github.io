@@ -2290,6 +2290,9 @@
 
  /* Mobile Styles */
  @media only screen and (max-width: 991px) {
+    #about-me-img{
+        display: none;
+    }
      .site-nav {
          position: fixed;
          bottom: 0;
