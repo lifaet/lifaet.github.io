@@ -32,7 +32,7 @@ $(document).ready(function () {
 
                     $('html, body').animate({
                         scrollTop: offset
-                    }, 250, function() {
+                    }, 250, function () {
                         // Apply fade-in effect after scrolling is done
                         targetElement.animate({ opacity: 1 }, 'slow');
                     });
@@ -61,7 +61,7 @@ $(document).ready(function () {
         // Get the hash without the query string
         const cleanedHash = hash.split('?')[0];
         handleClick({
-            preventDefault: () => {}, // Mock preventDefault method
+            preventDefault: () => { }, // Mock preventDefault method
             currentTarget: document.querySelector(`.header-main-menu a[href="${cleanedHash}"], .home-buttons a[href="${cleanedHash}"]`)
         });
     }
@@ -276,127 +276,158 @@ $('#preloader').fadeOut('slow', function () {
 /*======================================
       Projet dom paint///
      ======================================*/
-const projetDom = document.getElementById("project-dom");
+const projectDom = document.getElementById("project-dom");
 const projectsData =
     [
         {
-            "name": "Keylogger Surveillance System ",
-            "details": "This type of surveillance technology monitors and records each keystroke and DNS query made by a system on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files.",
-            "image": "images/portfolio/1.jpg",
+            "name": "Keylogger Surveillance System",
+            "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files. ",
+            "image": "./images/portfolio/1.jpg",
             "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
-            "cat": "software"
+            "catagory": ["software"]
         },
         {
-            "name": "WALL-E Junior",
-            "details": "WALL·E Junior is a simple object following robot. It can detect object in front of it and can follow the object.",
-            "image": "images/portfolio/2.jpg",
+            "name": "Object Following Robot",
+            "details": "It is a simple object-following robot. It can detect an object in front of it and can follow the object.",
+            "image": "./images/portfolio/2.jpg",
             "link": "https://github.com/lifaet/WALL-E-Junior",
-            "cat": "hardware"
+            "catagory": ["software", "hardware"]
         },
         {
             "name": "MoviesBay",
-            "details": "This project was a movie download website. Developed based on HTML,BOOTSTRAP,CSS,JAVASCRIPT and database integration.",
-            "image": "images/portfolio/3.jpg",
+            "details": "This project was a movie download website. Developed based on HTML, BOOTSTRAP, CSS, JAVASCRIPT, and database integration.",
+            "image": "./images/portfolio/3.jpg",
             "link": "https://moviesbay.pages.dev",
-            "cat": "website"
-        }, {
-            "name": "Optical Communication ",
+            "catagory": ["website"]
+        },
+        {
+            "name": "Optical Communication  ",
             "details": "This demonstrates an advanced technology that transfers data using optical signals.",
-            "image": "images/portfolio/4.jpg",
+            "image": "./images/portfolio/4.jpg",
             "link": "https://github.com/lifaet/Optical-Communication",
-            "cat": "hardware"
+            "catagory": ["software", "hardware"]
         },
         {
             "name": "RC Surveillance Car ",
-            "details": "The aim of this project is to design and build a remote-controlled surveillance camera car using a ESP32 module, car kit, Motor driver module.",
-            "image": "images/portfolio/5.jpg",
+            "details": "he aim of this project is to design and build a remote-controlled surveillance camera car using an ESP32 module, car kit, and Motor driver module.",
+            "image": "./images/portfolio/5.jpg",
             "link": "https://github.com/lifaet/RC-Surveillance-Car",
-            "cat": "hardware"
+            "catagory": ["software", "hardware"]
         },
         {
             "name": "Rotten Food Detection System",
-            "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste.",
-            "image": "images/portfolio/6.jpg",
+            "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste. ",
+            "image": "./images/portfolio/6.jpg",
             "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
-            "cat": "hardware"
+            "catagory": ["software", "hardware"]
         },
         {
-            "name": "Auto Toll Collection System",
+            "name": "Automated Toll Collection System",
             "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.",
-            "image": "images/portfolio/7.jpg",
+            "image": "./images/portfolio/7.jpg",
             "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
-            "cat": "hardware"
+            "catagory": ["software", "hardware"]
         },
         {
             "name": "Harinakundu Mobile House",
-            "details": "Website for a mobile and accessories shop. Whose sells bus ticket also. This website also can show available seats live.",
-            "image": "images/portfolio/8.jpg",
-            "link": "https://hmhc.pages.dev/",
-            "cat": "website"
+            "details": "Website for a mobile and accessories shop.",
+            "image": "./images/portfolio/8.jpg",
+            "link": "https://hmhc.pages.dev",
+            "catagory": ["website"]
         },
         {
             "name": "Solar Tracker",
-            "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency.",
-            "image": "images/portfolio/9.jpg",
+            "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency. ",
+            "image": "./images/portfolio/9.jpg",
             "link": "https://github.com/lifaet/Solar-Tracker",
-            "cat": "hardware"
+            "catagory": ["software", "hardware"]
         },
         {
             "name": "Flowers Shop",
-            "details": "A website For a local flowers shop.",
-            "image": "images/portfolio/10.jpg",
-            "link": "https://lifaet.github.io/wd4-flowers-shop/",
-            "cat": "website"
+            "details": "A website For a local flowers shop",
+            "image": "./images/portfolio/10.jpg",
+            "link": "https://lifaet.github.io/wd4-flowers-shop",
+            "catagory":["website"]
         },
         {
             "name": "Grufolio",
             "details": "Basic portfolio website for individual.",
-            "image": "images/portfolio/11.jpg",
-            "link": "https://lifaet.github.io/wd2-grufolio/",
-            "cat": "website"
+            "image": "./images/portfolio/11.jpg",
+            "link": "https://lifaet.github.io/wd2-grufolio",
+            "catagory": ["website"]
         },
         {
             "name": "Brothers Association",
             "details": "A website For local Organization Based on bootstrap.",
-            "image": "images/portfolio/12.jpg",
-            "link": "https://lifaet.github.io/wd1-brothers-association/",
-            "cat": "website"
+            "image": "./images/portfolio/12.jpg",
+            "link": "https://lifaet.github.io/wd1-brothers-association",
+            "catagory": ["website"]
         },
         {
             "name": "PIR Security Alarm",
             "details": "Security Alarm for restricted area.",
-            "image": "images/portfolio/13.jpg",
+            "image": "./images/portfolio/13.jpg",
             "link": "https://github.com/lifaet/PIR-Security-Alarm",
-            "cat": "hardware"
+            "catagory": ["software", "hardware"]
         },
         {
             "name": "Object Detection",
             "details": "Object detection and identification for live camera feed or videos.",
-            "image": "images/portfolio/14.jpg",
+            "image": "./images/portfolio/14.jpg",
             "link": "https://github.com/lifaet/Object-Detection",
-            "cat": "software"
+            "catagory": ["software"]
+        },
+        {
+            "name": "Work-Rest-Timer",
+            "details": "A Balanced Approach to Digital Wellness",
+            "image": "./images/portfolio/15.jpg",
+            "link": "https://github.com/lifaet/Work-Rest-Timer",
+            "catagory": ["software"]
+        },
+        {
+            "name": "Local-FileIndex-Server",
+            "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+            "image": "./images/portfolio/16.jpg",
+            "link": "https://github.com/lifaet/Local-FileIndex-Server",
+            "catagory": ["software"]
         }
     ]
-projectsData.map(data => {
-    const dom = `
-    <div
-    class="col-lg-6 col-md-6 col-sm-12 col-xs-12 portfolio-item branding ${data.cat} all">
-    <div class="portfolio-img">
-        <img src="${data.image}" class="img-responsive"
-            alt="">
-    </div>
-    <div class="portfolio-data">
-        <h4><a href="${data.link}">${data.name}</a></h4>
-        <p class="meta">${data.details}</p>
-        <div class="portfolio-attr">
-            <a href="${data.link}"><i class="lnr lnr-link"></i></a>
-        </div>
-    </div>
-</div>
-    `
-    projetDom.innerHTML += dom;
-})
 
+        // Calculate project counts
+        // Calculate project counts
+        const projectCount = projectsData.length;
+        const categoryCounts = projectsData.reduce((counts, project) => {
+            project.catagory.forEach(cat => {
+                counts[cat] = (counts[cat] || 0) + 1;
+            });
+            return counts;
+        }, {});
+
+        // Update HTML with counts
+        document.getElementById("project-count").textContent = projectCount;
+        document.getElementById("all-count").textContent = projectCount;
+        document.getElementById("website-count").textContent = categoryCounts.website || 0;
+        document.getElementById("hardware-count").textContent = categoryCounts.hardware || 0;
+        document.getElementById("software-count").textContent = categoryCounts.software || 0;
+
+        // Render projects
+        projectsData.forEach(data => {
+            const dom = `
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 portfolio-item branding ${data.catagory.join(' ')} all">
+                    <div class="portfolio-img">
+                        <img src="${data.image}" class="img-responsive" alt="">
+                    </div>
+                    <div class="portfolio-data">
+                        <h4><a href="${data.link}">${data.name}</a></h4>
+                        <p class="meta">${data.details}</p>
+                        <div class="portfolio-attr">
+                            <a href="${data.link}"><i class="lnr lnr-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            projectDom.innerHTML += dom;
+        });
 /*======================================
      CV Function
      ======================================*/
