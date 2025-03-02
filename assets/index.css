@@ -257,7 +257,7 @@ body {
         left: 0;
         right: 0;
         height: 60px;
-        padding: 10px 15px;
+        padding: 10px 10px;
         background: #2c3e50;
         z-index: 1000;
         align-items: center;
@@ -428,6 +428,10 @@ body {
         justify-content: flex-start;
         padding-top: 40px;
     }
+
+    .timeline {
+        margin: 0 15px;
+    }
 }
 
 /* Tablet styles */
@@ -465,5 +469,102 @@ body {
 @media screen and (max-width: 768px) {
     .copyright {
         display: none;
+    }
+}
+
+/* Experience page styles */
+.page-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.page-title h2 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.title-bar {
+    width: 70px;
+    height: 4px;
+    background: #3498db;
+    margin: 0 auto;
+}
+
+.timeline {
+    position: relative;
+    padding: 20px 0;
+    margin: 0 30px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: #3498db;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 40px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -9px;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #3498db;
+    border: 4px solid #fff;
+}
+
+.timeline-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.timeline-header {
+    margin-bottom: 15px;
+}
+
+.timeline-header h3 {
+    color: #2c3e50;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.company {
+    color: #3498db;
+    font-weight: 500;
+}
+
+.timeline-period {
+    color: #7f8c8d;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.timeline-period i {
+    margin-right: 5px;
+}
+
+.timeline-desc ul {
+    padding-left: 20px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Mobile styles */
+@media screen and (max-width: 768px) {
+    .timeline {
+        margin: 0 15px;
     }
 }
