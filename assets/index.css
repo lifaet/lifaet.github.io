@@ -1,0 +1,313 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f4f4f4;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 250px;
+    background: #2c3e50;
+    position: fixed;  /* Changed from relative to fixed */
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: 20px 15px;
+    padding-bottom: 80px; /* Make space for copyright */
+    left: 0;  /* Add this */
+    top: 0;   /* Add this */
+}
+
+/* Sidebar scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #243444;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #34495e;
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #3498db;
+}
+
+/* Profile styles */
+.profile {
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Menu buttons */
+.menu-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    background: transparent;
+    border: none;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-btn i {
+    width: 20px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+.menu-btn span {
+    font-size: 15px;
+}
+
+.menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.menu-btn.active {
+    background: #3498db;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Content area */
+.content {
+    margin-left: 250px;  /* Keep this to match sidebar width */
+    flex: 1;
+    position: relative;
+    padding: 0;  /* Remove any padding */
+    width: calc(100% - 250px);  /* Add this */
+}
+
+.page {
+    display: none;
+    padding: 20px;  /* Reduced padding */
+    background: #fff;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    left: 0;  /* Add this */
+    top: 0;   /* Add this */
+}
+
+/* Page scrollbar */
+.page::-webkit-scrollbar {
+    width: 8px;
+}
+
+.page::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.page::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+.page::-webkit-scrollbar-thumb:hover {
+    background: #2980b9;
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+}
+
+/* Mobile styles */
+.mobile-nav,
+.mobile-bottom-nav {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        display: none;
+    }
+
+    .mobile-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        background: #2c3e50;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        height: 60px;
+    }
+
+    .mobile-profile {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .mobile-profile img {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .mobile-profile span {
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .mobile-bottom-nav {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: #2c3e50;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 10px;
+        z-index: 1000;
+        box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+        height: 70px; /* Fixed height for bottom nav */
+    }
+
+    .nav-btn {
+        background: none;
+        border: none;
+        color: #fff;
+        padding: 8px;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .nav-btn.active {
+        background: #3498db;
+        transform: translateY(-5px); /* Changed from -10px to -5px */
+    }
+
+    .nav-btn i {
+        font-size: 18px;
+    }
+
+    .content {
+        margin: 60px 0 70px 0; /* Top margin matches mobile nav height */
+        padding: 0;
+        position: relative;
+        z-index: 1;
+        height: calc(100vh - 130px); /* Adjust for both top and bottom nav */
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+    }
+
+    .page {
+        padding: 15px;
+        position: relative;
+        height: auto;
+        min-height: 100%;
+        opacity: 1;
+        display: none;
+        background: #fff;
+    }
+
+    .page.active {
+        display: block;
+    }
+
+    /* Mobile scrollbar */
+    .content::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    .content::-webkit-scrollbar-thumb {
+        background: #3498db;
+        border-radius: 3px;
+    }
+}
+
+/* Copyright styles */
+.copyright {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright p {
+    margin: 5px 0;
+}
+
+@media screen and (max-width: 768px) {
+    .copyright {
+        display: none;
+    }
+}
