@@ -20,7 +20,7 @@
 
 .info-card {
     background: white;
-    padding: 25px;
+    padding: 24px;
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -61,7 +61,7 @@
 /* Contact Form */
 .contact-form-container {
     background: white;
-    padding: 40px;
+    padding: 30px;
     border-radius: 16px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(52, 152, 219, 0.1);
