@@ -5,8 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Side Menu Layout</title>
-    <link rel="stylesheet" href="./assets/index.css">
+    <link rel="stylesheet" href="./assets/base.css">
+    <link rel="stylesheet" href="./assets/home.css">
+    <link rel="stylesheet" href="./assets/experience.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./assets/education.css">
 </head>
 
 <body>
@@ -63,26 +66,32 @@
         </div>
 
         <!-- Mobile Bottom Navigation -->
-        <div class="mobile-bottom-nav">
+        <nav class="mobile-bottom-nav">
             <button class="nav-btn active" data-page="home">
                 <i class="fas fa-home"></i>
+                <span>Home</span>
             </button>
             <button class="nav-btn" data-page="experience">
                 <i class="fas fa-briefcase"></i>
+                <span>Work</span>
             </button>
             <button class="nav-btn" data-page="education">
                 <i class="fas fa-graduation-cap"></i>
+                <span>Study</span>
             </button>
             <button class="nav-btn" data-page="skills">
                 <i class="fas fa-tools"></i>
+                <span>Skills</span>
             </button>
             <button class="nav-btn" data-page="projects">
                 <i class="fas fa-code"></i>
+                <span>Projects</span>
             </button>
             <button class="nav-btn" data-page="contact">
                 <i class="fas fa-envelope"></i>
+                <span>Contact</span>
             </button>
-        </div>
+        </nav>
 
         <!-- Content Area -->
         <div class="content">
@@ -130,78 +139,240 @@
                     <div class="title-bar"></div>
                 </div>
                 
-                <div class="timeline">
-                    <!-- First Experience -->
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Senior Software Engineer</h3>
-                                <span class="company">ABC Company</span>
-                            </div>
-                            <div class="timeline-period">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>2022 - Present</span>
-                            </div>
-                            <div class="timeline-desc">
-                                <ul>
-                                    <li>Led development of critical features resulting in 40% increase in user engagement</li>
-                                    <li>Mentored junior developers and conducted code reviews</li>
-                                    <li>Implemented CI/CD pipeline reducing deployment time by 60%</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="timeline-container">
                     <!-- Second Experience -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
+                        <div class="timeline-date">2020 - 2022</div>
                         <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Software Engineer</h3>
-                                <span class="company">XYZ Tech Solutions</span>
+                            <h3>Software Development Lead</h3>
+                            <div class="company-badge">
+                                <i class="fas fa-building"></i>
+                                <span>Microsoft</span>
                             </div>
-                            <div class="timeline-period">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>2020 - 2022</span>
-                            </div>
-                            <div class="timeline-desc">
-                                <ul>
-                                    <li>Developed and maintained multiple web applications using React and Node.js</li>
-                                    <li>Improved application performance by 35% through code optimization</li>
-                                    <li>Collaborated with cross-functional teams to deliver projects on time</li>
-                                </ul>
-                            </div>
+                            <ul class="achievement-list">
+                                <li><i class="fas fa-check-circle"></i> Managed a cross-functional team of 6 developers and 2 designers</li>
+                                <li><i class="fas fa-check-circle"></i> Improved system performance by 45% through architecture optimization</li>
+                                <li><i class="fas fa-check-circle"></i> Implemented automated testing reducing bugs by 60% in production</li>
+                            </ul>
                         </div>
                     </div>
 
                     <!-- Third Experience -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
+                        <div class="timeline-date">2018 - 2020</div>
                         <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Junior Developer</h3>
-                                <span class="company">Tech Startup Inc</span>
+                            <h3>Full Stack Developer</h3>
+                            <div class="company-badge">
+                                <i class="fas fa-building"></i>
+                                <span>Amazon</span>
                             </div>
-                            <div class="timeline-period">
-                                <i class="fas fa-calendar-alt"></i>
-                                <span>2019 - 2020</span>
+                            <ul class="achievement-list">
+                                <li><i class="fas fa-check-circle"></i> Developed and maintained multiple microservices using AWS</li>
+                                <li><i class="fas fa-check-circle"></i> Created CI/CD pipelines reducing deployment time by 35%</li>
+                                <li><i class="fas fa-check-circle"></i> Implemented responsive design increasing mobile users by 40%</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Fourth Experience -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2017 - 2018</div>
+                        <div class="timeline-content">
+                            <h3>Junior Web Developer</h3>
+                            <div class="company-badge">
+                                <i class="fas fa-building"></i>
+                                <span>Meta</span>
                             </div>
-                            <div class="timeline-desc">
-                                <ul>
-                                    <li>Assisted in developing front-end components using HTML, CSS, and JavaScript</li>
-                                    <li>Participated in daily stand-ups and sprint planning meetings</li>
-                                    <li>Fixed bugs and implemented minor feature enhancements</li>
-                                </ul>
-                            </div>
+                            <ul class="achievement-list">
+                                <li><i class="fas fa-check-circle"></i> Built and maintained React-based front-end applications</li>
+                                <li><i class="fas fa-check-circle"></i> Collaborated with UX team to implement new features</li>
+                                <li><i class="fas fa-check-circle"></i> Reduced page load time by 30% through code optimization</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="education" class="page">
-                <h2>Education</h2>
-                <p>Education content</p>
+                <div class="page-title">
+                    <h2>Education</h2>
+                    <div class="title-bar"></div>
+                </div>
+
+                <div class="education-container">
+                    <!-- Academic Background -->
+                    <div class="education-grid">
+                        <!-- Higher Secondary -->
+                        <div class="education-card">
+                            <div class="education-header">
+                                <div class="education-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="education-title">
+                                    <h3>Bachelor of Science in CSE</h3>
+                                    <div class="institute">United International University</div>
+                                    <div class="duration">2019 - 2023</div>
+                                </div>
+                            </div>
+                            <div class="education-details">
+                                <p>CGPA: 3.92 out of 4.00</p>
+                                <ul class="achievements">
+                                    <li>Graduated with Highest Honors</li>
+                                    <li>Published 2 research papers</li>
+                                    <li>Best Project Award in Final Year</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Higher Secondary -->
+                        <div class="education-card">
+                            <div class="education-header">
+                                <div class="education-icon">
+                                    <i class="fas fa-school"></i>
+                                </div>
+                                <div class="education-title">
+                                    <h3>Higher Secondary Certificate</h3>
+                                    <div class="institute">Govt. Science College</div>
+                                    <div class="duration">2016 - 2018</div>
+                                </div>
+                            </div>
+                            <div class="education-details">
+                                <p>Science Group</p>
+                                <ul class="achievements">
+                                    <li>GPA: 5.00 out of 5.00</li>
+                                    <li>Science Club President</li>
+                                    <li>Math Olympiad Finalist</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Secondary -->
+                        <div class="education-card">
+                            <div class="education-header">
+                                <div class="education-icon">
+                                    <i class="fas fa-book"></i>
+                                </div>
+                                <div class="education-title">
+                                    <h3>Secondary School Certificate</h3>
+                                    <div class="institute">Motijheel Ideal School</div>
+                                    <div class="duration">2014 - 2016</div>
+                                </div>
+                            </div>
+                            <div class="education-details">
+                                <p>Science Group</p>
+                                <ul class="achievements">
+                                    <li>GPA: 5.00 out of 5.00</li>
+                                    <li>Merit Scholarship Recipient</li>
+                                    <li>School Cricket Team Captain</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Add More Education Card Template -->
+                        <div class="education-card add-more">
+                            <div class="add-more-content">
+                                <i class="fas fa-plus-circle"></i>
+                                <span>Add More Education</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="certifications">
+                        <div class="page-title">
+                            <h2>Certifications</h2>
+                            <div class="title-bar"></div>
+                        </div>
+                        
+                        <div class="cert-grid">
+                            <!-- AWS Certification -->
+                            <div class="cert-card">
+                                <div class="cert-issuer">
+                                    <i class="fab fa-aws"></i>
+                                    <span>Amazon Web Services</span>
+                                </div>
+                                <h3 class="cert-title">AWS Solutions Architect</h3>
+                                <div class="cert-date">Issued Dec 2023</div>
+                                <a href="#" class="cert-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+
+                            <!-- Google Certification -->
+                            <div class="cert-card">
+                                <div class="cert-issuer">
+                                    <i class="fab fa-google"></i>
+                                    <span>Google</span>
+                                </div>
+                                <h3 class="cert-title">Professional Cloud Developer</h3>
+                                <div class="cert-date">Issued Nov 2023</div>
+                                <a href="#" class="cert-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+
+                            <!-- Microsoft Certification -->
+                            <div class="cert-card">
+                                <div class="cert-issuer">
+                                    <i class="fab fa-microsoft"></i>
+                                    <span>Microsoft</span>
+                                </div>
+                                <h3 class="cert-title">Azure Developer Associate</h3>
+                                <div class="cert-date">Issued Oct 2023</div>
+                                <a href="#" class="cert-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+
+                            <!-- Meta Certification -->
+                            <div class="cert-card">
+                                <div class="cert-issuer">
+                                    <i class="fab fa-facebook"></i>
+                                    <span>Meta</span>
+                                </div>
+                                <h3 class="cert-title">React Developer</h3>
+                                <div class="cert-date">Issued Sep 2023</div>
+                                <a href="#" class="cert-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+
+                            <!-- MongoDB Certification -->
+                            <div class="cert-card">
+                                <div class="cert-issuer">
+                                    <i class="fas fa-database"></i>
+                                    <span>MongoDB</span>
+                                </div>
+                                <h3 class="cert-title">MongoDB Developer</h3>
+                                <div class="cert-date">Issued Aug 2023</div>
+                                <a href="#" class="cert-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+
+                            <!-- Docker Certification -->
+                            <div class="cert-card">
+                                <div class="cert-issuer">
+                                    <i class="fab fa-docker"></i>
+                                    <span>Docker</span>
+                                </div>
+                                <h3 class="cert-title">Docker Certified Associate</h3>
+                                <div class="cert-date">Issued Jul 2023</div>
+                                <a href="#" class="cert-link">View Certificate <i class="fas fa-external-link-alt"></i></a>
+                            </div>
+
+                            <!-- Certification without specific brand icon -->
+                            <div class="cert-card">
+                                <div class="cert-issuer">
+                                    <i class="fas fa-certificate"></i>
+                                    <span>CompTIA</span>
+                                </div>
+                                <!-- ...rest of the content... -->
+                            </div>
+
+                            <!-- Add More Certification Template -->
+                            <div class="cert-card add-more">
+                                <div class="add-more-content">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span>Add More Certification</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="skills" class="page">
