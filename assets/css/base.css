@@ -35,6 +35,7 @@ h1, h2, h3, h4, h5, h6 {
     overflow-y: auto;
     scroll-behavior: smooth;
     box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+    z-index: 10; /* Lower z-index */
 }
 
 /* Sidebar scrollbar */
@@ -60,7 +61,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     padding: 20px 0 35px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    margin-bottom: 30px;
 }
 
 .profile-image {
@@ -277,7 +277,6 @@ h1, h2, h3, h4, h5, h6 {
         width: 50px;
         height: 50px;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 4px;
@@ -382,4 +381,41 @@ h1, h2, h3, h4, h5, h6 {
     #home.page {
         padding-bottom: 0;
     }
+}
+
+/* Scale down contact section */
+.contact-container {
+    max-width: 1100px; /* Reduced from 1200px */
+    margin: 0 auto;
+    padding: 20px; /* Reduced padding */
+    scale: 0.95; /* Slightly scale down */
+    transform-origin: top center;
+}
+
+.map-section {
+    margin-top: 20px;
+}
+
+.map-section iframe {
+    height: 350px; /* Reduced height */
+}
+
+@media screen and (max-width: 768px) {
+    .contact-container {
+        scale: 1; /* Reset scale on mobile */
+        padding: 15px;
+    }
+    
+    .map-section iframe {
+        height: 300px;
+    }
+}
+
+copyright {
+    margin-top: auto;
+    padding: 20px 0;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8em;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
