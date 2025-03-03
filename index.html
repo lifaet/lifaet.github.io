@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./assets/experience.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./assets/education.css">
+    <link rel="stylesheet" href="./assets/skills.css">
+    <script src="./assets/js/main.js" defer></script>
 </head>
 
 <body>
@@ -140,6 +142,9 @@
                 </div>
                 
                 <div class="timeline-container">
+                    <div class="timeline-grid">
+                        
+                    
                     <!-- Second Experience -->
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
@@ -193,6 +198,7 @@
                             </ul>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
 
@@ -270,14 +276,6 @@
                                 </ul>
                             </div>
                         </div>
-
-                        <!-- Add More Education Card Template -->
-                        <div class="education-card add-more">
-                            <div class="add-more-content">
-                                <i class="fas fa-plus-circle"></i>
-                                <span>Add More Education</span>
-                            </div>
-                        </div>
                     </div>
 
                     <!-- Certifications -->
@@ -346,7 +344,7 @@
                             <!-- Docker Certification -->
                             <div class="cert-card">
                                 <div class="cert-issuer">
-                                    <i class="fab fa-docker"></i>
+                                    <i class="fas fa-certificate"></i>
                                     <span>Docker</span>
                                 </div>
                                 <h3 class="cert-title">Docker Certified Associate</h3>
@@ -362,22 +360,212 @@
                                 </div>
                                 <!-- ...rest of the content... -->
                             </div>
-
-                            <!-- Add More Certification Template -->
-                            <div class="cert-card add-more">
-                                <div class="add-more-content">
-                                    <i class="fas fa-plus-circle"></i>
-                                    <span>Add More Certification</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="skills" class="page">
-                <h2>Skills</h2>
-                <p>Skills content</p>
+                <div class="page-title">
+                    <h2>Skills</h2>
+                    <div class="title-bar"></div>
+                </div>
+
+                <div class="skills-container">
+                    <div class="skills-grid">
+                        <!-- Programming Languages -->
+                        <div class="skill-category">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <h3 class="category-title">Languages Skills</h3>
+                            </div>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">JavaScript</span>
+                                        <span class="skill-level">90%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Python</span>
+                                        <span class="skill-level">85%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">JavaScript</span>
+                                        <span class="skill-level">90%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">JavaScript</span>
+                                        <span class="skill-level">90%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">JavaScript</span>
+                                        <span class="skill-level">90%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%"></div>
+                                    </div>
+                                </div>
+                                <!-- Add more programming languages -->
+                            </div>
+                        </div>
+
+                        <!-- Applications & Software -->
+                        <div class="skill-category">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <h3 class="category-title">Applications & Software</h3>
+                            </div>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Adobe Photoshop</span>
+                                        <span class="skill-level">80%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Adobe Photoshop</span>
+                                        <span class="skill-level">80%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Adobe Photoshop</span>
+                                        <span class="skill-level">80%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                                <!-- Add more software skills -->
+                            </div>
+                        </div>
+
+                        <!-- Office Applications -->
+                        <div class="skill-category">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <h3 class="category-title">Office Applications</h3>
+                            </div>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Microsoft Excel</span>
+                                        <span class="skill-level">95%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Microsoft Excel</span>
+                                        <span class="skill-level">95%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <!-- Add more office skills -->
+                            </div>
+                        </div>
+
+                        <!-- Operating Systems -->
+                        <div class="skill-category">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-desktop"></i>
+                                </div>
+                                <h3 class="category-title">Operating Systems</h3>
+                            </div>
+                            <div class="skill-list">
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Windows</span>
+                                        <span class="skill-level">95%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Windows</span>
+                                        <span class="skill-level">95%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Windows</span>
+                                        <span class="skill-level">95%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 95%"></div>
+                                    </div>
+                                </div>
+                                <!-- Add more OS skills -->
+                            </div>
+                        </div>
+
+                        <!-- Language Proficiency -->
+                        <div class="skill-category language-proficiency">
+                            <div class="category-header">
+                                <div class="category-icon">
+                                    <i class="fas fa-language"></i>
+                                </div>
+                                <h3 class="category-title">Language Proficiency</h3>
+                            </div>
+                            <div class="language-list">
+                                <div class="language-item">
+                                    <span class="language-name">English</span>
+                                    <div class="star-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                                <!-- Add more languages -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div id="projects" class="page">

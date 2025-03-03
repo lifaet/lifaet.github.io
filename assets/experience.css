@@ -1,21 +1,10 @@
 /* Experience page styles */
-.page-title {
-    text-align: center;
-    margin-bottom: 50px;
+.timeline-grid {
+    gap: 25px;
+    margin-top: 20px;
 }
 
-.page-title h2 {
-    color: #2c3e50;
-    font-size: 2.5em;
-    margin-bottom: 15px;
-}
 
-.title-bar {
-    width: 70px;
-    height: 4px;
-    background: #3498db;
-    margin: 0 auto;
-}
 
 .timeline {
     position: relative;

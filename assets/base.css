@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+
 /* Base styles */
 * {
     margin: 0;
@@ -6,14 +8,21 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'DM Sans', sans-serif;
     background: #f4f4f4;
     overflow: hidden;
+    font-feature-settings: "ss03", "ss04";
+    -webkit-font-smoothing: antialiased;
 }
 
 .container {
     display: flex;
     min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
 }
 
 /* Modern Sidebar styles */
@@ -79,8 +88,9 @@ body {
 .profile-name {
     color: #fff;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
+    font-family: 'Outfit', sans-serif;
 }
 
 /* Modern Menu buttons */
@@ -108,6 +118,9 @@ body {
 
 .menu-btn span {
     font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.01em;
 }
 
 .menu-btn:hover {
@@ -132,6 +145,28 @@ body {
     overflow-y: auto;
     position: relative;
     padding: 0;
+    scroll-behavior: smooth; /* Smooth scrolling */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: rgba(52, 152, 219, 0.3);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: rgba(52, 152, 219, 0.5);
 }
 
 .page {
@@ -169,12 +204,34 @@ body {
     background: #2980b9;
 }
 
+.page-title {
+    text-align: center;
+}
+
+.page-title h2 {
+    color: #2c3e50;
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.title-bar {
+    width: 70px;
+    height: 4px;
+    background: #3498db;
+    margin: 0 auto;
+}
+
 /* Modern Mobile Navigation */
 @media screen and (max-width: 768px) {
     .mobile-nav {
         background: linear-gradient(to right, #2c3e50, #3498db);
         padding: 12px 20px;
         backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
     }
 
     .mobile-profile {
@@ -205,6 +262,11 @@ body {
         justify-content: space-around;
         align-items: center;
         box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
     }
 
     .nav-btn {
@@ -272,5 +334,52 @@ body {
     .mobile-bottom-nav {
         -ms-overflow-style: none;
         scrollbar-width: none;
+    }
+
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding-bottom: 70px; /* Space for mobile navigation */
+        margin-top: 64px; /* Height of mobile top nav */
+        margin-bottom: 70px; /* Height of bottom nav */
+        height: calc(100vh - 134px); /* Viewport height minus both navs */
+        overflow-y: auto;
+    }
+
+    .page {
+        position: relative;
+        min-height: calc(100vh - 134px);
+        padding-bottom: 80px; /* Ensure content doesn't hide under bottom nav */
+    }
+
+    .page-title {
+        margin-top: 15px; /* Slightly more margin on mobile */
+    }
+
+    /* Remove extra top margin from these specific pages */
+    #experience .page-title,
+    #education .page-title,
+    #skills .page-title {
+        margin-top: 0;
+    }
+
+    /* Ensure containers don't create extra gaps */
+    .timeline-container,
+    .education-container,
+    .skills-container {
+        padding-top: 0;
+        margin-top: 0;
+    }
+
+    /* Specific padding for pages that need bottom spacing */
+    #experience.page,
+    #education.page,
+    #skills.page {
+        padding-bottom: 80px;
+    }
+
+    /* Remove padding for home page */
+    #home.page {
+        padding-bottom: 0;
     }
 }
