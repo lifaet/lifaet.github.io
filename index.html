@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./assets/education.css">
     <link rel="stylesheet" href="./assets/skills.css">
+    <link rel="stylesheet" href="./assets/projects.css">
+    <link rel="stylesheet" href="./assets/contact.css">
     <script src="./assets/js/main.js" defer></script>
+    <script src="./assets/js/projects.js" defer></script>
+    <script src="./assets/js/contact.js" defer></script>
 </head>
 
 <body>
@@ -569,13 +573,219 @@
             </div>
 
             <div id="projects" class="page">
-                <h2>Projects</h2>
-                <p>Projects content</p>
+                <div class="page-title">
+                    <h2>Projects</h2>
+                    <div class="title-bar"></div>
+                </div>
+
+                <div class="projects-container">
+                    <!-- Project Filters -->
+                    <div class="project-filters">
+                        <button class="filter-btn active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="web">Web</button>
+                        <button class="filter-btn" data-filter="software">Software</button>
+                        <button class="filter-btn" data-filter="hardware">Hardware</button>
+                    </div>
+
+                    <!-- Projects Grid -->
+                    <div class="projects-grid">
+                        <!-- E-Commerce Platform -->
+                        <div class="project-card" data-category="web">
+                            <div class="project-image">
+                                <img src="./assets/projects/ecommerce.jpg" alt="E-Commerce Platform">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="#" target="_blank" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>E-Commerce Platform</h3>
+                                <p>Full-stack e-commerce platform with real-time inventory, payment processing, and admin dashboard.</p>
+                                <div class="project-tags">
+                                    <span>React</span>
+                                    <span>Node.js</span>
+                                    <span>MongoDB</span>
+                                    <span>Stripe</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Smart Home System -->
+                        <div class="project-card" data-category="hardware">
+                            <div class="project-image">
+                                <img src="./assets/projects/smarthome.jpg" alt="Smart Home System">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="#" target="_blank" title="Documentation"><i class="fas fa-file-alt"></i></a>
+                                        <a href="#" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Smart Home Automation</h3>
+                                <p>IoT-based home automation system with temperature control, lighting, and security features.</p>
+                                <div class="project-tags">
+                                    <span>Arduino</span>
+                                    <span>IoT</span>
+                                    <span>Python</span>
+                                    <span>MQTT</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI Image Recognition -->
+                        <div class="project-card" data-category="software">
+                            <div class="project-image">
+                                <img src="./assets/projects/ai-vision.jpg" alt="AI Vision System">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="#" target="_blank" title="Demo"><i class="fas fa-play-circle"></i></a>
+                                        <a href="#" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>AI Vision System</h3>
+                                <p>Deep learning-based image recognition system for object detection and classification.</p>
+                                <div class="project-tags">
+                                    <span>TensorFlow</span>
+                                    <span>Python</span>
+                                    <span>OpenCV</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Website -->
+                        <div class="project-card" data-category="web">
+                            <div class="project-image">
+                                <img src="./assets/projects/portfolio.jpg" alt="Portfolio Website">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="#" target="_blank" title="Live Site"><i class="fas fa-external-link-alt"></i></a>
+                                        <a href="#" target="_blank" title="Source Code"><i class="fab fa-github"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-info">
+                                <h3>Modern Portfolio</h3>
+                                <p>Responsive portfolio website with modern UI/UX design and smooth animations.</p>
+                                <div class="project-tags">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- More projects... -->
+                        <!-- Continue with 6 more projects following the same pattern -->
+                    </div>
+                </div>
             </div>
 
             <div id="contact" class="page">
-                <h2>Contact</h2>
-                <p>Contact content</p>
+                <div class="page-title">
+                    <h2>Contact</h2>
+                    <div class="title-bar"></div>
+                </div>
+
+                <div class="contact-container">
+                    <!-- Contact Info Section -->
+                    <div class="contact-grid">
+                        <!-- Left Column: Contact Info & CV Form -->
+                        <div class="contact-left">
+                            <!-- Contact Info Cards -->
+                            <div class="contact-info">
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h3>Email</h3>
+                                        <p>your.email@domain.com</p>
+                                    </div>
+                                </div>
+
+                                <div class="info-card">
+                                    <div class="info-icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="info-content">
+                                        <h3>Location</h3>
+                                        <p>City, Country</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- CV Download Section -->
+                            <div class="cv-section">
+                                <h3>Get My CV</h3>
+                                <form class="cv-form" id="cvForm">
+                                    <div class="form-group">
+                                        <input type="text" id="cvName" required>
+                                        <label for="cvName">Your Name</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" id="cvEmail" required>
+                                        <label for="cvEmail">Your Email</label>
+                                    </div>
+                                    <button type="submit" class="cv-btn">
+                                        <span>View CV</span>
+                                        <i class="fas fa-file-pdf"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Contact Form -->
+                        <div class="contact-right">
+                            <div class="contact-form-container">
+                                <h3>Send Message</h3>
+                                <form class="contact-form" id="contactForm">
+                                    <div class="form-group">
+                                        <input type="text" id="name" required>
+                                        <label for="name">Your Name</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="email" id="email" required>
+                                        <label for="email">Your Email</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <input type="text" id="subject" required>
+                                        <label for="subject">Subject</label>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <textarea id="message" required></textarea>
+                                        <label for="message">Message</label>
+                                    </div>
+
+                                    <button type="submit" class="submit-btn">
+                                        <span>Send Message</span>
+                                        <i class="fas fa-paper-plane"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Map Section -->
+                    <div class="map-section">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=YOUR_MAP_EMBED_URL"
+                            width="100%" 
+                            height="400" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
