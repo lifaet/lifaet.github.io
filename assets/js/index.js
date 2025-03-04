@@ -136,3 +136,73 @@ function handleHashChange() {
 // Call handleHashChange on load and hash change
 window.addEventListener('load', handleHashChange);
 window.addEventListener('hashchange', handleHashChange);
+
+
+
+// PROJECTS//
+// PROJECTS//
+document.addEventListener('DOMContentLoaded', () => {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            const filter = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                // Get array of categories from data-categories attribute
+                const categories = card.getAttribute('data-categories').split(',');
+                
+                if (filter === 'all' || categories.includes(filter)) {
+                    // Show card with animation
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    // Hide card with animation
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+});
+
+
+
+// CONTACT FORM//
+// CONTACT FORM//
+/* filepath: /G:/Web Development/lifaet.github.io-development/assets/js/contact.js */
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contactForm');
+    
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        // Get form values
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        // Here you can add your form submission logic
+        // For example, sending to an email service or backend API
+        console.log({ name, email, subject, message });
+        
+        // Reset form
+        contactForm.reset();
+        
+        // Show success message (you can customize this)
+        alert('Message sent successfully!');
+    });
+});
