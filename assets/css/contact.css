@@ -4,6 +4,14 @@
     padding: 40px 20px;
 }
 
+.contact-container .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

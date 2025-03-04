@@ -358,7 +358,9 @@ h1, h2, h3, h4, h5, h6 {
     /* Remove extra top margin from these specific pages */
     #experience .page-title,
     #education .page-title,
-    #skills .page-title {
+    #skills .page-title,
+    #projects .page-title,
+    #contact .page-title {
         margin-top: 0;
     }
 

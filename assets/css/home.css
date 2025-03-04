@@ -1,7 +1,7 @@
 /* Home page specific */
 .page#home {
     position: relative;
-    background: url('../banner.png');
+    background: url('../images/banner.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
