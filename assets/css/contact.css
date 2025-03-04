@@ -9,18 +9,19 @@
     grid-template-columns: 1fr 1fr;
     gap: 40px;
     margin-bottom: 40px;
+    align-items: start; /* Ensures both columns start from the top */
 }
 
 /* Contact Info Cards */
 .contact-info {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 5px; /* Changed from 20px */
 }
 
 .info-card {
     background: white;
-    padding: 24px;
+    padding: 15px; /* Changed from 24px */
     border-radius: 16px;
     display: flex;
     align-items: center;
@@ -65,6 +66,9 @@
     border-radius: 16px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(52, 152, 219, 0.1);
+    height: 100%; /* Makes form container take full height */
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-form-container h3 {
@@ -87,6 +91,12 @@
     border-radius: 2px;
 }
 
+.contact-form {
+    flex: 1; /* Makes form take remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
 .form-group {
     position: relative;
     margin-bottom: 25px;
@@ -103,8 +113,10 @@
     transition: all 0.3s ease;
 }
 
+/* Adjust textarea height since we removed subject field */
 .form-group textarea {
-    height: 150px;
+    height: calc(100% - 50px); /* Subtracting space for other elements */
+    min-height: 150px; /* Ensuring minimum height */
     resize: none;
 }
 
@@ -195,7 +207,7 @@
 .contact-left {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px; /* Changed from 10px */
 }
 
 /* CV Section Styles */
