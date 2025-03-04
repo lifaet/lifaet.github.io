@@ -206,6 +206,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .page-title {
     text-align: center;
+    padding-top: 15px;
 }
 
 .page-title h2 {
@@ -346,6 +347,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .page {
+
         position: relative;
         min-height: calc(100vh - 134px);
         padding-bottom: 80px; /* Ensure content doesn't hide under bottom nav */
@@ -353,6 +355,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .page-title {
         margin-top: 15px; /* Slightly more margin on mobile */
+        padding-top: 15px;
     }
 
     /* Remove extra top margin from these specific pages */
