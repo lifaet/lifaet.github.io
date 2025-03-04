@@ -206,3 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Message sent successfully!');
     });
 });
+
+
+// CONTACT FORM HANDELLAR//
+// CONTACT FORM HANDELLAR//
