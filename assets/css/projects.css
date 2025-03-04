@@ -39,6 +39,7 @@
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;
     margin-top: 20px;
+    min-height: 200px; /* Prevents grid collapse during filtering */
 }
 
 /* Project Card */
@@ -47,7 +48,7 @@
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     border: 1px solid rgba(52, 152, 219, 0.1);
 }
 

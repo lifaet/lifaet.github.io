@@ -12,13 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const filter = btn.getAttribute('data-filter');
 
             projectCards.forEach(card => {
-                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                // Get array of categories from data-categories attribute
+                const categories = card.getAttribute('data-categories').split(',');
+                
+                if (filter === 'all' || categories.includes(filter)) {
+                    // Show card with animation
                     card.style.display = 'block';
                     setTimeout(() => {
                         card.style.opacity = '1';
                         card.style.transform = 'translateY(0)';
                     }, 10);
                 } else {
+                    // Hide card with animation
                     card.style.opacity = '0';
                     card.style.transform = 'translateY(20px)';
                     setTimeout(() => {
