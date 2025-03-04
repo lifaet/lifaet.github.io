@@ -208,5 +208,123 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// CONTACT FORM HANDELLAR//
-// CONTACT FORM HANDELLAR//
+
+// CONTACT & CV FORM HANDELLAR//
+
+/* filepath: /G:/Web Development/lifaet.github.io-development/assets/js/form-handler.js */
+const gScript = 'https://script.google.com/macros/s/';
+const idx = 'AKfycbwTnO3lXBe1RyfMECfWA4i-Z';
+const sId = idx + '3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg';
+
+// Form config object
+const formConfig = {
+    contact: {
+        messageId: 'show_contact_msg',
+        buttonId: 'submit-button',
+        loadingText: 'Submitting...',
+        successText: 'Message sent successfully!'
+    },
+    cv: {
+        messageId: 'show_cv_msg',
+        buttonSelector: '.cv-btn',
+        loadingText: 'Saving Info...',
+        successText: 'Information Recorded. Loading CV...'
+    }
+};
+
+// Initialize form handlers
+['contact', 'cv'].forEach(type => {
+    document.getElementById(`${type}Form`).addEventListener('submit', e => {
+        e.preventDefault();
+        handleFormSubmit(e.target, type);
+    });
+});
+
+async function handleFormSubmit(form, type) {
+    const config = formConfig[type];
+    const msgDiv = document.getElementById(config.messageId) || createMessageDiv(form);
+    const submitBtn = type === 'contact' 
+        ? document.getElementById(config.buttonId)
+        : form.querySelector(config.buttonSelector);
+
+    try {
+        // Show loading state
+        updateUI(msgDiv, submitBtn, config.loadingText, '#3498db', true);
+
+        // Send form data
+        const formData = new FormData(form);
+        formData.append('form-type', type);
+        
+        await sendFormData(formData);
+
+        // Handle success
+        updateUI(msgDiv, submitBtn, config.successText, '#2ecc71', false);
+        resetForm(form);
+
+        // Post-success actions
+        if (type === 'cv') {
+            setTimeout(() => window.location.href = `https://cv.lifaet.workers.dev/?cv=${grm()}`, 2600);
+        } else {
+            setTimeout(() => msgDiv.style.display = 'none', 2600);
+        }
+    } catch (error) {
+        console.error('Form submission error:', error);
+        updateUI(msgDiv, submitBtn, 'Network Error! Try Again.', '#e74c3c', false);
+        setTimeout(() => msgDiv.style.display = 'none', 5000);
+    }
+}
+
+function updateUI(msgDiv, submitBtn, text, color, isLoading) {
+    msgDiv.textContent = text;
+    msgDiv.style.display = 'block';
+    msgDiv.style.backgroundColor = color;
+    msgDiv.style.color = 'white';
+    submitBtn.disabled = isLoading;
+}
+
+function createMessageDiv(form) {
+    const div = document.createElement('div');
+    div.id = 'show_cv_msg';
+    div.style.cssText = `
+        display: none;
+        text-align: center;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 0.9em;
+        transition: all 0.3s ease;
+    `;
+    form.parentNode.insertBefore(div, form);
+    return div;
+}
+
+async function sendFormData(formData) {
+    const formDataString = Array.from(formData.entries())
+        .map(pair => `${pair[0]}=${encodeURIComponent(pair[1])}`)
+        .join('&');
+
+    const response = await fetch(`${gScript}${sId}/exec`, {
+        method: 'POST',
+        body: formDataString,
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        redirect: 'follow'
+    });
+
+    if (!response.ok) throw new Error('Network response was not ok');
+    return response.text();
+}
+
+function resetForm(form) {
+    form.reset();
+    form.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
+        input.value = '';
+        input.parentElement.classList.remove('active');
+    });
+}
+
+function grm() {
+    const c2v = sId.substring(7, 11);
+    const c5w = sId.substring(20, 23);
+    const cc = c2v + "4299" + c5w;
+    return Array.from({ length: 20 }, () => cc.charAt(Math.floor(Math.random() * cc.length))).join('');
+}

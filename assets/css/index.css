@@ -1907,3 +1907,34 @@ copyright {
     margin-bottom: 20px;
     flex-wrap: wrap;
 }
+
+#show_contact_msg {
+    display: none;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+
+#show_cv_msg {
+    display: none;
+    text-align: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.cv-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}

@@ -835,11 +835,11 @@
                                 <h3>Download My CV</h3>
                                 <form class="cv-form" id="cvForm">
                                     <div class="form-group">
-                                        <input type="text" id="cvName" required>
+                                        <input type="text" id="cvName" name="CV-Name" required>
                                         <label for="cvName">Your Name</label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" id="cvEmail" required>
+                                        <input type="email" id="cvEmail" name="CV-Email" required>
                                         <label for="cvEmail">Your Email</label>
                                     </div>
                                     <button type="submit" class="cv-btn">
@@ -849,25 +849,25 @@
                                 </form>
                             </div>
                         </div>
-
                         <!-- Right Column: Contact Form -->
                         <div class="contact-right">
                             <div class="contact-form-container">
                                 <h3>Send Message</h3>
-                                <form class="contact-form" id="contactForm">
+                                <div id="show_contact_msg"></div>
+                                <form class="contact-form" id="contactForm" method="POST">
                                     <div class="form-group">
-                                        <input type="text" id="name" required>
+                                        <input type="text" id="name" name="Contact-Name" required>
                                         <label for="name">Your Name</label>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" id="email" required>
+                                        <input type="email" id="email" name="Contact-Email" required>
                                         <label for="email">Your Email</label>
                                     </div>
                                     <div class="form-group">
-                                        <textarea id="message" required></textarea>
+                                        <textarea id="message" name="Message" required></textarea>
                                         <label for="message">Message</label>
                                     </div>
-                                    <button type="submit" class="submit-btn">
+                                    <button type="submit" class="submit-btn" id="submit-button">
                                         <span>Send Message</span>
                                         <i class="fas fa-paper-plane"></i>
                                     </button>
@@ -878,13 +878,8 @@
 
                     <!-- Map Section -->
                     <div class="map-section">
-                        <iframe 
-                            src="https://www.google.com/maps/embed?pb=YOUR_MAP_EMBED_URL"
-                            width="100%" 
-                            height="350" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
+                        <iframe src="https://www.google.com/maps/embed?pb=YOUR_MAP_EMBED_URL" width="100%" height="350"
+                            style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
