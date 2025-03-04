@@ -1,0 +1,114 @@
+[
+        {
+            "name": "Keylogger Surveillance System",
+            "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files. ",
+            "image": "./images/portfolio/1.jpg",
+            "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
+            "catagory": ["software"]
+        },
+        {
+            "name": "Object Following Robot",
+            "details": "It is a simple object-following robot. It can detect an object in front of it and can follow the object.",
+            "image": "./images/portfolio/2.jpg",
+            "link": "https://github.com/lifaet/WALL-E-Junior",
+            "catagory": ["software", "hardware"]
+        },
+        {
+            "name": "MoviesBay",
+            "details": "This project was a movie download website. Developed based on HTML, BOOTSTRAP, CSS, JAVASCRIPT, and database integration.",
+            "image": "./images/portfolio/3.jpg",
+            "link": "https://moviesbay.pages.dev",
+            "catagory": ["website"]
+        },
+        {
+            "name": "Optical Communication  ",
+            "details": "This demonstrates an advanced technology that transfers data using optical signals.",
+            "image": "./images/portfolio/4.jpg",
+            "link": "https://github.com/lifaet/Optical-Communication",
+            "catagory": ["software", "hardware"]
+        },
+        {
+            "name": "RC Surveillance Car ",
+            "details": "he aim of this project is to design and build a remote-controlled surveillance camera car using an ESP32 module, car kit, and Motor driver module.",
+            "image": "./images/portfolio/5.jpg",
+            "link": "https://github.com/lifaet/RC-Surveillance-Car",
+            "catagory": ["software", "hardware"]
+        },
+        {
+            "name": "Rotten Food Detection System",
+            "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste. ",
+            "image": "./images/portfolio/6.jpg",
+            "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
+            "catagory": ["software", "hardware"]
+        },
+        {
+            "name": "Automated Toll Collection System",
+            "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.",
+            "image": "./images/portfolio/7.jpg",
+            "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
+            "catagory": ["software", "hardware"]
+        },
+        {
+            "name": "Harinakundu Mobile House",
+            "details": "Website for a mobile and accessories shop.",
+            "image": "./images/portfolio/8.jpg",
+            "link": "https://hmhc.pages.dev",
+            "catagory": ["website"]
+        },
+        {
+            "name": "Solar Tracker",
+            "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency. ",
+            "image": "./images/portfolio/9.jpg",
+            "link": "https://github.com/lifaet/Solar-Tracker",
+            "catagory": ["software", "hardware"]
+        },
+        {
+            "name": "Flowers Shop",
+            "details": "A website For a local flowers shop",
+            "image": "./images/portfolio/10.jpg",
+            "link": "https://lifaet.github.io/wd4-flowers-shop",
+            "catagory":["website"]
+        },
+        {
+            "name": "Grufolio",
+            "details": "Basic portfolio website for individual.",
+            "image": "./images/portfolio/11.jpg",
+            "link": "https://lifaet.github.io/wd2-grufolio",
+            "catagory": ["website"]
+        },
+        {
+            "name": "Brothers Association",
+            "details": "A website For local Organization Based on bootstrap.",
+            "image": "./images/portfolio/12.jpg",
+            "link": "https://lifaet.github.io/wd1-brothers-association",
+            "catagory": ["website"]
+        },
+        {
+            "name": "PIR Security Alarm",
+            "details": "Security Alarm for restricted area.",
+            "image": "./images/portfolio/13.jpg",
+            "link": "https://github.com/lifaet/PIR-Security-Alarm",
+            "catagory": ["software", "hardware"]
+        },
+        {
+            "name": "Object Detection",
+            "details": "Object detection and identification for live camera feed or videos.",
+            "image": "./images/portfolio/14.jpg",
+            "link": "https://github.com/lifaet/Object-Detection",
+            "catagory": ["software"]
+        },
+        {
+            "name": "Work-Rest-Timer",
+            "details": "A Balanced Approach to Digital Wellness",
+            "image": "./images/portfolio/15.jpg",
+            "link": "https://github.com/lifaet/Work-Rest-Timer",
+            "catagory": ["software"]
+        },
+        {
+            "name": "Local-FileIndex-Server",
+            "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+            "image": "./images/portfolio/16.jpg",
+            "link": "https://github.com/lifaet/Local-FileIndex-Server",
+            "catagory": ["software"]
+        }
+    ]
