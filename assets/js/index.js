@@ -75,15 +75,15 @@ pages.forEach(page => {
 mobileButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
         currentPageIndex = index;
-        
+
         mobileButtons.forEach(btn => btn.classList.remove('active'));
         menuButtons.forEach(btn => btn.classList.remove('active'));
         pages.forEach(page => page.classList.remove('active'));
-        
+
         button.classList.add('active');
         menuButtons[index].classList.add('active');
         pages[index].classList.add('active');
-        
+
         updateURL(button.getAttribute('data-page'));
     });
 });
@@ -92,15 +92,15 @@ mobileButtons.forEach((button, index) => {
 menuButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
         currentPageIndex = index;
-        
+
         menuButtons.forEach(btn => btn.classList.remove('active'));
         mobileButtons.forEach(btn => btn.classList.remove('active'));
         pages.forEach(page => page.classList.remove('active'));
-        
+
         button.classList.add('active');
         mobileButtons[index].classList.add('active');
         pages[index].classList.add('active');
-        
+
         updateURL(button.getAttribute('data-page'));
     });
 });
@@ -141,42 +141,214 @@ window.addEventListener('hashchange', handleHashChange);
 
 // PROJECTS//
 // PROJECTS//
-document.addEventListener('DOMContentLoaded', () => {
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
+const projectsData =[
+    {
+        "name": "Keylogger Surveillance System",
+        "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files. ",
+        "image": "./assets/images/portfolio/1.jpg",
+        "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
+        "catagory": ["software"],
+        "tags": ["Python", "JavaScript", "HTML", "Ubuntu Server"]
+    },
+    {
+        "name": "Object Following Robot",
+        "details": "It is a simple object-following robot. It can detect an object in front of it and can follow the object.",
+        "image": "./assets/images/portfolio/2.jpg",
+        "link": "https://github.com/lifaet/WALL-E-Junior",
+        "catagory": ["software", "hardware"],
+        "tags": ["C", "Arduino"]
+    },
+    {
+        "name": "MoviesBay",
+        "details": "This project was a movie download website. Developed based on HTML, BOOTSTRAP, CSS, JAVASCRIPT, and database integration.",
+        "image": "./assets/images/portfolio/3.jpg",
+        "link": "https://moviesbay.pages.dev",
+        "catagory": ["web"],
+        "tags": ["HTML", "css", "JavaScript", "Bootstrap", "AppScript"]
+    },
+    {
+        "name": "Optical Communication  ",
+        "details": "This demonstrates an advanced technology that transfers data using optical signals.",
+        "image": "./assets/images/portfolio/4.jpg",
+        "link": "https://github.com/lifaet/Optical-Communication",
+        "catagory": ["software", "hardware"],
+        "tags": ["C", "Arduino"]
+    },
+    {
+        "name": "RC Surveillance Car ",
+        "details": "he aim of this project is to design and build a remote-controlled surveillance camera car using an ESP32 module, car kit, and Motor driver module.",
+        "image": "./assets/images/portfolio/5.jpg",
+        "link": "https://github.com/lifaet/RC-Surveillance-Car",
+        "catagory": ["software", "hardware"],
+        "tags": ["C", "Arduino"]
+    },
+    {
+        "name": "Rotten Food Detection System",
+        "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste. ",
+        "image": "./assets/images/portfolio/6.jpg",
+        "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
+        "catagory": ["software", "hardware"],
+        "tags": ["C", "Arduino"]
+    },
+    {
+        "name": "Automated Toll Collection System",
+        "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.",
+        "image": "./assets/images/portfolio/7.jpg",
+        "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
+        "catagory": ["software", "hardware"],
+        "tags": ["Python", "C", "arduino"]
+    },
+    {
+        "name": "Harinakundu Mobile House",
+        "details": "Website for a mobile and accessories shop.",
+        "image": "./assets/images/portfolio/8.jpg",
+        "link": "https://hmhc.pages.dev",
+        "catagory": ["web"],
+        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript", "AppScript"]
+    },
+    {
+        "name": "Solar Tracker",
+        "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency. ",
+        "image": "./assets/images/portfolio/9.jpg",
+        "link": "https://github.com/lifaet/Solar-Tracker",
+        "catagory": ["software", "hardware"],
+        "tags": ["C", "Arduino"]
+    },
+    {
+        "name": "Flowers Shop",
+        "details": "A website For a local flowers shop",
+        "image": "./assets/images/portfolio/10.jpg",
+        "link": "https://lifaet.github.io/wd4-flowers-shop",
+        "catagory":["web"],
+        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
+    },
+    {
+        "name": "Grufolio",
+        "details": "Basic portfolio website for individual.",
+        "image": "./assets/images/portfolio/11.jpg",
+        "link": "https://lifaet.github.io/wd2-grufolio",
+        "catagory": ["web"],
+        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
+    },
+    {
+        "name": "Brothers Association",
+        "details": "A website For local Organization Based on bootstrap.",
+        "image": "./assets/images/portfolio/12.jpg",
+        "link": "https://lifaet.github.io/wd1-brothers-association",
+        "catagory": ["web"],
+        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
+    },
+    {
+        "name": "PIR Security Alarm",
+        "details": "Security Alarm for restricted area.",
+        "image": "./assets/images/portfolio/13.jpg",
+        "link": "https://github.com/lifaet/PIR-Security-Alarm",
+        "catagory": ["software", "hardware"],
+        "tags": ["C", "Arduino"]
+    },
+    {
+        "name": "Object Detection",
+        "details": "Object detection and identification for live camera feed or videos.",
+        "image": "./assets/images/portfolio/14.jpg",
+        "link": "https://github.com/lifaet/Object-Detection",
+        "catagory": ["software"],
+        "tags": ["C", "Arduino"]
+    },
+    {
+        "name": "Work-Rest-Timer",
+        "details": "A Balanced Approach to Digital Wellness",
+        "image": "./assets/images/portfolio/15.jpg",
+        "link": "https://github.com/lifaet/Work-Rest-Timer",
+        "catagory": ["software"],
+        "tags": ["Python"]
+    },
+    {
+        "name": "Local-FileIndex-Server",
+        "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+        "image": "./assets/images/portfolio/16.jpg",
+        "link": "https://github.com/lifaet/Local-FileIndex-Server",
+        "catagory": ["software"],
+        "tags": ["Python", "HTML", "CSS", "JavaScript"]
+    }
+];
 
-    filterBtns.forEach(btn => {
+function createProjectCard(project) {
+    return `
+        <div class="project-card" data-categories="${project.catagory.join(',')}">
+            <div class="project-image">
+                <img src="${project.image}" alt="${project.name}">
+                <div class="project-overlay">
+                    <div class="project-links">
+                        ${project.catagory.includes('web') ? // Changed from 'website' to 'web'
+                            `<a href="${project.link}" target="_blank" title="Live Site">
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>` :
+                            `<a href="${project.link}" target="_blank" title="Source Code">
+                                <i class="fab fa-github"></i>
+                            </a>`
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="project-info">
+                <h3>${project.name}</h3>
+                <p>${project.details}</p>
+                <div class="project-tags">
+                    ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function loadProjects() {
+    const projectsGrid = document.querySelector('.projects-grid');
+    if (!projectsGrid) return;
+
+    const projectsHTML = projectsData.map(project => createProjectCard(project)).join('');
+    projectsGrid.innerHTML = projectsHTML;
+
+    // Initialize project filters if they exist
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
-
             const filter = btn.getAttribute('data-filter');
-
-            projectCards.forEach(card => {
-                // Get array of categories from data-categories attribute
-                const categories = card.getAttribute('data-categories').split(',');
-                
-                if (filter === 'all' || categories.includes(filter)) {
-                    // Show card with animation
-                    card.style.display = 'block';
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 10);
-                } else {
-                    // Hide card with animation
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
+            filterProjects(filter);
         });
     });
-});
+
+    // Set initial active state for 'all' filter
+    const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
+    if (allFilterBtn) {
+        allFilterBtn.classList.add('active');
+    }
+}
+
+function filterProjects(filter) {
+    // Update filter button active states
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === filter) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Filter projects
+    const projects = document.querySelectorAll('.project-card');
+    projects.forEach(project => {
+        const categories = project.getAttribute('data-categories').split(',');
+        if (filter === 'all' || categories.includes(filter)) {
+            project.style.display = 'block';
+        } else {
+            project.style.display = 'none';
+        }
+    });
+}
+
+// Load projects when DOM is ready
+document.addEventListener('DOMContentLoaded', loadProjects);
 
 
 
@@ -185,10 +357,10 @@ document.addEventListener('DOMContentLoaded', () => {
 /* filepath: /G:/Web Development/lifaet.github.io-development/assets/js/contact.js */
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
-    
+
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // Get form values
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
@@ -198,10 +370,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Here you can add your form submission logic
         // For example, sending to an email service or backend API
         console.log({ name, email, subject, message });
-        
+
         // Reset form
         contactForm.reset();
-        
+
         // Show success message (you can customize this)
         alert('Message sent successfully!');
     });
@@ -243,7 +415,7 @@ const formConfig = {
 async function handleFormSubmit(form, type) {
     const config = formConfig[type];
     const msgDiv = document.getElementById(config.messageId) || createMessageDiv(form);
-    const submitBtn = type === 'contact' 
+    const submitBtn = type === 'contact'
         ? document.getElementById(config.buttonId)
         : form.querySelector(config.buttonSelector);
 
@@ -254,7 +426,7 @@ async function handleFormSubmit(form, type) {
         // Send form data
         const formData = new FormData(form);
         formData.append('form-type', type);
-        
+
         await sendFormData(formData);
 
         // Handle success
