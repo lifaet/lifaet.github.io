@@ -269,6 +269,30 @@ const projectsData = [
         "link": "https://github.com/lifaet/Local-FileIndex-Server",
         "catagory": ["software"],
         "tags": ["Python", "HTML", "CSS", "JavaScript"]
+    },
+    {
+        "name": "Modern Digital Resume",
+        "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+        "image": "./assets/images/portfolio/17.png",
+        "link": "https://lifaet.github.io",
+        "catagory": ["web"],
+        "tags": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+        "name": "Digital Resume",
+        "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+        "image": "./assets/images/portfolio/18.png",
+        "link": "https://v2.lifaet.pages.dev/",
+        "catagory": ["web"],
+        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
+    },
+    {
+        "name": "Highly Aminated Portfolio",
+        "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+        "image": "./assets/images/portfolio/19.png",
+        "link": "https://v1.lifaet.pages.dev/",
+        "catagory": ["web"],
+        "tags": ["HTML", "CSS", "JavaScript", "OpenGL"]
     }
 ];
 
