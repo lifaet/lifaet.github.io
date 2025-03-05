@@ -156,7 +156,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/2.jpg",
         "link": "https://github.com/lifaet/WALL-E-Junior",
         "catagory": ["software", "hardware"],
-        "tags": ["C", "Arduino"]
+        "tags": ["C/C++", "Arduino"]
     },
     {
         "name": "MoviesBay",
@@ -164,7 +164,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/3.jpg",
         "link": "https://moviesbay.pages.dev",
         "catagory": ["web"],
-        "tags": ["HTML", "css", "JavaScript", "Bootstrap", "AppScript"]
+        "tags": ["HTML", "CSS", "JavaScript", "Bootstrap", "AppScript"]
     },
     {
         "name": "Optical Communication  ",
@@ -172,7 +172,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/4.jpg",
         "link": "https://github.com/lifaet/Optical-Communication",
         "catagory": ["software", "hardware"],
-        "tags": ["C", "Arduino"]
+        "tags": ["C/C++", "Arduino"]
     },
     {
         "name": "RC Surveillance Car ",
@@ -180,7 +180,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/5.jpg",
         "link": "https://github.com/lifaet/RC-Surveillance-Car",
         "catagory": ["software", "hardware"],
-        "tags": ["C", "Arduino"]
+        "tags": ["C/C++", "Arduino"]
     },
     {
         "name": "Rotten Food Detection System",
@@ -188,7 +188,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/6.jpg",
         "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
         "catagory": ["software", "hardware"],
-        "tags": ["C", "Arduino"]
+        "tags": ["C/C++", "Arduino"]
     },
     {
         "name": "Automated Toll Collection System",
@@ -196,7 +196,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/7.jpg",
         "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
         "catagory": ["software", "hardware"],
-        "tags": ["Python", "C", "arduino"]
+        "tags": ["Python", "C/C++", "Arduino"]
     },
     {
         "name": "Harinakundu Mobile House",
@@ -212,7 +212,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/9.jpg",
         "link": "https://github.com/lifaet/Solar-Tracker",
         "catagory": ["software", "hardware"],
-        "tags": ["C", "Arduino"]
+        "tags": ["C/C++", "Arduino"]
     },
     {
         "name": "Flowers Shop",
@@ -244,7 +244,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/13.jpg",
         "link": "https://github.com/lifaet/PIR-Security-Alarm",
         "catagory": ["software", "hardware"],
-        "tags": ["C", "Arduino"]
+        "tags": ["C/C++", "Arduino"]
     },
     {
         "name": "Object Detection",
@@ -252,7 +252,7 @@ const projectsData = [
         "image": "./assets/images/portfolio/14.jpg",
         "link": "https://github.com/lifaet/Object-Detection",
         "catagory": ["software"],
-        "tags": ["C", "Arduino"]
+        "tags": ["C/C++", "Arduino"]
     },
     {
         "name": "Work-Rest-Timer",
