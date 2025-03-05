@@ -1606,7 +1606,7 @@ copyright {
 
     .project-filters {
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 2px;
     }
 
     .filter-btn {
