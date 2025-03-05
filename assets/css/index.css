@@ -71,7 +71,7 @@ p{
 .profile-image {
     width: 130px;
     height: 130px;
-    border-radius: 24px; /* Modern squared corners */
+    border-radius: 50%; /* Changed from 24px to 50% for circular shape */
     margin: 0 auto 20px;
     overflow: hidden;
     border: 4px solid rgba(52, 152, 219, 0.3);
@@ -256,7 +256,7 @@ p{
     .mobile-profile img {
         width: 40px;
         height: 40px;
-        border-radius: 12px;
+        border-radius: 50%; /* Changed from 12px to 50% */
         border: 2px solid rgba(255, 255, 255, 0.3);
         transition: all 0.3s ease;
     }
