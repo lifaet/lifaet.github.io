@@ -141,7 +141,7 @@ window.addEventListener('hashchange', handleHashChange);
 
 // PROJECTS//
 // PROJECTS//
-const projectsData =[
+const projectsData = [
     {
         "name": "Keylogger Surveillance System",
         "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files. ",
@@ -219,7 +219,7 @@ const projectsData =[
         "details": "A website For a local flowers shop",
         "image": "./assets/images/portfolio/10.jpg",
         "link": "https://lifaet.github.io/wd4-flowers-shop",
-        "catagory":["web"],
+        "catagory": ["web"],
         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
     },
     {
@@ -280,13 +280,13 @@ function createProjectCard(project) {
                 <div class="project-overlay">
                     <div class="project-links">
                         ${project.catagory.includes('web') ? // Changed from 'website' to 'web'
-                            `<a href="${project.link}" target="_blank" title="Live Site">
+            `<a href="${project.link}" target="_blank" title="Live Site">
                                 <i class="fas fa-external-link-alt"></i>
                             </a>` :
-                            `<a href="${project.link}" target="_blank" title="Source Code">
+            `<a href="${project.link}" target="_blank" title="Source Code">
                                 <i class="fab fa-github"></i>
                             </a>`
-                        }
+        }
                     </div>
                 </div>
             </div>
@@ -364,7 +364,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Get form values
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
-        const subject = document.getElementById('subject').value;
         const message = document.getElementById('message').value;
 
         // Here you can add your form submission logic
@@ -435,14 +434,26 @@ async function handleFormSubmit(form, type) {
 
         // Post-success actions
         if (type === 'cv') {
-            setTimeout(() => window.location.href = `https://cv.lifaet.workers.dev/?cv=${grm()}`, 2600);
+            // Hide message after 2.5 seconds and redirect after 3 seconds
+            setTimeout(() => {
+                window.location.href = `https://cv.lifaet.workers.dev/?cv=${grm()}`;
+            }, 3000);
+            setTimeout(() => {
+                msgDiv.style.display = 'none';
+            }, 2500);
         } else {
-            setTimeout(() => msgDiv.style.display = 'none', 2600);
+            // Hide message after 2.5 seconds for contact form
+            setTimeout(() => {
+                msgDiv.style.display = 'none';
+            }, 2500);
         }
     } catch (error) {
         console.error('Form submission error:', error);
         updateUI(msgDiv, submitBtn, 'Network Error! Try Again.', '#e74c3c', false);
-        setTimeout(() => msgDiv.style.display = 'none', 5000);
+        // Hide error message after 3 seconds
+        setTimeout(() => {
+            msgDiv.style.display = 'none';
+        }, 3000);
     }
 }
 
@@ -461,7 +472,7 @@ function createMessageDiv(form) {
         display: none;
         text-align: center;
         margin-bottom: 15px;
-        padding: 10px;
+        padding: 5px;
         border-radius: 8px;
         font-size: 0.9em;
         transition: all 0.3s ease;
