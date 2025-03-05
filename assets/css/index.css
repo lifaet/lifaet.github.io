@@ -1227,10 +1227,24 @@ copyright {
     line-height: 1.4;
 }
 
-.cert-date {
+
+.cert-credentials {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     color: #7f8c8d;
     font-size: 0.9em;
-    margin-bottom: 20px;
+    margin: 8px 0;
+}
+
+.cert-credentials i {
+    color: #3498db;
+    font-size: 0.9em;
+}
+
+.cert-credentials span {
+    font-family: 'Courier New', monospace;
+    letter-spacing: 0.5px;
 }
 
 .cert-link {
