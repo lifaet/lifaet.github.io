@@ -956,19 +956,27 @@ copyright {
 
 .timeline-date {
     position: absolute;
-    top: 7px;  /* Adjusted to align with dot */
-    left: -160px;
     padding: 8px 16px;
     background: #3498db;
     color: white;
     border-radius: 20px;
     font-size: 0.9em;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    top: 7px;
+    z-index: 1;
+    white-space: nowrap; /* Prevents date text from wrapping */
 }
 
+/* For left side items (odd) */
+.timeline-item:nth-child(odd) .timeline-date {
+    right: calc(100% + 45px); /* Push date further left */
+    left: auto; /* Remove left positioning */
+}
+
+/* For right side items (even) */
 .timeline-item:nth-child(even) .timeline-date {
-    left: auto;
-    right: -160px;
+    left: calc(100% + 45px); /* Push date further right */
+    right: auto; /* Remove right positioning */
 }
 
 .timeline-content {
@@ -1042,6 +1050,15 @@ copyright {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .timeline-date,
+    .timeline-item:nth-child(odd) .timeline-date,
+    .timeline-item:nth-child(even) .timeline-date {
+        right: auto;
+        top: 7px;
+    }
+}
+
 
 
 /* EDUCATION PAGE */
@@ -1108,8 +1125,41 @@ copyright {
 }
 
 .education-details {
+    padding: 15px;
+    border-top: 1px solid rgba(52, 152, 219, 0.1);
+    margin-top: 15px;
+}
+
+.education-details p {
+    color: #7f8c8d;
+    font-size: 0.95em;
+    margin-bottom: 10px;
+}
+
+.education-details p:first-child {
     color: #666;
-    line-height: 1.6;
+    font-weight: 500;
+}
+
+.education-details .achievements {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.education-details .achievements li {
+    color: #7f8c8d;
+    font-size: 0.95em;
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.education-details .achievements li:before {
+    content: '\2022';
+    color: #3498db;
+    font-weight: bold;
 }
 
 .achievements {
