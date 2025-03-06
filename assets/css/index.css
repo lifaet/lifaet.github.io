@@ -2029,3 +2029,141 @@ copyright {
     opacity: 0.7;
     cursor: not-allowed;
 }
+
+
+/* MODERN CSS */
+/* MODERN CSS */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.1);
+    --glass-border: rgba(255, 255, 255, 0.05);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+    --neon-blue: #3498db;
+    --neon-purple: #9b59b6;
+    --neon-glow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue);
+  }
+  
+  /* Modern Background */
+  body {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+  }
+  
+  /* Glassmorphism Cards */
+  .education-card, .cert-card, .skill-category, .project-card, .info-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px var(--glass-shadow);
+  }
+  
+  /* Animated Progress Bars */
+  .progress {
+    background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+    box-shadow: var(--neon-glow);
+    animation: pulse 2s infinite;
+  }
+  
+  @keyframes pulse {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+  }
+  
+  /* Modern Button Styles */
+  .menu-btn, .submit-btn, .cv-btn, .filter-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .menu-btn::before, .submit-btn::before, .cv-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    );
+    animation: shine 3s infinite;
+  }
+  
+  @keyframes shine {
+    100% { left: 200%; }
+  }
+  
+  /* Timeline Animations */
+  .timeline-dot {
+    animation: glow 2s infinite;
+  }
+  
+  @keyframes glow {
+    0% { box-shadow: 0 0 5px var(--neon-blue); }
+    50% { box-shadow: 0 0 20px var(--neon-blue); }
+    100% { box-shadow: 0 0 5px var(--neon-blue); }
+  }
+  
+  /* Modern Form Inputs */
+  .form-group input, .form-group textarea {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+  }
+  
+  .form-group input:focus, .form-group textarea:focus {
+    box-shadow: 0 0 15px var(--neon-blue);
+  }
+  
+  /* Social Links Animation */
+  .social-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .social-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.3s ease;
+  }
+  
+  .social-btn:hover::after {
+    transform: scale(2);
+  }
+  
+  /* Page Transitions */
+  .page {
+    animation: fadeIn 0.5s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Skill Icons Animation */
+  .category-icon i {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }

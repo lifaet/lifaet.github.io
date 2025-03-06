@@ -535,3 +535,47 @@ function grm() {
     const cc = c2v + "4299" + c5w;
     return Array.from({ length: 20 }, () => cc.charAt(Math.floor(Math.random() * cc.length))).join('');
 }
+
+
+
+// MODERN DESIGN//
+// MODERN DESIGN//
+/* filepath: /G:/Web Development/lifaet.github.io-development/assets/js/animations.js */
+document.addEventListener('DOMContentLoaded', () => {
+    // Animate elements when they come into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Observe all animated elements
+    document.querySelectorAll('.skill-item, .project-card, .education-card, .cert-card').forEach((el) => {
+        observer.observe(el);
+    });
+
+    // Particle background effect
+    const particlesConfig = {
+        particles: {
+            number: { value: 80 },
+            color: { value: '#ffffff' },
+            opacity: { value: 0.1 },
+            size: { value: 1 },
+            line_linked: {
+                enable: true,
+                distance: 150,
+                color: '#ffffff',
+                opacity: 0.1,
+                width: 1
+            },
+            move: {
+                enable: true,
+                speed: 1
+            }
+        }
+    };
+
+    particlesJS('particles-js', particlesConfig);
+});
