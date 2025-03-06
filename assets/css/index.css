@@ -2079,7 +2079,7 @@ copyright {
     overflow: hidden;
   }
   
-  .menu-btn::before, .submit-btn::before, .cv-btn::before {
+  .menu-btn::before {
     content: '';
     position: absolute;
     top: 0;
@@ -2138,7 +2138,7 @@ copyright {
   @keyframes fadeIn {
     from { 
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(5px);
     }
     to {
       opacity: 1;
