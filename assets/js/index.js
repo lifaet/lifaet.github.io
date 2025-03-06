@@ -540,7 +540,6 @@ function grm() {
 
 // MODERN DESIGN//
 // MODERN DESIGN//
-/* filepath: /G:/Web Development/lifaet.github.io-development/assets/js/animations.js */
 document.addEventListener('DOMContentLoaded', () => {
     // Animate elements when they come into view
     const observer = new IntersectionObserver((entries) => {
