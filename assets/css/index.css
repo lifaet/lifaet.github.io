@@ -894,7 +894,9 @@ copyright {
     border-radius: 5px;
     box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 }
-
+.timeline-content h3 {
+    color: #000000;
+}
 .timeline-header {
     margin-bottom: 15px;
 }
