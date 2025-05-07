@@ -273,7 +273,7 @@ const projectsData = [
     {
         "name": "Modern Digital Resume",
         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-        "image": "./assets/images/portfolio/17.png",
+        "image": "./assets/images/portfolio/17.jpg",
         "link": "https://lifaet.github.io",
         "catagory": ["web"],
         "tags": ["HTML", "CSS", "JavaScript"]
@@ -281,7 +281,7 @@ const projectsData = [
     {
         "name": "Digital Resume",
         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-        "image": "./assets/images/portfolio/18.png",
+        "image": "./assets/images/portfolio/18.jpg",
         "link": "https://v2.lifaet.pages.dev/",
         "catagory": ["web"],
         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
@@ -289,7 +289,7 @@ const projectsData = [
     {
         "name": "Highly Aminated Portfolio",
         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-        "image": "./assets/images/portfolio/19.png",
+        "image": "./assets/images/portfolio/19.jpg",
         "link": "https://v1.lifaet.pages.dev/",
         "catagory": ["web"],
         "tags": ["HTML", "CSS", "JavaScript", "OpenGL"]
@@ -297,7 +297,7 @@ const projectsData = [
     {
         "name": "Result Publication System",
         "details": "A web-based system for publishing student results, designed to streamline the process of result management and enhance accessibility for students and faculty.",
-        "image": "./assets/images/portfolio/19.png",
+        "image": "./assets/images/portfolio/20.jpg",
         "link": "https://v1.lifaet.pages.dev/",
         "catagory": ["web"],
         "tags": ["HTML", "CSS", "JavaScript", "AppScript"]
