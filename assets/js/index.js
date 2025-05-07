@@ -298,7 +298,7 @@ const projectsData = [
         "name": "Result Publication System",
         "details": "A web-based system for publishing student results, designed to streamline the process of result management and enhance accessibility for students and faculty.",
         "image": "./assets/images/portfolio/20.jpg",
-        "link": "https://v1.lifaet.pages.dev/",
+        "link": "https://rmsrmu.pages.dev/",
         "catagory": ["web"],
         "tags": ["HTML", "CSS", "JavaScript", "AppScript"]
     }
