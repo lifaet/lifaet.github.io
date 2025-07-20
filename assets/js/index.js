@@ -2,7 +2,6 @@
 let isScrolling = false;
 let lastScrollTime = Date.now();
 const scrollCooldown = 1000;
-
 const pages = Array.from(document.querySelectorAll('.page'));
 const menuButtons = Array.from(document.querySelectorAll('.menu-btn'));
 const mobileButtons = Array.from(document.querySelectorAll('.nav-btn'));
@@ -21,28 +20,22 @@ function updateURL(pageId) {
 function changePage(direction) {
     const now = Date.now();
     if (isScrolling || now - lastScrollTime < scrollCooldown) return;
-
     const nextIndex = currentPageIndex + direction;
     if (nextIndex >= 0 && nextIndex < pages.length) {
         isScrolling = true;
         lastScrollTime = now;
         currentPageIndex = nextIndex;
-
         // Update desktop menu
         menuButtons.forEach(btn => btn.classList.remove('active'));
         menuButtons[currentPageIndex].classList.add('active');
-
         // Update mobile menu
         mobileButtons.forEach(btn => btn.classList.remove('active'));
         mobileButtons[currentPageIndex].classList.add('active');
-
         // Update pages
         pages.forEach(page => page.classList.remove('active'));
         pages[currentPageIndex].classList.add('active');
-
         // Update URL
         updateURL(pages[currentPageIndex].id);
-
         setTimeout(() => {
             isScrolling = false;
         }, scrollCooldown);
@@ -75,15 +68,12 @@ pages.forEach(page => {
 mobileButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
         currentPageIndex = index;
-
         mobileButtons.forEach(btn => btn.classList.remove('active'));
         menuButtons.forEach(btn => btn.classList.remove('active'));
         pages.forEach(page => page.classList.remove('active'));
-
         button.classList.add('active');
         menuButtons[index].classList.add('active');
         pages[index].classList.add('active');
-
         updateURL(button.getAttribute('data-page'));
     });
 });
@@ -92,15 +82,12 @@ mobileButtons.forEach((button, index) => {
 menuButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
         currentPageIndex = index;
-
         menuButtons.forEach(btn => btn.classList.remove('active'));
         mobileButtons.forEach(btn => btn.classList.remove('active'));
         pages.forEach(page => page.classList.remove('active'));
-
         button.classList.add('active');
         mobileButtons[index].classList.add('active');
         pages[index].classList.add('active');
-
         updateURL(button.getAttribute('data-page'));
     });
 });
@@ -119,15 +106,12 @@ function handleHashChange() {
         // Update pages
         document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
         targetPage.classList.add('active');
-
         // Update desktop menu buttons
         document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
         targetMenuBtn.classList.add('active');
-
         // Update mobile nav buttons
         document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
         targetNavBtn.classList.add('active');
-
         // Update current page index
         currentPageIndex = Array.from(document.querySelectorAll('.page')).indexOf(targetPage);
     }
@@ -136,9 +120,6 @@ function handleHashChange() {
 // Call handleHashChange on load and hash change
 window.addEventListener('load', handleHashChange);
 window.addEventListener('hashchange', handleHashChange);
-
-
-
 // PROJECTS//
 // PROJECTS//
 const projectsData = [
@@ -336,10 +317,8 @@ function createProjectCard(project) {
 function loadProjects() {
     const projectsGrid = document.querySelector('.projects-grid');
     if (!projectsGrid) return;
-
     const projectsHTML = projectsData.map(project => createProjectCard(project)).join('');
     projectsGrid.innerHTML = projectsHTML;
-
     // Initialize project filters if they exist
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
@@ -348,7 +327,6 @@ function loadProjects() {
             filterProjects(filter);
         });
     });
-
     // Set initial active state for 'all' filter
     const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
     if (allFilterBtn) {
@@ -366,7 +344,6 @@ function filterProjects(filter) {
             btn.classList.remove('active');
         }
     });
-
     // Filter projects
     const projects = document.querySelectorAll('.project-card');
     projects.forEach(project => {
@@ -378,12 +355,8 @@ function filterProjects(filter) {
         }
     });
 }
-
 // Load projects when DOM is ready
 document.addEventListener('DOMContentLoaded', loadProjects);
-
-
-
 // CONTACT FORM//
 // CONTACT FORM//
 /* filepath: /G:/Web Development/lifaet.github.io-development/assets/js/contact.js */
@@ -392,29 +365,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
         // Get form values
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
-
         // Here you can add your form submission logic
         // For example, sending to an email service or backend API
         console.log({ name, email, subject, message });
-
         // Reset form
         contactForm.reset();
-
         // Show success message (you can customize this)
         alert('Message sent successfully!');
     });
 });
 
-
-
 // CONTACT & CV FORM HANDELLAR//
 
-/* filepath: /G:/Web Development/lifaet.github.io-development/assets/js/form-handler.js */
 const gScript = 'https://script.google.com/macros/s/';
 const idx = 'AKfycbwTnO3lXBe1RyfMECfWA4i-Z';
 const sId = idx + '3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg';
