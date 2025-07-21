@@ -335,10 +335,11 @@ function loadProjects() {
     const projectsGrid = document.querySelector('.projects-grid');
     if (!projectsGrid) return;
     const projectsHTML = projectData().then(projectsData => {
-        createProjectCard(project);
+        createProjectCard(projectsData);
     });
     // const projectsHTML = projectsData.map(project => createProjectCard(project)).join('');
     projectsGrid.innerHTML = projectsHTML;
+
     // Initialize project filters if they exist
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
