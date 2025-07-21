@@ -294,7 +294,7 @@ async function projectData() {
         return mainData;
     } else {
         console.log('Cache False');
-        const res = await fetch('https://moviesbay.pages.dev/api');
+        const res = await fetch('https://script.google.com/macros/s/AKfycbyM7cbHb6hrdmQQLSQdyRriuPqZfP5hngIg2ySQCHf5rf-s_TzbwJadheoV7raJSdqchw/exec');
         let fetchData = await res.json();
         localStorage.setItem("localData", JSON.stringify(fetchData));
         mainData = fetchData;
