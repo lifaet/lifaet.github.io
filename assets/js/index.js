@@ -294,7 +294,7 @@ async function projectData() {
         return mainData;
     } else {
         console.log('Cache False');
-        const res = await fetch('https://script.google.com/macros/s/AKfycbyM7cbHb6hrdmQQLSQdyRriuPqZfP5hngIg2ySQCHf5rf-s_TzbwJadheoV7raJSdqchw/exec');
+        const res = await fetch('https://moviesbay.pages.dev/api');
         let fetchData = await res.json();
         localStorage.setItem("localData", JSON.stringify(fetchData));
         mainData = fetchData;
@@ -302,7 +302,6 @@ async function projectData() {
         return mainData;
     }
 }
-
 function createProjectCard(project) {
     return `
         <div class="project-card" data-categories="${project.catagory.join(',')}">
@@ -335,10 +334,11 @@ function createProjectCard(project) {
 function loadProjects() {
     const projectsGrid = document.querySelector('.projects-grid');
     if (!projectsGrid) return;
-    projectData().then(data => {
-        projectsGrid.innerHTML = data.map(project => createProjectCard(project)).join('');;
-    })
-
+    const projectsHTML = projectData().then(projectsData => {
+        createProjectCard(project);
+    });
+    // const projectsHTML = projectsData.map(project => createProjectCard(project)).join('');
+    projectsGrid.innerHTML = projectsHTML;
     // Initialize project filters if they exist
     const filterButtons = document.querySelectorAll('.filter-btn');
     filterButtons.forEach(btn => {
