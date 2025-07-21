@@ -1,7 +1,7 @@
 export async function onRequest({ request, env }) {
     const url = new URL(request.url);
     const params = new URLSearchParams(url.search);
-    const cv = params.get('cv');
+    const cv = params.get('token');
 
     if (cv && cv.length === 20 && isValidRandomNumber(cv, env.RANDOM_NUMBER)) {
         const html = `<!DOCTYPE html>
