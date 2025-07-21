@@ -24,7 +24,7 @@ export async function onRequest({ request, env }) {
     }
 
     // Redirect to same origin with query param
-    const redirectUrl = `${url.origin}/?res=wrong-key`;
+    const redirectUrl = `https://lifaet.github.io/#cv?res=wrong-key`;
     return Response.redirect(redirectUrl, 302);
 }
 
