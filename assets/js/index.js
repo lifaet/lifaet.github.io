@@ -434,7 +434,7 @@ async function handleFormSubmit(form, type) {
         if (type === 'cv') {
             // Hide message after 2.5 seconds and redirect after 3 seconds
             setTimeout(() => {
-                window.location.href = `https://cv.lifaet.workers.dev/?cv=${grm()}`;
+                window.location.href = `https://lifaet.pages.dev/cv=${grm()}`;
             }, 3000);
             setTimeout(() => {
                 msgDiv.style.display = 'none';
