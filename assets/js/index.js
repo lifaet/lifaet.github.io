@@ -282,6 +282,30 @@ const projectsData = [
         "link": "https://rmsrmu.pages.dev/",
         "catagory": ["web"],
         "tags": ["HTML", "CSS", "JavaScript", "AppScript"]
+    },
+    {
+        "name": "ENCOMPOS Smart POS System",
+        "details": "ENCOMPOS Smart POS System is a comprehensive solution for managing sales, inventory, and customer relationships in retail businesses. It offers features like real-time sales tracking, inventory management, customer management, and reporting to help businesses streamline their operations and improve efficiency.",
+        "image": "./assets/images/portfolio/21.jpg",
+        "link": "https://encompos.duckdns.org/",
+        "catagory": ["web"],
+        "tags": ["PPH", "Laravel", "React", "JavaScript", "Bootstrap"]
+    },
+    {
+        "name": "Attendance Management System",
+        "details": "Attendance Management System (AMS) is a crucial software solution specifically designed for universities and other educational institutions to efficiently track, monitor, and manage student attendance.",
+        "image": "./assets/images/portfolio/22.jpg",
+        "link": "https://github.com/lifaet/Attendance-Management-System",
+        "catagory": ["web"],
+        "tags": ["PHP", "Laravel", "Bootstrap"]
+    },
+    {
+        "name": "Multi Model AI Chat Application",
+        "details": "This project presents the development of a unified Multi-Model AI Chat Application designed to integrate a wide range of free and paid AI models into a single, user-friendly web interface.",
+        "image": "./assets/images/portfolio/23.jpg",
+        "link": "https://multiai.pages.dev/",
+        "catagory": ["web"],
+        "tags": ["HTML", "CSS", "JavaScript"]
     }
 ];
 
