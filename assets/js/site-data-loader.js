@@ -1,7 +1,7 @@
 const SITE_DATA_URL = './assets/data/site-data.json';
 
 function buildSocialLinks(socialLinks) {
-  return socialLinks
+  return (socialLinks || [])
     .map(link => `
       <a href="${link.url}" target="_blank" rel="noreferrer noopener" class="social-btn" title="${link.name}">
         <i class="${link.icon}"></i>
@@ -14,7 +14,7 @@ function renderMenu(menuItems) {
   const desktopButtons = document.querySelectorAll('.sidebar .menu-btn');
   const mobileButtons = document.querySelectorAll('.mobile-bottom-nav .nav-btn');
 
-  menuItems.forEach((item, index) => {
+  (menuItems || []).forEach((item, index) => {
     const desktopButton = desktopButtons[index];
     const mobileButton = mobileButtons[index];
 
@@ -34,33 +34,47 @@ function renderMenu(menuItems) {
   });
 }
 
-function renderProfile(profile) {
+function renderProfile(data) {
   const desktopImg = document.querySelector('.sidebar .profile-image img');
   const mobileImg = document.querySelector('.mobile-profile img');
   const desktopName = document.querySelector('.sidebar .profile-name');
   const mobileName = document.querySelector('.mobile-profile span');
 
   if (desktopImg) {
-    desktopImg.src = profile.avatar;
-    desktopImg.alt = profile.name;
+    desktopImg.src = data.avatar;
+    desktopImg.alt = data.name;
   }
   if (mobileImg) {
-    mobileImg.src = profile.avatar;
-    mobileImg.alt = profile.name;
+    mobileImg.src = data.avatar;
+    mobileImg.alt = data.name;
   }
-  if (desktopName) desktopName.textContent = profile.name;
-  if (mobileName) mobileName.textContent = profile.name;
+  if (desktopName) desktopName.textContent = data.name;
+  if (mobileName) mobileName.textContent = data.name;
 }
 
-function renderHome(profile, socialLinks) {
+function renderMetadata(data) {
+  if (!data) return;
+  if (data.title) document.title = data.title;
+
+  const updateMeta = (name, value) => {
+    const meta = document.querySelector(`meta[name="${name}"]`);
+    if (meta) meta.content = value;
+  };
+
+  if (data.description) updateMeta('description', data.description);
+  if (data.keywords) updateMeta('keywords', data.keywords);
+  if (data.author) updateMeta('author', data.author);
+}
+
+function renderHome(data, socialLinks) {
   const introText = document.querySelector('#home .intro-text');
   const socialContainer = document.querySelector('#home .social-links');
 
   if (introText) {
     introText.innerHTML = `
-      <h1>${profile.headline} <span class="highlight">${profile.highlight}</span></h1>
-      <h2 class="typed-text">${profile.subtitle}</h2>
-      <p class="career-objective">${profile.careerObjective}</p>
+      <h1>${data.headline} <span class="highlight">${data.highlight}</span></h1>
+      <h2 class="typed-text">${data.subtitle}</h2>
+      <p class="career-objective">${data.careerObjective}</p>
     `;
   }
 
@@ -73,7 +87,7 @@ function renderExperience(experiences) {
   const timelineGrid = document.querySelector('.timeline-grid');
   if (!timelineGrid) return;
 
-  timelineGrid.innerHTML = experiences
+  timelineGrid.innerHTML = (experiences || [])
     .map(exp => `
       <div class="timeline-item">
         <div class="timeline-dot"></div>
@@ -82,7 +96,7 @@ function renderExperience(experiences) {
           <h3>${exp.title}</h3>
           <div class="company-badge"><i class="fas fa-building"></i><span>${exp.company}</span></div>
           <ul class="achievement-list">
-            ${exp.achievements.map(item => `<li><i class="fas fa-check-circle"></i>${item}</li>`).join('')}
+            ${(exp.achievements || []).map(item => `<li><i class="fas fa-check-circle"></i>${item}</li>`).join('')}
           </ul>
         </div>
       </div>
@@ -102,7 +116,7 @@ function renderEducation(education, certifications) {
   const certGrid = document.querySelector('.cert-grid');
 
   if (educationGrid) {
-    educationGrid.innerHTML = education
+    educationGrid.innerHTML = (education || [])
       .map(item => `
         <div class="education-card">
           <div class="education-header">
@@ -115,7 +129,7 @@ function renderEducation(education, certifications) {
           </div>
           <div class="education-details">
             <ul class="achievements">
-              ${item.achievements.map(achievement => `<li>${achievement}</li>`).join('')}
+              ${(item.achievements || []).map(achievement => `<li>${achievement}</li>`).join('')}
             </ul>
           </div>
         </div>
@@ -124,7 +138,7 @@ function renderEducation(education, certifications) {
   }
 
   if (certGrid) {
-    certGrid.innerHTML = certifications
+    certGrid.innerHTML = (certifications || [])
       .map(cert => `
         <div class="cert-card">
           <div class="cert-issuer">
@@ -144,7 +158,7 @@ function renderSkills(skills, languages) {
   const skillsGrid = document.querySelector('.skills-grid');
   if (!skillsGrid) return;
 
-  skillsGrid.innerHTML = skills
+  skillsGrid.innerHTML = (skills || [])
     .map(category => `
       <div class="skill-category">
         <div class="category-header">
@@ -152,8 +166,7 @@ function renderSkills(skills, languages) {
           <h3 class="category-title">${category.category}</h3>
         </div>
         <div class="skill-list">
-          ${category.items
-            .map(item => `
+          ${(category.items || []).map(item => `
               <div class="skill-item">
                 <div class="skill-info">
                   <span class="skill-name">${item.name}</span>
@@ -161,8 +174,7 @@ function renderSkills(skills, languages) {
                 </div>
                 <div class="progress-bar"><div class="progress" style="width:${item.level}"></div></div>
               </div>
-            `)
-            .join('')}
+            `).join('')}
         </div>
       </div>
     `)
@@ -204,20 +216,45 @@ function createRatingStars(rating) {
     .replace(/☆/g, '<i class="fa-regular fa-star"></i>');
 }
 
+function humanizeCategory(category) {
+  return String(category)
+    .replace(/[-_]+/g, ' ')
+    .split(' ')
+    .map(word => word ? word[0].toUpperCase() + word.slice(1) : '')
+    .join(' ');
+}
+
+function getProjectCategories(projects) {
+  return Array.from(
+    new Set(
+      (projects || []).flatMap(project => {
+        const cats = Array.isArray(project.category) ? project.category : [project.category];
+        return cats.filter(Boolean);
+      })
+    )
+  );
+}
+
 function renderProjects(projects) {
   const projectFilters = document.querySelector('.project-filters');
   const projectGrid = document.querySelector('.projects-grid');
   if (!projectFilters || !projectGrid) return;
 
-  projectFilters.innerHTML = siteData.projectFilters
+  const categories = getProjectCategories(projects);
+  const filters = [
+    { id: 'all', label: 'All' },
+    ...categories.map(id => ({ id, label: humanizeCategory(id) }))
+  ];
+
+  projectFilters.innerHTML = filters
     .map(filter => `
       <button type="button" class="filter-btn${filter.id === 'all' ? ' active' : ''}" data-filter="${filter.id}">${filter.label}</button>
     `)
     .join('');
 
-  projectGrid.innerHTML = projects
+  projectGrid.innerHTML = (projects || [])
     .map(project => `
-      <div class="project-card" data-categories="${project.category.join(',')}">
+      <div class="project-card" data-categories="${(Array.isArray(project.category) ? project.category : [project.category]).join(',')}">
         <div class="project-image">
           <img src="${project.image}" alt="${project.name}">
           <div class="project-overlay">
@@ -232,7 +269,7 @@ function renderProjects(projects) {
           <h3>${project.name}</h3>
           <p>${project.details}</p>
           <div class="project-tags">
-            ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+            ${(project.tags || []).map(tag => `<span>${tag}</span>`).join('')}
           </div>
         </div>
       </div>
@@ -256,7 +293,7 @@ function filterProjects(filter) {
   });
 }
 
-function renderContact(contact, socialLinks) {
+function renderContact(email, location, mapUrl, socialLinks) {
   const contactInfo = document.querySelector('.contact-info');
   const contactSocial = document.querySelector('#contact .social-links');
   const contactMap = document.querySelector('#contact iframe');
@@ -265,16 +302,16 @@ function renderContact(contact, socialLinks) {
     contactInfo.innerHTML = `
       <div class="info-card">
         <div class="info-icon"><i class="fas fa-envelope"></i></div>
-        <div class="info-content"><h3>Email</h3><p>${contact.email}</p></div>
+        <div class="info-content"><h3>Email</h3><p>${email}</p></div>
       </div>
       <div class="info-card">
         <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-        <div class="info-content"><h3>Location</h3><p>${contact.location}</p></div>
+        <div class="info-content"><h3>Location</h3><p>${location}</p></div>
       </div>
     `;
   }
 
-  if (contactMap) contactMap.src = contact.mapUrl;
+  if (contactMap) contactMap.src = mapUrl;
   if (contactSocial) contactSocial.innerHTML = buildSocialLinks(socialLinks);
 }
 
@@ -291,20 +328,18 @@ function loadJSONData() {
     });
 }
 
-let siteData = null;
-
 window.addEventListener('DOMContentLoaded', () => {
   loadJSONData()
     .then(data => {
-      siteData = data;
+      renderMetadata(data);
       renderMenu(data.menu);
-      renderProfile(data.profile);
-      renderHome(data.profile, data.socialLinks);
+      renderProfile(data);
+      renderHome(data, data.socialLinks);
       renderExperience(data.experience);
       renderEducation(data.education, data.certifications);
       renderSkills(data.skills, data.languages);
       renderProjects(data.projects);
-      renderContact(data.contact, data.socialLinks);
+      renderContact(data.email, data.location, data.mapUrl, data.socialLinks);
       renderCopyright(data.copyright);
     })
     .catch(err => {
