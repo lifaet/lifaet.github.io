@@ -1,4 +1,4 @@
-const SITE_DATA_URL = './assets/data/site-data.json';
+const SITE_DATA_URL = './assets/data/site-data-new.json';
 
 function buildSocialLinks(socialLinks) {
   return (socialLinks || [])
