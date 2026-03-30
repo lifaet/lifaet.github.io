@@ -120,267 +120,267 @@ function handleHashChange() {
 // Call handleHashChange on load and hash change
 window.addEventListener('load', handleHashChange);
 window.addEventListener('hashchange', handleHashChange);
-// PROJECTS//
-// PROJECTS//
-const projectsData = [
-    {
-        "name": "Keylogger Surveillance System",
-        "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files. ",
-        "image": "./assets/images/portfolio/1.jpg",
-        "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
-        "catagory": ["software"],
-        "tags": ["Python", "JavaScript", "HTML", "Ubuntu Server"]
-    },
-    {
-        "name": "Object Following Robot",
-        "details": "It is a simple object-following robot. It can detect an object in front of it and can follow the object.",
-        "image": "./assets/images/portfolio/2.jpg",
-        "link": "https://github.com/lifaet/WALL-E-Junior",
-        "catagory": ["software", "hardware"],
-        "tags": ["C/C++", "Arduino"]
-    },
-    {
-        "name": "MoviesBay",
-        "details": "This project was a movie download website. Developed based on HTML, BOOTSTRAP, CSS, JAVASCRIPT, and database integration.",
-        "image": "./assets/images/portfolio/3.jpg",
-        "link": "https://moviesbay.pages.dev",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "JavaScript", "Bootstrap", "AppScript"]
-    },
-    {
-        "name": "Optical Communication  ",
-        "details": "This demonstrates an advanced technology that transfers data using optical signals.",
-        "image": "./assets/images/portfolio/4.jpg",
-        "link": "https://github.com/lifaet/Optical-Communication",
-        "catagory": ["software", "hardware"],
-        "tags": ["C/C++", "Arduino"]
-    },
-    {
-        "name": "RC Surveillance Car ",
-        "details": "he aim of this project is to design and build a remote-controlled surveillance camera car using an ESP32 module, car kit, and Motor driver module.",
-        "image": "./assets/images/portfolio/5.jpg",
-        "link": "https://github.com/lifaet/RC-Surveillance-Car",
-        "catagory": ["software", "hardware"],
-        "tags": ["C/C++", "Arduino"]
-    },
-    {
-        "name": "Rotten Food Detection System",
-        "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste. ",
-        "image": "./assets/images/portfolio/6.jpg",
-        "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
-        "catagory": ["software", "hardware"],
-        "tags": ["C/C++", "Arduino"]
-    },
-    {
-        "name": "Automated Toll Collection System",
-        "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.",
-        "image": "./assets/images/portfolio/7.jpg",
-        "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
-        "catagory": ["software", "hardware"],
-        "tags": ["Python", "C/C++", "Arduino"]
-    },
-    {
-        "name": "Harinakundu Mobile House",
-        "details": "Website for a mobile and accessories shop.",
-        "image": "./assets/images/portfolio/8.jpg",
-        "link": "https://hmhc.pages.dev",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript", "AppScript"]
-    },
-    {
-        "name": "Solar Tracker",
-        "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency. ",
-        "image": "./assets/images/portfolio/9.jpg",
-        "link": "https://github.com/lifaet/Solar-Tracker",
-        "catagory": ["software", "hardware"],
-        "tags": ["C/C++", "Arduino"]
-    },
-    {
-        "name": "Flowers Shop",
-        "details": "A website For a local flowers shop",
-        "image": "./assets/images/portfolio/10.jpg",
-        "link": "https://lifaet.github.io/wd4-flowers-shop",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
-    },
-    {
-        "name": "Grufolio",
-        "details": "Basic portfolio website for individual.",
-        "image": "./assets/images/portfolio/11.jpg",
-        "link": "https://lifaet.github.io/wd2-grufolio",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
-    },
-    {
-        "name": "Brothers Association",
-        "details": "A website For local Organization Based on bootstrap.",
-        "image": "./assets/images/portfolio/12.jpg",
-        "link": "https://lifaet.github.io/wd1-brothers-association",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
-    },
-    {
-        "name": "PIR Security Alarm",
-        "details": "Security Alarm for restricted area.",
-        "image": "./assets/images/portfolio/13.jpg",
-        "link": "https://github.com/lifaet/PIR-Security-Alarm",
-        "catagory": ["software", "hardware"],
-        "tags": ["C/C++", "Arduino"]
-    },
-    {
-        "name": "Object Detection",
-        "details": "Object detection and identification for live camera feed or videos.",
-        "image": "./assets/images/portfolio/14.jpg",
-        "link": "https://github.com/lifaet/Object-Detection",
-        "catagory": ["software"],
-        "tags": ["C/C++", "Arduino"]
-    },
-    {
-        "name": "Work-Rest-Timer",
-        "details": "A Balanced Approach to Digital Wellness",
-        "image": "./assets/images/portfolio/15.jpg",
-        "link": "https://github.com/lifaet/Work-Rest-Timer",
-        "catagory": ["software"],
-        "tags": ["Python"]
-    },
-    {
-        "name": "Local-FileIndex-Server",
-        "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-        "image": "./assets/images/portfolio/16.jpg",
-        "link": "https://github.com/lifaet/Local-FileIndex-Server",
-        "catagory": ["software"],
-        "tags": ["Python", "HTML", "CSS", "JavaScript"]
-    },
-    {
-        "name": "Modern Digital Resume",
-        "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-        "image": "./assets/images/portfolio/17.jpg",
-        "link": "https://lifaet.github.io",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "JavaScript"]
-    },
-    {
-        "name": "Digital Resume",
-        "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-        "image": "./assets/images/portfolio/18.jpg",
-        "link": "https://v2.lifaet.pages.dev/",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
-    },
-    {
-        "name": "Highly Aminated Portfolio",
-        "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-        "image": "./assets/images/portfolio/19.jpg",
-        "link": "https://v1.lifaet.pages.dev/",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "JavaScript", "OpenGL"]
-    },
-    {
-        "name": "Result Publication System",
-        "details": "A web-based system for publishing student results, designed to streamline the process of result management and enhance accessibility for students and faculty.",
-        "image": "./assets/images/portfolio/20.jpg",
-        "link": "https://rmsrmu.pages.dev/",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "JavaScript", "AppScript"]
-    },
-    {
-        "name": "ENCOMPOS Smart POS System",
-        "details": "ENCOMPOS Smart POS System is a comprehensive solution for managing sales, inventory, and customer relationships in retail businesses. It offers features like real-time sales tracking, inventory management, customer management, and reporting to help businesses streamline their operations and improve efficiency.",
-        "image": "./assets/images/portfolio/21.jpg",
-        "link": "https://encompos.duckdns.org/",
-        "catagory": ["web"],
-        "tags": ["PPH", "Laravel", "React", "JavaScript", "Bootstrap"]
-    },
-    {
-        "name": "Attendance Management System",
-        "details": "Attendance Management System (AMS) is a crucial software solution specifically designed for universities and other educational institutions to efficiently track, monitor, and manage student attendance.",
-        "image": "./assets/images/portfolio/22.jpg",
-        "link": "https://github.com/lifaet/Attendance-Management-System",
-        "catagory": ["web"],
-        "tags": ["PHP", "Laravel", "Bootstrap"]
-    },
-    {
-        "name": "Multi Model AI Chat Application",
-        "details": "This project presents the development of a unified Multi-Model AI Chat Application designed to integrate a wide range of free and paid AI models into a single, user-friendly web interface.",
-        "image": "./assets/images/portfolio/23.jpg",
-        "link": "https://multiai.pages.dev/",
-        "catagory": ["web"],
-        "tags": ["HTML", "CSS", "JavaScript"]
-    }
-];
+// // PROJECTS//
+// // PROJECTS//
+// const projectsData = [
+//     {
+//         "name": "Keylogger Surveillance System",
+//         "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files. ",
+//         "image": "./assets/images/portfolio/1.jpg",
+//         "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
+//         "catagory": ["software"],
+//         "tags": ["Python", "JavaScript", "HTML", "Ubuntu Server"]
+//     },
+//     {
+//         "name": "Object Following Robot",
+//         "details": "It is a simple object-following robot. It can detect an object in front of it and can follow the object.",
+//         "image": "./assets/images/portfolio/2.jpg",
+//         "link": "https://github.com/lifaet/WALL-E-Junior",
+//         "catagory": ["software", "hardware"],
+//         "tags": ["C/C++", "Arduino"]
+//     },
+//     {
+//         "name": "MoviesBay",
+//         "details": "This project was a movie download website. Developed based on HTML, BOOTSTRAP, CSS, JAVASCRIPT, and database integration.",
+//         "image": "./assets/images/portfolio/3.jpg",
+//         "link": "https://moviesbay.pages.dev",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "JavaScript", "Bootstrap", "AppScript"]
+//     },
+//     {
+//         "name": "Optical Communication  ",
+//         "details": "This demonstrates an advanced technology that transfers data using optical signals.",
+//         "image": "./assets/images/portfolio/4.jpg",
+//         "link": "https://github.com/lifaet/Optical-Communication",
+//         "catagory": ["software", "hardware"],
+//         "tags": ["C/C++", "Arduino"]
+//     },
+//     {
+//         "name": "RC Surveillance Car ",
+//         "details": "he aim of this project is to design and build a remote-controlled surveillance camera car using an ESP32 module, car kit, and Motor driver module.",
+//         "image": "./assets/images/portfolio/5.jpg",
+//         "link": "https://github.com/lifaet/RC-Surveillance-Car",
+//         "catagory": ["software", "hardware"],
+//         "tags": ["C/C++", "Arduino"]
+//     },
+//     {
+//         "name": "Rotten Food Detection System",
+//         "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste. ",
+//         "image": "./assets/images/portfolio/6.jpg",
+//         "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
+//         "catagory": ["software", "hardware"],
+//         "tags": ["C/C++", "Arduino"]
+//     },
+//     {
+//         "name": "Automated Toll Collection System",
+//         "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.",
+//         "image": "./assets/images/portfolio/7.jpg",
+//         "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
+//         "catagory": ["software", "hardware"],
+//         "tags": ["Python", "C/C++", "Arduino"]
+//     },
+//     {
+//         "name": "Harinakundu Mobile House",
+//         "details": "Website for a mobile and accessories shop.",
+//         "image": "./assets/images/portfolio/8.jpg",
+//         "link": "https://hmhc.pages.dev",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript", "AppScript"]
+//     },
+//     {
+//         "name": "Solar Tracker",
+//         "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency. ",
+//         "image": "./assets/images/portfolio/9.jpg",
+//         "link": "https://github.com/lifaet/Solar-Tracker",
+//         "catagory": ["software", "hardware"],
+//         "tags": ["C/C++", "Arduino"]
+//     },
+//     {
+//         "name": "Flowers Shop",
+//         "details": "A website For a local flowers shop",
+//         "image": "./assets/images/portfolio/10.jpg",
+//         "link": "https://lifaet.github.io/wd4-flowers-shop",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
+//     },
+//     {
+//         "name": "Grufolio",
+//         "details": "Basic portfolio website for individual.",
+//         "image": "./assets/images/portfolio/11.jpg",
+//         "link": "https://lifaet.github.io/wd2-grufolio",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
+//     },
+//     {
+//         "name": "Brothers Association",
+//         "details": "A website For local Organization Based on bootstrap.",
+//         "image": "./assets/images/portfolio/12.jpg",
+//         "link": "https://lifaet.github.io/wd1-brothers-association",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
+//     },
+//     {
+//         "name": "PIR Security Alarm",
+//         "details": "Security Alarm for restricted area.",
+//         "image": "./assets/images/portfolio/13.jpg",
+//         "link": "https://github.com/lifaet/PIR-Security-Alarm",
+//         "catagory": ["software", "hardware"],
+//         "tags": ["C/C++", "Arduino"]
+//     },
+//     {
+//         "name": "Object Detection",
+//         "details": "Object detection and identification for live camera feed or videos.",
+//         "image": "./assets/images/portfolio/14.jpg",
+//         "link": "https://github.com/lifaet/Object-Detection",
+//         "catagory": ["software"],
+//         "tags": ["C/C++", "Arduino"]
+//     },
+//     {
+//         "name": "Work-Rest-Timer",
+//         "details": "A Balanced Approach to Digital Wellness",
+//         "image": "./assets/images/portfolio/15.jpg",
+//         "link": "https://github.com/lifaet/Work-Rest-Timer",
+//         "catagory": ["software"],
+//         "tags": ["Python"]
+//     },
+//     {
+//         "name": "Local-FileIndex-Server",
+//         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+//         "image": "./assets/images/portfolio/16.jpg",
+//         "link": "https://github.com/lifaet/Local-FileIndex-Server",
+//         "catagory": ["software"],
+//         "tags": ["Python", "HTML", "CSS", "JavaScript"]
+//     },
+//     {
+//         "name": "Modern Digital Resume",
+//         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+//         "image": "./assets/images/portfolio/17.jpg",
+//         "link": "https://lifaet.github.io",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "JavaScript"]
+//     },
+//     {
+//         "name": "Digital Resume",
+//         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+//         "image": "./assets/images/portfolio/18.jpg",
+//         "link": "https://v2.lifaet.pages.dev/",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
+//     },
+//     {
+//         "name": "Highly Aminated Portfolio",
+//         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+//         "image": "./assets/images/portfolio/19.jpg",
+//         "link": "https://v1.lifaet.pages.dev/",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "JavaScript", "OpenGL"]
+//     },
+//     {
+//         "name": "Result Publication System",
+//         "details": "A web-based system for publishing student results, designed to streamline the process of result management and enhance accessibility for students and faculty.",
+//         "image": "./assets/images/portfolio/20.jpg",
+//         "link": "https://rmsrmu.pages.dev/",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "JavaScript", "AppScript"]
+//     },
+//     {
+//         "name": "ENCOMPOS Smart POS System",
+//         "details": "ENCOMPOS Smart POS System is a comprehensive solution for managing sales, inventory, and customer relationships in retail businesses. It offers features like real-time sales tracking, inventory management, customer management, and reporting to help businesses streamline their operations and improve efficiency.",
+//         "image": "./assets/images/portfolio/21.jpg",
+//         "link": "https://encompos.duckdns.org/",
+//         "catagory": ["web"],
+//         "tags": ["PPH", "Laravel", "React", "JavaScript", "Bootstrap"]
+//     },
+//     {
+//         "name": "Attendance Management System",
+//         "details": "Attendance Management System (AMS) is a crucial software solution specifically designed for universities and other educational institutions to efficiently track, monitor, and manage student attendance.",
+//         "image": "./assets/images/portfolio/22.jpg",
+//         "link": "https://github.com/lifaet/Attendance-Management-System",
+//         "catagory": ["web"],
+//         "tags": ["PHP", "Laravel", "Bootstrap"]
+//     },
+//     {
+//         "name": "Multi Model AI Chat Application",
+//         "details": "This project presents the development of a unified Multi-Model AI Chat Application designed to integrate a wide range of free and paid AI models into a single, user-friendly web interface.",
+//         "image": "./assets/images/portfolio/23.jpg",
+//         "link": "https://multiai.pages.dev/",
+//         "catagory": ["web"],
+//         "tags": ["HTML", "CSS", "JavaScript"]
+//     }
+// ];
 
-function createProjectCard(project) {
-    return `
-        <div class="project-card" data-categories="${project.catagory.join(',')}">
-            <div class="project-image">
-                <img src="${project.image}" alt="${project.name}">
-                <div class="project-overlay">
-                    <div class="project-links">
-                        ${project.catagory.includes('web') ? // Changed from 'website' to 'web'
-            `<a href="${project.link}" target="_blank" title="Live Site">
-                                <i class="fas fa-external-link-alt"></i>
-                            </a>` :
-            `<a href="${project.link}" target="_blank" title="Source Code">
-                                <i class="fab fa-github"></i>
-                            </a>`
-        }
-                    </div>
-                </div>
-            </div>
-            <div class="project-info">
-                <h3>${project.name}</h3>
-                <p>${project.details}</p>
-                <div class="project-tags">
-                    ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
-                </div>
-            </div>
-        </div>
-    `;
-}
+// function createProjectCard(project) {
+//     return `
+//         <div class="project-card" data-categories="${project.catagory.join(',')}">
+//             <div class="project-image">
+//                 <img src="${project.image}" alt="${project.name}">
+//                 <div class="project-overlay">
+//                     <div class="project-links">
+//                         ${project.catagory.includes('web') ? // Changed from 'website' to 'web'
+//             `<a href="${project.link}" target="_blank" title="Live Site">
+//                                 <i class="fas fa-external-link-alt"></i>
+//                             </a>` :
+//             `<a href="${project.link}" target="_blank" title="Source Code">
+//                                 <i class="fab fa-github"></i>
+//                             </a>`
+//         }
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="project-info">
+//                 <h3>${project.name}</h3>
+//                 <p>${project.details}</p>
+//                 <div class="project-tags">
+//                     ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
+//                 </div>
+//             </div>
+//         </div>
+//     `;
+// }
 
-function loadProjects() {
-    const projectsGrid = document.querySelector('.projects-grid');
-    if (!projectsGrid) return;
-    const projectsHTML = projectsData.map(project => createProjectCard(project)).join('');
-    projectsGrid.innerHTML = projectsHTML;
-    // Initialize project filters if they exist
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const filter = btn.getAttribute('data-filter');
-            filterProjects(filter);
-        });
-    });
-    // Set initial active state for 'all' filter
-    const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
-    if (allFilterBtn) {
-        allFilterBtn.classList.add('active');
-    }
-}
+// function loadProjects() {
+//     const projectsGrid = document.querySelector('.projects-grid');
+//     if (!projectsGrid) return;
+//     const projectsHTML = projectsData.map(project => createProjectCard(project)).join('');
+//     projectsGrid.innerHTML = projectsHTML;
+//     // Initialize project filters if they exist
+//     const filterButtons = document.querySelectorAll('.filter-btn');
+//     filterButtons.forEach(btn => {
+//         btn.addEventListener('click', () => {
+//             const filter = btn.getAttribute('data-filter');
+//             filterProjects(filter);
+//         });
+//     });
+//     // Set initial active state for 'all' filter
+//     const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
+//     if (allFilterBtn) {
+//         allFilterBtn.classList.add('active');
+//     }
+// }
 
-function filterProjects(filter) {
-    // Update filter button active states
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    filterButtons.forEach(btn => {
-        if (btn.getAttribute('data-filter') === filter) {
-            btn.classList.add('active');
-        } else {
-            btn.classList.remove('active');
-        }
-    });
-    // Filter projects
-    const projects = document.querySelectorAll('.project-card');
-    projects.forEach(project => {
-        const categories = project.getAttribute('data-categories').split(',');
-        if (filter === 'all' || categories.includes(filter)) {
-            project.style.display = 'block';
-        } else {
-            project.style.display = 'none';
-        }
-    });
-}
-// Load projects when DOM is ready
-document.addEventListener('DOMContentLoaded', loadProjects);
+// function filterProjects(filter) {
+//     // Update filter button active states
+//     const filterButtons = document.querySelectorAll('.filter-btn');
+//     filterButtons.forEach(btn => {
+//         if (btn.getAttribute('data-filter') === filter) {
+//             btn.classList.add('active');
+//         } else {
+//             btn.classList.remove('active');
+//         }
+//     });
+//     // Filter projects
+//     const projects = document.querySelectorAll('.project-card');
+//     projects.forEach(project => {
+//         const categories = project.getAttribute('data-categories').split(',');
+//         if (filter === 'all' || categories.includes(filter)) {
+//             project.style.display = 'block';
+//         } else {
+//             project.style.display = 'none';
+//         }
+//     });
+// }
+// // Load projects when DOM is ready
+// document.addEventListener('DOMContentLoaded', loadProjects);
 
 // CONTACT FORM//
 // CONTACT FORM//
