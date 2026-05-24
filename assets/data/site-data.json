@@ -1,36 +1,90 @@
 {
-  "meta": {
-    "title": "Lifaet Hossain Zim - Welcome",
-    "description": "Lifaet Hossain Zim - Welcome",
-    "keywords": "Lifaet, Hossain, Zim",
-    "author": "Lifaet Hossain Zim"
-  },
-  "profile": {
-    "name": "Lifaet Hossain Zim",
-    "avatar": "./assets/images/avatar.jpeg",
-    "headline": "Hi, I'm",
-    "highlight": "Lifaet Hossain Zim",
-    "subtitle": "Support Engineer | Technical Support | IT Consultant",
-    "careerObjective": "I aim to utilize my skills and experiences to carve a promising future for myself. I am dedicated to embracing new challenges, bringing fresh ideas, and making positive differences in different areas of technology. I look forward to opportunities that allow me to contribute to the world’s developmental progress with my best efforts.",
-    "email": "lifaethossain@gmail.com",
-    "location": "Badda, Dhaka-1212, Bangladesh"
-  },
+  "title": "Lifaet Hossain Zim - Welcome",
+  "description": "Lifaet Hossain Zim - Welcome",
+  "keywords": "Lifaet, Hossain, Zim",
+  "author": "Lifaet Hossain Zim",
+  "name": "Lifaet Hossain Zim",
+  "avatar": "./assets/images/avatar.jpeg",
+  "headline": "Hi, I'm",
+  "highlight": "Lifaet Hossain Zim",
+  "subtitle": "Support Engineer | Technical Support | IT Consultant",
+  "careerObjective": "I aim to utilize my skills and experiences to carve a promising future for myself. I am dedicated to embracing new challenges, bringing fresh ideas, and making positive differences in different areas of technology. I look forward to opportunities that allow me to contribute to the world’s developmental progress with my best efforts.",
+  "email": "lifaethossain@gmail.com",
+  "location": "Badda, Dhaka-1212, Bangladesh",
   "socialLinks": [
-    { "name": "GitHub", "icon": "fab fa-github", "url": "https://github.com/lifaet" },
-    { "name": "LinkedIn", "icon": "fab fa-linkedin-in", "url": "https://linkedin.com/in/lifaet" },
-    { "name": "Facebook", "icon": "fab fa-facebook-f", "url": "https://facebook.com/lifaet" },
-    { "name": "Twitter", "icon": "fab fa-twitter", "url": "https://twitter.com/lifaeth" },
-    { "name": "Telegram", "icon": "fab fa-telegram-plane", "url": "https://t.me/lifaet" },
-    { "name": "Instagram", "icon": "fab fa-instagram", "url": "https://instagram.com/lifaet" },
-    { "name": "Email", "icon": "fas fa-envelope", "url": "mailto:lifaethossain@gmail.com" }
+    {
+      "name": "GitHub",
+      "icon": "fab fa-github",
+      "url": "https://github.com/lifaet"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "fab fa-linkedin-in",
+      "url": "https://linkedin.com/in/lifaet"
+    },
+    {
+      "name": "Facebook",
+      "icon": "fab fa-facebook-f",
+      "url": "https://facebook.com/lifaet"
+    },
+    {
+      "name": "Twitter",
+      "icon": "fab fa-twitter",
+      "url": "https://twitter.com/lifaeth"
+    },
+    {
+      "name": "Telegram",
+      "icon": "fab fa-telegram-plane",
+      "url": "https://t.me/lifaet"
+    },
+    {
+      "name": "Instagram",
+      "icon": "fab fa-instagram",
+      "url": "https://instagram.com/lifaet"
+    },
+    {
+      "name": "Email",
+      "icon": "fas fa-envelope",
+      "url": "mailto:lifaethossain@gmail.com"
+    }
   ],
   "menu": [
-    { "id": "home", "icon": "fas fa-home", "desktopLabel": "Home", "mobileLabel": "Home" },
-    { "id": "experience", "icon": "fas fa-briefcase", "desktopLabel": "Experience", "mobileLabel": "Work" },
-    { "id": "education", "icon": "fas fa-graduation-cap", "desktopLabel": "Education", "mobileLabel": "Study" },
-    { "id": "skills", "icon": "fas fa-tools", "desktopLabel": "Skill", "mobileLabel": "Skill" },
-    { "id": "projects", "icon": "fas fa-code", "desktopLabel": "Project", "mobileLabel": "Project" },
-    { "id": "contact", "icon": "fas fa-envelope", "desktopLabel": "Contact", "mobileLabel": "Contact" }
+    {
+      "id": "home",
+      "icon": "fas fa-home",
+      "desktopLabel": "Home",
+      "mobileLabel": "Home"
+    },
+    {
+      "id": "experience",
+      "icon": "fas fa-briefcase",
+      "desktopLabel": "Experience",
+      "mobileLabel": "Work"
+    },
+    {
+      "id": "education",
+      "icon": "fas fa-graduation-cap",
+      "desktopLabel": "Education",
+      "mobileLabel": "Study"
+    },
+    {
+      "id": "skills",
+      "icon": "fas fa-tools",
+      "desktopLabel": "Skill",
+      "mobileLabel": "Skill"
+    },
+    {
+      "id": "projects",
+      "icon": "fas fa-code",
+      "desktopLabel": "Project",
+      "mobileLabel": "Project"
+    },
+    {
+      "id": "contact",
+      "icon": "fas fa-envelope",
+      "desktopLabel": "Contact",
+      "mobileLabel": "Contact"
+    }
   ],
   "experience": [
     {
@@ -69,119 +123,526 @@
       "title": "BSc Engineering in Computer Science",
       "institute": "Rabindra Maitree University, Kushtia",
       "duration": "September 2019 - February 2023",
-      "achievements": ["CGPA: 3.90 out of 4.00"]
+      "achievements": [
+        "CGPA: 3.90 out of 4.00"
+      ]
     },
     {
       "title": "Higher Secondary Certificate",
       "institute": "Kushtia Islamia College, Kushtia",
       "duration": "July 2019",
-      "achievements": ["GPA: 3.17 out of 5.00"]
+      "achievements": [
+        "GPA: 3.17 out of 5.00"
+      ]
     },
     {
       "title": "Secondary School Certificate",
       "institute": "Dakshin Manoharpur, Kushtia",
       "duration": "May 2016",
-      "achievements": ["GPA: 5.00 out of 5.00"]
+      "achievements": [
+        "GPA: 5.00 out of 5.00"
+      ]
     }
   ],
   "certifications": [
-    { "issuer": "Dept of CSE, RMU", "title": "Participation in CSE Fest" },
-    { "issuer": "Dept of ICT, RMU", "title": "Participation in Programming Contest" },
-    { "issuer": "Sololearn", "title": "Basic C Course", "credentials": "ID: CC-UVU5GXS8", "link": "https://www.sololearn.com/certificates/CC-UVU5GXS8" },
-    { "issuer": "Sololearn", "title": "Basic C++ Course", "credentials": "ID: CC-JW62EZTB", "link": "https://www.sololearn.com/en/certificates/CC-JW62EZTB" },
-    { "issuer": "Sololearn", "title": "Basic Java Course", "credentials": "ID: CC-OLYEHJ24", "link": "https://www.sololearn.com/certificates/CC-OLYEHJ24" },
-    { "issuer": "Sololearn", "title": "Basic HTML Course", "credentials": "ID: CT-MZYPVXIR", "link": "https://www.sololearn.com/certificates/CT-MZYPVXIR" },
-    { "issuer": "Sololearn", "title": "JavaScript Intermediate Course", "credentials": "ID: CC-CMEZWVNY", "link": "https://www.sololearn.com/certificates/CC-CMEZWVNY" }
+    {
+      "issuer": "Dept of CSE, RMU",
+      "title": "Participation in CSE Fest"
+    },
+    {
+      "issuer": "Dept of ICT, RMU",
+      "title": "Participation in Programming Contest"
+    },
+    {
+      "issuer": "Sololearn",
+      "title": "Basic C Course",
+      "credentials": "ID: CC-UVU5GXS8",
+      "link": "https://www.sololearn.com/certificates/CC-UVU5GXS8"
+    },
+    {
+      "issuer": "Sololearn",
+      "title": "Basic C++ Course",
+      "credentials": "ID: CC-JW62EZTB",
+      "link": "https://www.sololearn.com/en/certificates/CC-JW62EZTB"
+    },
+    {
+      "issuer": "Sololearn",
+      "title": "Basic Java Course",
+      "credentials": "ID: CC-OLYEHJ24",
+      "link": "https://www.sololearn.com/certificates/CC-OLYEHJ24"
+    },
+    {
+      "issuer": "Sololearn",
+      "title": "Basic HTML Course",
+      "credentials": "ID: CT-MZYPVXIR",
+      "link": "https://www.sololearn.com/certificates/CT-MZYPVXIR"
+    },
+    {
+      "issuer": "Sololearn",
+      "title": "JavaScript Intermediate Course",
+      "credentials": "ID: CC-CMEZWVNY",
+      "link": "https://www.sololearn.com/certificates/CC-CMEZWVNY"
+    }
   ],
   "skills": [
     {
       "category": "Languages Skills",
       "icon": "fas fa-code",
       "items": [
-        { "name": "C / C++", "level": "55%" },
-        { "name": "Python", "level": "45%" },
-        { "name": "JavaScript", "level": "50%" },
-        { "name": "HTML", "level": "70%" },
-        { "name": "CSS", "level": "50%" },
-        { "name": "PHP Laravel", "level": "35%" }
+        {
+          "name": "C / C++",
+          "level": "55%"
+        },
+        {
+          "name": "Python",
+          "level": "45%"
+        },
+        {
+          "name": "JavaScript",
+          "level": "50%"
+        },
+        {
+          "name": "HTML",
+          "level": "70%"
+        },
+        {
+          "name": "CSS",
+          "level": "50%"
+        },
+        {
+          "name": "PHP Laravel",
+          "level": "35%"
+        }
       ]
     },
     {
       "category": "Applications & Software",
       "icon": "fas fa-laptop-code",
       "items": [
-        { "name": "VS / VS Code", "level": "70%" },
-        { "name": "GitHub", "level": "75%" },
-        { "name": "Git", "level": "45%" },
-        { "name": "Cloudflare", "level": "65%" },
-        { "name": "Azure", "level": "40%" },
-        { "name": "Google (Cloud Console, Search Console, Analytics, Business)", "level": "70%" },
-        { "name": "Node", "level": "35%" },
-        { "name": "Codeblocks", "level": "70%" },
-        { "name": "NetBeans", "level": "55%" },
-        { "name": "Arduino", "level": "75%" },
-        { "name": "Cisco", "level": "35%" }
+        {
+          "name": "VS / VS Code",
+          "level": "70%"
+        },
+        {
+          "name": "GitHub",
+          "level": "75%"
+        },
+        {
+          "name": "Git",
+          "level": "45%"
+        },
+        {
+          "name": "Cloudflare",
+          "level": "65%"
+        },
+        {
+          "name": "Azure",
+          "level": "40%"
+        },
+        {
+          "name": "Google (Cloud Console, Search Console, Analytics, Business)",
+          "level": "70%"
+        },
+        {
+          "name": "Node",
+          "level": "35%"
+        },
+        {
+          "name": "Codeblocks",
+          "level": "70%"
+        },
+        {
+          "name": "NetBeans",
+          "level": "55%"
+        },
+        {
+          "name": "Arduino",
+          "level": "75%"
+        },
+        {
+          "name": "Cisco",
+          "level": "35%"
+        }
       ]
     },
     {
       "category": "Office Applications",
       "icon": "fas fa-file-alt",
       "items": [
-        { "name": "Microsoft Office (Excel, Word, PowerPoint)", "level": "75%" },
-        { "name": "Google (Docs, Sheets, Slides, Forms)", "level": "75%" }
+        {
+          "name": "Microsoft Office (Excel, Word, PowerPoint)",
+          "level": "75%"
+        },
+        {
+          "name": "Google (Docs, Sheets, Slides, Forms)",
+          "level": "75%"
+        }
       ]
     },
     {
       "category": "Operating Systems",
       "icon": "fas fa-desktop",
       "items": [
-        { "name": "Windows", "level": "85%" },
-        { "name": "Linux (Kali, Ubuntu, Ubuntu Server, TruNAS)", "level": "45%" }
+        {
+          "name": "Windows",
+          "level": "85%"
+        },
+        {
+          "name": "Linux (Kali, Ubuntu, Ubuntu Server, TruNAS)",
+          "level": "45%"
+        }
       ]
     }
   ],
   "languages": [
-    { "name": "Bangla", "rating": 5 },
-    { "name": "English", "rating": 4.5 }
-  ],
-  "projectFilters": [
-    { "id": "all", "label": "All" },
-    { "id": "web", "label": "Website" },
-    { "id": "software", "label": "Software" },
-    { "id": "hardware", "label": "Hardware" }
+    {
+      "name": "Bangla",
+      "rating": 5
+    },
+    {
+      "name": "English",
+      "rating": 4.5
+    }
   ],
   "projects": [
-    { "name": "Keylogger Surveillance System", "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files.", "image": "./assets/images/portfolio/1.jpg", "link": "https://github.com/lifaet/Keylogger-Surveillance-System", "category": ["software"], "tags": ["Python", "JavaScript", "HTML", "Ubuntu Server"] },
-    { "name": "Object Following Robot", "details": "It is a simple object-following robot. It can detect an object in front of it and can follow the object.", "image": "./assets/images/portfolio/2.jpg", "link": "https://github.com/lifaet/WALL-E-Junior", "category": ["software", "hardware"], "tags": ["C/C++", "Arduino"] },
-    { "name": "MoviesBay", "details": "This project was a movie download website. Developed based on HTML, BOOTSTRAP, CSS, JAVASCRIPT, and database integration.", "image": "./assets/images/portfolio/3.jpg", "link": "https://moviesbay.pages.dev", "category": ["web"], "tags": ["HTML", "CSS", "JavaScript", "Bootstrap", "AppScript"] },
-    { "name": "Optical Communication", "details": "This demonstrates an advanced technology that transfers data using optical signals.", "image": "./assets/images/portfolio/4.jpg", "link": "https://github.com/lifaet/Optical-Communication", "category": ["software", "hardware"], "tags": ["C/C++", "Arduino"] },
-    { "name": "RC Surveillance Car", "details": "The aim of this project is to design and build a remote-controlled surveillance camera car using an ESP32 module, car kit, and motor driver module.", "image": "./assets/images/portfolio/5.jpg", "link": "https://github.com/lifaet/RC-Surveillance-Car", "category": ["software", "hardware"], "tags": ["C/C++", "Arduino"] },
-    { "name": "Rotten Food Detection System", "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste.", "image": "./assets/images/portfolio/6.jpg", "link": "https://github.com/lifaet/Rotten-Food-Detection-System", "category": ["software", "hardware"], "tags": ["C/C++", "Arduino"] },
-    { "name": "Automated Toll Collection System", "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.", "image": "./assets/images/portfolio/7.jpg", "link": "https://github.com/lifaet/Auto-Toll-Collection-System", "category": ["software", "hardware"], "tags": ["Python", "C/C++", "Arduino"] },
-    { "name": "Harinakundu Mobile House", "details": "Website for a mobile and accessories shop.", "image": "./assets/images/portfolio/8.jpg", "link": "https://hmhc.pages.dev", "category": ["web"], "tags": ["HTML", "CSS", "Bootstrap", "JavaScript", "AppScript"] },
-    { "name": "Solar Tracker", "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency.", "image": "./assets/images/portfolio/9.jpg", "link": "https://github.com/lifaet/Solar-Tracker", "category": ["software", "hardware"], "tags": ["C/C++", "Arduino"] },
-    { "name": "Flowers Shop", "details": "A website for a local flowers shop.", "image": "./assets/images/portfolio/10.jpg", "link": "https://lifaet.github.io/wd4-flowers-shop", "category": ["web"], "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"] },
-    { "name": "Grufolio", "details": "Basic portfolio website for individual.", "image": "./assets/images/portfolio/11.jpg", "link": "https://lifaet.github.io/wd2-grufolio", "category": ["web"], "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"] },
-    { "name": "Brothers Association", "details": "A website for local organization based on Bootstrap.", "image": "./assets/images/portfolio/12.jpg", "link": "https://lifaet.github.io/wd1-brothers-association", "category": ["web"], "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"] },
-    { "name": "PIR Security Alarm", "details": "Security alarm for restricted area.", "image": "./assets/images/portfolio/13.jpg", "link": "https://github.com/lifaet/PIR-Security-Alarm", "category": ["software", "hardware"], "tags": ["C/C++", "Arduino"] },
-    { "name": "Object Detection", "details": "Object detection and identification for live camera feed or videos.", "image": "./assets/images/portfolio/14.jpg", "link": "https://github.com/lifaet/Object-Detection", "category": ["software"], "tags": ["C/C++", "Arduino"] },
-    { "name": "Work-Rest-Timer", "details": "A Balanced Approach to Digital Wellness.", "image": "./assets/images/portfolio/15.jpg", "link": "https://github.com/lifaet/Work-Rest-Timer", "category": ["software"], "tags": ["Python"] },
-    { "name": "Local-FileIndex-Server", "details": "Basic application to index and share selected directories of a Windows computer to the local network.", "image": "./assets/images/portfolio/16.jpg", "link": "https://github.com/lifaet/Local-FileIndex-Server", "category": ["software"], "tags": ["Python", "HTML", "CSS", "JavaScript"] },
-    { "name": "Modern Digital Resume", "details": "Basic application to index and share selected directories of a Windows computer to the local network.", "image": "./assets/images/portfolio/17.jpg", "link": "https://lifaet.github.io", "category": ["web"], "tags": ["HTML", "CSS", "JavaScript"] },
-    { "name": "Digital Resume", "details": "Basic application to index and share selected directories of a Windows computer to the local network.", "image": "./assets/images/portfolio/18.jpg", "link": "https://v2.lifaet.pages.dev/", "category": ["web"], "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"] },
-    { "name": "Highly Aminated Portfolio", "details": "Basic application to index and share selected directories of a Windows computer to the local network.", "image": "./assets/images/portfolio/19.jpg", "link": "https://v1.lifaet.pages.dev/", "category": ["web"], "tags": ["HTML", "CSS", "JavaScript", "OpenGL"] },
-    { "name": "Result Publication System", "details": "A web-based system for publishing student results, designed to streamline the process of result management and enhance accessibility for students and faculty.", "image": "./assets/images/portfolio/20.jpg", "link": "https://rmsrmu.pages.dev/", "category": ["web"], "tags": ["HTML", "CSS", "JavaScript", "AppScript"] },
-    { "name": "ENCOMPOS Smart POS System", "details": "ENCOMPOS Smart POS System is a comprehensive solution for managing sales, inventory, and customer relationships in retail businesses. It offers features like real-time sales tracking, inventory management, customer management, and reporting to help businesses streamline their operations and improve efficiency.", "image": "./assets/images/portfolio/21.jpg", "link": "https://encompos.duckdns.org/", "category": ["web"], "tags": ["PPH", "Laravel", "React", "JavaScript", "Bootstrap"] },
-    { "name": "Attendance Management System", "details": "Attendance Management System (AMS) is a crucial software solution specifically designed for universities and other educational institutions to efficiently track, monitor, and manage student attendance.", "image": "./assets/images/portfolio/22.jpg", "link": "https://github.com/lifaet/Attendance-Management-System", "category": ["web"], "tags": ["PHP", "Laravel", "Bootstrap"] },
-    { "name": "Multi Model AI Chat Application", "details": "This project presents the development of a unified Multi-Model AI Chat Application designed to integrate a wide range of free and paid AI models into a single, user-friendly web interface.", "image": "./assets/images/portfolio/23.jpg", "link": "https://multiai.pages.dev/", "category": ["web"], "tags": ["HTML", "CSS", "JavaScript"] }
+    {
+      "name": "Keylogger Surveillance System",
+      "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files.",
+      "image": "./assets/images/portfolio/1.jpg",
+      "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
+      "category": [
+        "software"
+      ],
+      "tags": [
+        "Python",
+        "JavaScript",
+        "HTML",
+        "Ubuntu Server"
+      ]
+    },
+    {
+      "name": "Object Following Robot",
+      "details": "It is a simple object-following robot. It can detect an object in front of it and can follow the object.",
+      "image": "./assets/images/portfolio/2.jpg",
+      "link": "https://github.com/lifaet/WALL-E-Junior",
+      "category": [
+        "software",
+        "hardware"
+      ],
+      "tags": [
+        "C/C++",
+        "Arduino"
+      ]
+    },
+    {
+      "name": "MoviesBay",
+      "details": "This project was a movie download website. Developed based on HTML, BOOTSTRAP, CSS, JAVASCRIPT, and database integration.",
+      "image": "./assets/images/portfolio/3.jpg",
+      "link": "https://moviesbay.pages.dev",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Bootstrap",
+        "AppScript"
+      ]
+    },
+    {
+      "name": "Optical Communication",
+      "details": "This demonstrates an advanced technology that transfers data using optical signals.",
+      "image": "./assets/images/portfolio/4.jpg",
+      "link": "https://github.com/lifaet/Optical-Communication",
+      "category": [
+        "software",
+        "hardware"
+      ],
+      "tags": [
+        "C/C++",
+        "Arduino"
+      ]
+    },
+    {
+      "name": "RC Surveillance Car",
+      "details": "The aim of this project is to design and build a remote-controlled surveillance camera car using an ESP32 module, car kit, and motor driver module.",
+      "image": "./assets/images/portfolio/5.jpg",
+      "link": "https://github.com/lifaet/RC-Surveillance-Car",
+      "category": [
+        "software",
+        "hardware"
+      ],
+      "tags": [
+        "C/C++",
+        "Arduino"
+      ]
+    },
+    {
+      "name": "Rotten Food Detection System",
+      "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste.",
+      "image": "./assets/images/portfolio/6.jpg",
+      "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
+      "category": [
+        "software",
+        "hardware"
+      ],
+      "tags": [
+        "C/C++",
+        "Arduino"
+      ]
+    },
+    {
+      "name": "Automated Toll Collection System",
+      "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.",
+      "image": "./assets/images/portfolio/7.jpg",
+      "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
+      "category": [
+        "software",
+        "hardware"
+      ],
+      "tags": [
+        "Python",
+        "C/C++",
+        "Arduino"
+      ]
+    },
+    {
+      "name": "Harinakundu Mobile House",
+      "details": "Website for a mobile and accessories shop.",
+      "image": "./assets/images/portfolio/8.jpg",
+      "link": "https://hmhc.pages.dev",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "JavaScript",
+        "AppScript"
+      ]
+    },
+    {
+      "name": "Solar Tracker",
+      "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency.",
+      "image": "./assets/images/portfolio/9.jpg",
+      "link": "https://github.com/lifaet/Solar-Tracker",
+      "category": [
+        "software",
+        "hardware"
+      ],
+      "tags": [
+        "C/C++",
+        "Arduino"
+      ]
+    },
+    {
+      "name": "Flowers Shop",
+      "details": "A website for a local flowers shop.",
+      "image": "./assets/images/portfolio/10.jpg",
+      "link": "https://lifaet.github.io/wd4-flowers-shop",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Grufolio",
+      "details": "Basic portfolio website for individual.",
+      "image": "./assets/images/portfolio/11.jpg",
+      "link": "https://lifaet.github.io/wd2-grufolio",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Brothers Association",
+      "details": "A website for local organization based on Bootstrap.",
+      "image": "https://lifaet.github.io/wd1-brothers-association",
+      "link": "https://lifaet.github.io/wd1-brothers-association",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "PIR Security Alarm",
+      "details": "Security alarm for restricted area.",
+      "image": "./assets/images/portfolio/13.jpg",
+      "link": "https://github.com/lifaet/PIR-Security-Alarm",
+      "category": [
+        "software",
+        "hardware"
+      ],
+      "tags": [
+        "C/C++",
+        "Arduino"
+      ]
+    },
+    {
+      "name": "Object Detection",
+      "details": "Object detection and identification for live camera feed or videos.",
+      "image": "./assets/images/portfolio/14.jpg",
+      "link": "https://github.com/lifaet/Object-Detection",
+      "category": [
+        "software"
+      ],
+      "tags": [
+        "C/C++",
+        "Arduino"
+      ]
+    },
+    {
+      "name": "Work-Rest-Timer",
+      "details": "A Balanced Approach to Digital Wellness.",
+      "image": "https://github.com/lifaet/Work-Rest-Timer",
+      "link": "https://github.com/lifaet/Work-Rest-Timer",
+      "category": [
+        "software"
+      ],
+      "tags": [
+        "Python"
+      ]
+    },
+    {
+      "name": "Local-FileIndex-Server",
+      "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+      "image": "https://github.com/lifaet/Local-FileIndex-Server",
+      "link": "https://github.com/lifaet/Local-FileIndex-Server",
+      "category": [
+        "software"
+      ],
+      "tags": [
+        "Python",
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Modern Digital Resume",
+      "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+      "image": "https://lifaet.github.io",
+      "link": "https://lifaet.github.io",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Digital Resume",
+      "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+      "image": "https://v2.lifaet.pages.dev/",
+      "link": "https://v2.lifaet.pages.dev/",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "JavaScript"
+      ]
+    },
+    {
+      "name": "Highly Aminated Portfolio",
+      "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
+      "image": "https://v1.lifaet.pages.dev/",
+      "link": "https://v1.lifaet.pages.dev/",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "OpenGL"
+      ]
+    },
+    {
+      "name": "Result Publication System",
+      "details": "A web-based system for publishing student results, designed to streamline the process of result management and enhance accessibility for students and faculty.",
+      "image": "https://rmsrmu.pages.dev/",
+      "link": "https://rmsrmu.pages.dev/",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "AppScript"
+      ]
+    },
+    {
+      "name": "ENCOMPOS Smart POS System",
+      "details": "ENCOMPOS Smart POS System is a comprehensive solution for managing sales, inventory, and customer relationships in retail businesses. It offers features like real-time sales tracking, inventory management, customer management, and reporting to help businesses streamline their operations and improve efficiency.",
+      "image": "https://encompos.duckdns.org/",
+      "link": "https://encompos.duckdns.org/",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "PPH",
+        "Laravel",
+        "React",
+        "JavaScript",
+        "Bootstrap"
+      ]
+    },
+    {
+      "name": "Attendance Management System",
+      "details": "Attendance Management System (AMS) is a crucial software solution specifically designed for universities and other educational institutions to efficiently track, monitor, and manage student attendance.",
+      "image": "https://github.com/lifaet/Attendance-Management-System",
+      "link": "https://github.com/lifaet/Attendance-Management-System",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "PHP",
+        "Laravel",
+        "Bootstrap"
+      ]
+    },
+    {
+      "name": "Multi Model AI Chat Application",
+      "details": "This project presents the development of a unified Multi-Model AI Chat Application designed to integrate a wide range of free and paid AI models into a single, user-friendly web interface.",
+      "image": "https://multiai.pages.dev/",
+      "link": "https://multiai.pages.dev/",
+      "category": [
+        "web"
+      ],
+      "tags": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ]
+    }
   ],
-  "contact": {
-    "email": "lifaethossain@gmail.com",
-    "location": "Badda, Dhaka-1212, Bangladesh",
-    "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26431.046022583007!2d90.4089125931917!3d23.786323103802285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b71894d7cb%3A0x725a1e9ba77a8744!2sBadda%2C%20Dhaka!5e1!3m2!1sen!2sbd!4v1748852730366!5m2!1sen!2sbd",
-    "cvRedirectBase": "https://lifaet.pages.dev/cv?token=",
-    "formScriptBase": "https://script.google.com/macros/s/",
-    "formScriptId": "AKfycbwTnO3lXBe1RyfMECfWA4i-Z3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg"
-  },
+  "mapUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d26431.046022583007!2d90.4089125931917!3d23.786323103802285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c7b71894d7cb%3A0x725a1e9ba77a8744!2sBadda%2C%20Dhaka!5e1!3m2!1sen!2sbd!4v1748852730366!5m2!1sen!2sbd",
+  "cvRedirectBase": "https://lifaet.pages.dev/cv?token=",
+  "formScriptBase": "https://script.google.com/macros/s/",
+  "formScriptId": "AKfycbwTnO3lXBe1RyfMECfWA4i-Z3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg",
   "copyright": "© 2026 Lifaet Hossain Zim"
 }

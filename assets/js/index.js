@@ -120,269 +120,7 @@ function handleHashChange() {
 // Call handleHashChange on load and hash change
 window.addEventListener('load', handleHashChange);
 window.addEventListener('hashchange', handleHashChange);
-// // PROJECTS//
-// // PROJECTS//
-// const projectsData = [
-//     {
-//         "name": "Keylogger Surveillance System",
-//         "details": "This type of surveillance technology monitors and records each keystroke and DNS query a system makes on a specific computer. It can upload real-time data to an FTP server and provides a secure local and online web console as an interface for viewing and analyzing log files. ",
-//         "image": "./assets/images/portfolio/1.jpg",
-//         "link": "https://github.com/lifaet/Keylogger-Surveillance-System",
-//         "catagory": ["software"],
-//         "tags": ["Python", "JavaScript", "HTML", "Ubuntu Server"]
-//     },
-//     {
-//         "name": "Object Following Robot",
-//         "details": "It is a simple object-following robot. It can detect an object in front of it and can follow the object.",
-//         "image": "./assets/images/portfolio/2.jpg",
-//         "link": "https://github.com/lifaet/WALL-E-Junior",
-//         "catagory": ["software", "hardware"],
-//         "tags": ["C/C++", "Arduino"]
-//     },
-//     {
-//         "name": "MoviesBay",
-//         "details": "This project was a movie download website. Developed based on HTML, BOOTSTRAP, CSS, JAVASCRIPT, and database integration.",
-//         "image": "./assets/images/portfolio/3.jpg",
-//         "link": "https://moviesbay.pages.dev",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "JavaScript", "Bootstrap", "AppScript"]
-//     },
-//     {
-//         "name": "Optical Communication  ",
-//         "details": "This demonstrates an advanced technology that transfers data using optical signals.",
-//         "image": "./assets/images/portfolio/4.jpg",
-//         "link": "https://github.com/lifaet/Optical-Communication",
-//         "catagory": ["software", "hardware"],
-//         "tags": ["C/C++", "Arduino"]
-//     },
-//     {
-//         "name": "RC Surveillance Car ",
-//         "details": "he aim of this project is to design and build a remote-controlled surveillance camera car using an ESP32 module, car kit, and Motor driver module.",
-//         "image": "./assets/images/portfolio/5.jpg",
-//         "link": "https://github.com/lifaet/RC-Surveillance-Car",
-//         "catagory": ["software", "hardware"],
-//         "tags": ["C/C++", "Arduino"]
-//     },
-//     {
-//         "name": "Rotten Food Detection System",
-//         "details": "An innovative system based on Arduino and gas sensors, designed to detect and alert users about food spoilage, ensuring food safety and reducing waste. ",
-//         "image": "./assets/images/portfolio/6.jpg",
-//         "link": "https://github.com/lifaet/Rotten-Food-Detection-System",
-//         "catagory": ["software", "hardware"],
-//         "tags": ["C/C++", "Arduino"]
-//     },
-//     {
-//         "name": "Automated Toll Collection System",
-//         "details": "An automated, cashless system using RFID technology to identify vehicles and deduct toll charges.",
-//         "image": "./assets/images/portfolio/7.jpg",
-//         "link": "https://github.com/lifaet/Auto-Toll-Collection-System",
-//         "catagory": ["software", "hardware"],
-//         "tags": ["Python", "C/C++", "Arduino"]
-//     },
-//     {
-//         "name": "Harinakundu Mobile House",
-//         "details": "Website for a mobile and accessories shop.",
-//         "image": "./assets/images/portfolio/8.jpg",
-//         "link": "https://hmhc.pages.dev",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript", "AppScript"]
-//     },
-//     {
-//         "name": "Solar Tracker",
-//         "details": "It’s a smart system that uses LDRs and Arduino for sun tracking. It adjusts the orientation of solar panels to maximize energy absorption, thereby boosting solar power efficiency. ",
-//         "image": "./assets/images/portfolio/9.jpg",
-//         "link": "https://github.com/lifaet/Solar-Tracker",
-//         "catagory": ["software", "hardware"],
-//         "tags": ["C/C++", "Arduino"]
-//     },
-//     {
-//         "name": "Flowers Shop",
-//         "details": "A website For a local flowers shop",
-//         "image": "./assets/images/portfolio/10.jpg",
-//         "link": "https://lifaet.github.io/wd4-flowers-shop",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
-//     },
-//     {
-//         "name": "Grufolio",
-//         "details": "Basic portfolio website for individual.",
-//         "image": "./assets/images/portfolio/11.jpg",
-//         "link": "https://lifaet.github.io/wd2-grufolio",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
-//     },
-//     {
-//         "name": "Brothers Association",
-//         "details": "A website For local Organization Based on bootstrap.",
-//         "image": "./assets/images/portfolio/12.jpg",
-//         "link": "https://lifaet.github.io/wd1-brothers-association",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
-//     },
-//     {
-//         "name": "PIR Security Alarm",
-//         "details": "Security Alarm for restricted area.",
-//         "image": "./assets/images/portfolio/13.jpg",
-//         "link": "https://github.com/lifaet/PIR-Security-Alarm",
-//         "catagory": ["software", "hardware"],
-//         "tags": ["C/C++", "Arduino"]
-//     },
-//     {
-//         "name": "Object Detection",
-//         "details": "Object detection and identification for live camera feed or videos.",
-//         "image": "./assets/images/portfolio/14.jpg",
-//         "link": "https://github.com/lifaet/Object-Detection",
-//         "catagory": ["software"],
-//         "tags": ["C/C++", "Arduino"]
-//     },
-//     {
-//         "name": "Work-Rest-Timer",
-//         "details": "A Balanced Approach to Digital Wellness",
-//         "image": "./assets/images/portfolio/15.jpg",
-//         "link": "https://github.com/lifaet/Work-Rest-Timer",
-//         "catagory": ["software"],
-//         "tags": ["Python"]
-//     },
-//     {
-//         "name": "Local-FileIndex-Server",
-//         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-//         "image": "./assets/images/portfolio/16.jpg",
-//         "link": "https://github.com/lifaet/Local-FileIndex-Server",
-//         "catagory": ["software"],
-//         "tags": ["Python", "HTML", "CSS", "JavaScript"]
-//     },
-//     {
-//         "name": "Modern Digital Resume",
-//         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-//         "image": "./assets/images/portfolio/17.jpg",
-//         "link": "https://lifaet.github.io",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "JavaScript"]
-//     },
-//     {
-//         "name": "Digital Resume",
-//         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-//         "image": "./assets/images/portfolio/18.jpg",
-//         "link": "https://v2.lifaet.pages.dev/",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "Bootstrap", "JavaScript"]
-//     },
-//     {
-//         "name": "Highly Aminated Portfolio",
-//         "details": "Basic application to index and share selected directories of a Windows computer to the local network.",
-//         "image": "./assets/images/portfolio/19.jpg",
-//         "link": "https://v1.lifaet.pages.dev/",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "JavaScript", "OpenGL"]
-//     },
-//     {
-//         "name": "Result Publication System",
-//         "details": "A web-based system for publishing student results, designed to streamline the process of result management and enhance accessibility for students and faculty.",
-//         "image": "./assets/images/portfolio/20.jpg",
-//         "link": "https://rmsrmu.pages.dev/",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "JavaScript", "AppScript"]
-//     },
-//     {
-//         "name": "ENCOMPOS Smart POS System",
-//         "details": "ENCOMPOS Smart POS System is a comprehensive solution for managing sales, inventory, and customer relationships in retail businesses. It offers features like real-time sales tracking, inventory management, customer management, and reporting to help businesses streamline their operations and improve efficiency.",
-//         "image": "./assets/images/portfolio/21.jpg",
-//         "link": "https://encompos.duckdns.org/",
-//         "catagory": ["web"],
-//         "tags": ["PPH", "Laravel", "React", "JavaScript", "Bootstrap"]
-//     },
-//     {
-//         "name": "Attendance Management System",
-//         "details": "Attendance Management System (AMS) is a crucial software solution specifically designed for universities and other educational institutions to efficiently track, monitor, and manage student attendance.",
-//         "image": "./assets/images/portfolio/22.jpg",
-//         "link": "https://github.com/lifaet/Attendance-Management-System",
-//         "catagory": ["web"],
-//         "tags": ["PHP", "Laravel", "Bootstrap"]
-//     },
-//     {
-//         "name": "Multi Model AI Chat Application",
-//         "details": "This project presents the development of a unified Multi-Model AI Chat Application designed to integrate a wide range of free and paid AI models into a single, user-friendly web interface.",
-//         "image": "./assets/images/portfolio/23.jpg",
-//         "link": "https://multiai.pages.dev/",
-//         "catagory": ["web"],
-//         "tags": ["HTML", "CSS", "JavaScript"]
-//     }
-// ];
 
-// function createProjectCard(project) {
-//     return `
-//         <div class="project-card" data-categories="${project.catagory.join(',')}">
-//             <div class="project-image">
-//                 <img src="${project.image}" alt="${project.name}">
-//                 <div class="project-overlay">
-//                     <div class="project-links">
-//                         ${project.catagory.includes('web') ? // Changed from 'website' to 'web'
-//             `<a href="${project.link}" target="_blank" title="Live Site">
-//                                 <i class="fas fa-external-link-alt"></i>
-//                             </a>` :
-//             `<a href="${project.link}" target="_blank" title="Source Code">
-//                                 <i class="fab fa-github"></i>
-//                             </a>`
-//         }
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="project-info">
-//                 <h3>${project.name}</h3>
-//                 <p>${project.details}</p>
-//                 <div class="project-tags">
-//                     ${project.tags.map(tag => `<span>${tag}</span>`).join('')}
-//                 </div>
-//             </div>
-//         </div>
-//     `;
-// }
-
-// function loadProjects() {
-//     const projectsGrid = document.querySelector('.projects-grid');
-//     if (!projectsGrid) return;
-//     const projectsHTML = projectsData.map(project => createProjectCard(project)).join('');
-//     projectsGrid.innerHTML = projectsHTML;
-//     // Initialize project filters if they exist
-//     const filterButtons = document.querySelectorAll('.filter-btn');
-//     filterButtons.forEach(btn => {
-//         btn.addEventListener('click', () => {
-//             const filter = btn.getAttribute('data-filter');
-//             filterProjects(filter);
-//         });
-//     });
-//     // Set initial active state for 'all' filter
-//     const allFilterBtn = document.querySelector('.filter-btn[data-filter="all"]');
-//     if (allFilterBtn) {
-//         allFilterBtn.classList.add('active');
-//     }
-// }
-
-// function filterProjects(filter) {
-//     // Update filter button active states
-//     const filterButtons = document.querySelectorAll('.filter-btn');
-//     filterButtons.forEach(btn => {
-//         if (btn.getAttribute('data-filter') === filter) {
-//             btn.classList.add('active');
-//         } else {
-//             btn.classList.remove('active');
-//         }
-//     });
-//     // Filter projects
-//     const projects = document.querySelectorAll('.project-card');
-//     projects.forEach(project => {
-//         const categories = project.getAttribute('data-categories').split(',');
-//         if (filter === 'all' || categories.includes(filter)) {
-//             project.style.display = 'block';
-//         } else {
-//             project.style.display = 'none';
-//         }
-//     });
-// }
-// // Load projects when DOM is ready
-// document.addEventListener('DOMContentLoaded', loadProjects);
-
-// CONTACT FORM//
 // CONTACT FORM//
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = document.getElementById('contactForm');
@@ -570,4 +308,356 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     particlesJS('particles-js', particlesConfig);
+});
+
+
+
+// SITE DATA LOADER//
+const SITE_DATA_URL = './assets/data/site-data.json';
+
+function buildSocialLinks(socialLinks) {
+  return (socialLinks || [])
+    .map(link => `
+      <a href="${link.url}" target="_blank" rel="noreferrer noopener" class="social-btn" title="${link.name}">
+        <i class="${link.icon}"></i>
+      </a>
+    `)
+    .join('');
+}
+
+function renderMenu(menuItems) {
+  const desktopButtons = document.querySelectorAll('.sidebar .menu-btn');
+  const mobileButtons = document.querySelectorAll('.mobile-bottom-nav .nav-btn');
+
+  (menuItems || []).forEach((item, index) => {
+    const desktopButton = desktopButtons[index];
+    const mobileButton = mobileButtons[index];
+
+    if (desktopButton) {
+      const icon = desktopButton.querySelector('i');
+      const label = desktopButton.querySelector('span');
+      if (icon) icon.className = item.icon;
+      if (label) label.textContent = item.desktopLabel;
+    }
+
+    if (mobileButton) {
+      const icon = mobileButton.querySelector('i');
+      const label = mobileButton.querySelector('span');
+      if (icon) icon.className = item.icon;
+      if (label) label.textContent = item.mobileLabel;
+    }
+  });
+}
+
+function renderProfile(data) {
+  const desktopImg = document.querySelector('.sidebar .profile-image img');
+  const mobileImg = document.querySelector('.mobile-profile img');
+  const desktopName = document.querySelector('.sidebar .profile-name');
+  const mobileName = document.querySelector('.mobile-profile span');
+
+  if (desktopImg) {
+    desktopImg.src = data.avatar;
+    desktopImg.alt = data.name;
+  }
+  if (mobileImg) {
+    mobileImg.src = data.avatar;
+    mobileImg.alt = data.name;
+  }
+  if (desktopName) desktopName.textContent = data.name;
+  if (mobileName) mobileName.textContent = data.name;
+}
+
+function renderMetadata(data) {
+  if (!data) return;
+  if (data.title) document.title = data.title;
+
+  const updateMeta = (name, value) => {
+    const meta = document.querySelector(`meta[name="${name}"]`);
+    if (meta) meta.content = value;
+  };
+
+  if (data.description) updateMeta('description', data.description);
+  if (data.keywords) updateMeta('keywords', data.keywords);
+  if (data.author) updateMeta('author', data.author);
+}
+
+function renderHome(data, socialLinks) {
+  const introText = document.querySelector('#home .intro-text');
+  const socialContainer = document.querySelector('#home .social-links');
+
+  if (introText) {
+    introText.innerHTML = `
+      <h1>${data.headline} <span class="highlight">${data.highlight}</span></h1>
+      <h2 class="typed-text">${data.subtitle}</h2>
+      <p class="career-objective">${data.careerObjective}</p>
+    `;
+  }
+
+  if (socialContainer) {
+    socialContainer.innerHTML = buildSocialLinks(socialLinks);
+  }
+}
+
+function renderExperience(experiences) {
+  const timelineGrid = document.querySelector('.timeline-grid');
+  if (!timelineGrid) return;
+
+  timelineGrid.innerHTML = (experiences || [])
+    .map(exp => `
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">${exp.date}</div>
+        <div class="timeline-content">
+          <h3>${exp.title}</h3>
+          <div class="company-badge"><i class="fas fa-building"></i><span>${exp.company}</span></div>
+          <ul class="achievement-list">
+            ${(exp.achievements || []).map(item => `<li><i class="fas fa-check-circle"></i>${item}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+    `)
+    .join('');
+}
+
+function getEducationIcon(title) {
+  if (/BSc|Engineering/i.test(title)) return 'fas fa-graduation-cap';
+  if (/Higher Secondary/i.test(title)) return 'fas fa-school';
+  if (/Secondary/i.test(title)) return 'fas fa-book';
+  return 'fas fa-graduation-cap';
+}
+
+function renderEducation(education, certifications) {
+  const educationGrid = document.querySelector('.education-grid');
+  const certGrid = document.querySelector('.cert-grid');
+
+  if (educationGrid) {
+    educationGrid.innerHTML = (education || [])
+      .map(item => `
+        <div class="education-card">
+          <div class="education-header">
+            <div class="education-icon"><i class="${getEducationIcon(item.title)}"></i></div>
+            <div class="education-title">
+              <h3>${item.title}</h3>
+              <div class="institute">${item.institute}</div>
+              <div class="duration">${item.duration}</div>
+            </div>
+          </div>
+          <div class="education-details">
+            <ul class="achievements">
+              ${(item.achievements || []).map(achievement => `<li>${achievement}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `)
+      .join('');
+  }
+
+  if (certGrid) {
+    certGrid.innerHTML = (certifications || [])
+      .map(cert => `
+        <div class="cert-card">
+          <div class="cert-issuer">
+            <i class="fas fa-certificate"></i>
+            <span>${cert.issuer}</span>
+          </div>
+          <h3 class="cert-title">${cert.title}</h3>
+          ${cert.credentials ? `<div class="cert-credentials"><i class="fas fa-id-badge"></i><span>${cert.credentials}</span></div>` : ''}
+          ${cert.link ? `<a href="${cert.link}" class="cert-link" target="_blank" rel="noreferrer noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>` : ''}
+        </div>
+      `)
+      .join('');
+  }
+}
+
+function renderSkills(skills, languages) {
+  const skillsGrid = document.querySelector('.skills-grid');
+  if (!skillsGrid) return;
+
+  skillsGrid.innerHTML = (skills || [])
+    .map(category => `
+      <div class="skill-category">
+        <div class="category-header">
+          <div class="category-icon"><i class="${category.icon}"></i></div>
+          <h3 class="category-title">${category.category}</h3>
+        </div>
+        <div class="skill-list">
+          ${(category.items || []).map(item => `
+              <div class="skill-item">
+                <div class="skill-info">
+                  <span class="skill-name">${item.name}</span>
+                  <span class="skill-level">${item.level}</span>
+                </div>
+                <div class="progress-bar"><div class="progress" style="width:${item.level}"></div></div>
+              </div>
+            `).join('')}
+        </div>
+      </div>
+    `)
+    .join('');
+
+  if (languages && languages.length) {
+    skillsGrid.insertAdjacentHTML('beforeend', `
+      <div class="skill-category language-proficiency">
+        <div class="category-header">
+          <div class="category-icon"><i class="fas fa-language"></i></div>
+          <h3 class="category-title">Language Proficiency</h3>
+        </div>
+        <div class="language-list">
+          ${languages
+            .map(lang => `
+              <div class="language-item">
+                <span class="language-name">${lang.name}</span>
+                <div class="star-rating">
+                  ${createRatingStars(lang.rating)}
+                </div>
+              </div>
+            `)
+            .join('')}
+        </div>
+      </div>
+    `);
+  }
+}
+
+function createRatingStars(rating) {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+  const emptyStars = 5 - fullStars - halfStar;
+  return (
+    '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars)
+  )
+    .replace(/★/g, '<i class="fas fa-star"></i>')
+    .replace(/½/, '<i class="fas fa-star-half-alt"></i>')
+    .replace(/☆/g, '<i class="fa-regular fa-star"></i>');
+}
+
+function humanizeCategory(category) {
+  return String(category)
+    .replace(/[-_]+/g, ' ')
+    .split(' ')
+    .map(word => word ? word[0].toUpperCase() + word.slice(1) : '')
+    .join(' ');
+}
+
+function getProjectCategories(projects) {
+  return Array.from(
+    new Set(
+      (projects || []).flatMap(project => {
+        const cats = Array.isArray(project.category) ? project.category : [project.category];
+        return cats.filter(Boolean);
+      })
+    )
+  );
+}
+
+function renderProjects(projects) {
+  const projectFilters = document.querySelector('.project-filters');
+  const projectGrid = document.querySelector('.projects-grid');
+  if (!projectFilters || !projectGrid) return;
+
+  const categories = getProjectCategories(projects);
+  const filters = [
+    { id: 'all', label: 'All' },
+    ...categories.map(id => ({ id, label: humanizeCategory(id) }))
+  ];
+
+  projectFilters.innerHTML = filters
+    .map(filter => `
+      <button type="button" class="filter-btn${filter.id === 'all' ? ' active' : ''}" data-filter="${filter.id}">${filter.label}</button>
+    `)
+    .join('');
+
+  projectGrid.innerHTML = (projects || [])
+    .map(project => `
+      <div class="project-card" data-categories="${(Array.isArray(project.category) ? project.category : [project.category]).join(',')}">
+        <div class="project-image">
+          <img src="${project.image}" alt="${project.name}">
+          <div class="project-overlay">
+            <div class="project-links">
+              <a href="${project.link}" target="_blank" rel="noreferrer noopener" title="${project.name}">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="project-info">
+          <h3>${project.name}</h3>
+          <p>${project.details}</p>
+          <div class="project-tags">
+            ${(project.tags || []).map(tag => `<span>${tag}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `)
+    .join('');
+
+  projectFilters.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      const filter = button.getAttribute('data-filter');
+      projectFilters.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('active', btn === button));
+      filterProjects(filter);
+    });
+  });
+}
+
+function filterProjects(filter) {
+  const cards = document.querySelectorAll('.project-card');
+  cards.forEach(card => {
+    const categories = card.dataset.categories.split(',');
+    card.style.display = filter === 'all' || categories.includes(filter) ? 'block' : 'none';
+  });
+}
+
+function renderContact(email, location, mapUrl, socialLinks) {
+  const contactInfo = document.querySelector('.contact-info');
+  const contactSocial = document.querySelector('#contact .social-links');
+  const contactMap = document.querySelector('#contact iframe');
+
+  if (contactInfo) {
+    contactInfo.innerHTML = `
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+        <div class="info-content"><h3>Email</h3><p>${email}</p></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="info-content"><h3>Location</h3><p>${location}</p></div>
+      </div>
+    `;
+  }
+
+  if (contactMap) contactMap.src = mapUrl;
+  if (contactSocial) contactSocial.innerHTML = buildSocialLinks(socialLinks);
+}
+
+function renderCopyright(text) {
+  const copyrightEl = document.querySelector('.sidebar .copyright p:first-child');
+  if (copyrightEl) copyrightEl.textContent = text;
+}
+
+function loadJSONData() {
+  return fetch(SITE_DATA_URL)
+    .then(response => {
+      if (!response.ok) throw new Error('Cannot load site data');
+      return response.json();
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  loadJSONData()
+    .then(data => {
+      renderMetadata(data);
+      renderMenu(data.menu);
+      renderProfile(data);
+      renderHome(data, data.socialLinks);
+      renderExperience(data.experience);
+      renderEducation(data.education, data.certifications);
+      renderSkills(data.skills, data.languages);
+      renderProjects(data.projects);
+      renderContact(data.email, data.location, data.mapUrl, data.socialLinks);
+      renderCopyright(data.copyright);
+    })
+    .catch(err => {
+      console.error('Site data loader error:', err);
+    });
 });
