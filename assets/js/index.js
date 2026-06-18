@@ -313,8 +313,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // SITE DATA LOADER//
-const SITE_DATA_URL = 'https://lifaet.pages.dev/api';
-
 function buildSocialLinks(socialLinks) {
   return (socialLinks || [])
     .map(link => `
@@ -636,7 +634,9 @@ function renderCopyright(text) {
 }
 
 function loadJSONData() {
-  return fetch(SITE_DATA_URL)
+  return fetch("https://lifaet.pages.dev/api", {
+    headers: { "x-api-client": "portfolio-client" }
+  })
     .then(response => {
       if (!response.ok) throw new Error('Cannot load site data');
       return response.json();
