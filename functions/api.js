@@ -3,12 +3,19 @@ export async function onRequest(context) {
 
   const CORS = {
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+    "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-api-client",
     "Access-Control-Allow-Methods": "GET, OPTIONS",
   };
 
   if (request.method === "OPTIONS") {
     return new Response(null, { status: 204, headers: CORS });
+  }
+
+  if (request.headers.get("x-api-client") !== "portfolio-client") {
+    return new Response(JSON.stringify({ error: "Forbidden" }), {
+      status: 403,
+      headers: { "Content-Type": "application/json", ...CORS },
+    });
   }
 
   // ── R2 helpers ──────────────────────────────────────────────────────────────
@@ -26,7 +33,7 @@ export async function onRequest(context) {
 
     const existing = await readR2();
     if (existing && JSON.stringify(freshData) === JSON.stringify(existing)) {
-      return existing; // no change, skip write
+      return existing;
     }
 
     await env.PORTFOLIO_R2.put("data:portfolio", JSON.stringify(freshData), {
