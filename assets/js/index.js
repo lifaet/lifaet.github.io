@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // SITE DATA LOADER//
-const SITE_DATA_URL = './assets/data/site-data.json';
+const SITE_DATA_URL = 'https://lifaet.pages.dev/api';
 
 function buildSocialLinks(socialLinks) {
   return (socialLinks || [])
