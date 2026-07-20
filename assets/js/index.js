@@ -1,663 +1,861 @@
-// Variables
-let isScrolling = false;
-let lastScrollTime = Date.now();
-const scrollCooldown = 1000;
-const pages = Array.from(document.querySelectorAll('.page'));
-const menuButtons = Array.from(document.querySelectorAll('.menu-btn'));
-const mobileButtons = Array.from(document.querySelectorAll('.nav-btn'));
-let currentPageIndex = 0;
-
-// Function to update URL hash
-function updateURL(pageId) {
-    if (history.pushState) {
-        history.pushState(null, null, `#${pageId}`);
-    } else {
-        window.location.hash = pageId;
-    }
-}
-
-// Function to change active page
-function changePage(direction) {
-    const now = Date.now();
-    if (isScrolling || now - lastScrollTime < scrollCooldown) return;
-    const nextIndex = currentPageIndex + direction;
-    if (nextIndex >= 0 && nextIndex < pages.length) {
-        isScrolling = true;
-        lastScrollTime = now;
-        currentPageIndex = nextIndex;
-        // Update desktop menu
-        menuButtons.forEach(btn => btn.classList.remove('active'));
-        menuButtons[currentPageIndex].classList.add('active');
-        // Update mobile menu
-        mobileButtons.forEach(btn => btn.classList.remove('active'));
-        mobileButtons[currentPageIndex].classList.add('active');
-        // Update pages
-        pages.forEach(page => page.classList.remove('active'));
-        pages[currentPageIndex].classList.add('active');
-        // Update URL
-        updateURL(pages[currentPageIndex].id);
-        setTimeout(() => {
-            isScrolling = false;
-        }, scrollCooldown);
-    }
-}
-
-// Handle desktop scroll navigation
-function handleDesktopScroll(e) {
-    if (window.innerWidth > 768) {
-        const activePage = document.querySelector('.page.active');
-        const atBottom = Math.abs(activePage.scrollHeight - activePage.scrollTop - activePage.clientHeight) < 1;
-        const atTop = activePage.scrollTop === 0;
-
-        if (atBottom && e.deltaY > 0) {
-            e.preventDefault();
-            changePage(1);
-        } else if (atTop && e.deltaY < 0) {
-            e.preventDefault();
-            changePage(-1);
-        }
-    }
-}
-
-// Event Listeners
-pages.forEach(page => {
-    page.addEventListener('wheel', handleDesktopScroll, { passive: false });
-});
-
-// Handle mobile navigation
-mobileButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        currentPageIndex = index;
-        mobileButtons.forEach(btn => btn.classList.remove('active'));
-        menuButtons.forEach(btn => btn.classList.remove('active'));
-        pages.forEach(page => page.classList.remove('active'));
-        button.classList.add('active');
-        menuButtons[index].classList.add('active');
-        pages[index].classList.add('active');
-        updateURL(button.getAttribute('data-page'));
-    });
-});
-
-// Handle desktop navigation
-menuButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-        currentPageIndex = index;
-        menuButtons.forEach(btn => btn.classList.remove('active'));
-        mobileButtons.forEach(btn => btn.classList.remove('active'));
-        pages.forEach(page => page.classList.remove('active'));
-        button.classList.add('active');
-        mobileButtons[index].classList.add('active');
-        pages[index].classList.add('active');
-        updateURL(button.getAttribute('data-page'));
-    });
-});
-
-// Handle URL changes
-window.addEventListener('hashchange', handleHashChange);
-window.addEventListener('load', handleHashChange);
-
-function handleHashChange() {
-    const hash = window.location.hash.slice(1) || 'home';
-    const targetPage = document.getElementById(hash);
-    const targetMenuBtn = document.querySelector(`.menu-btn[data-page="${hash}"]`);
-    const targetNavBtn = document.querySelector(`.nav-btn[data-page="${hash}"]`);
-
-    if (targetPage && targetMenuBtn && targetNavBtn) {
-        // Update pages
-        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-        targetPage.classList.add('active');
-        // Update desktop menu buttons
-        document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
-        targetMenuBtn.classList.add('active');
-        // Update mobile nav buttons
-        document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-        targetNavBtn.classList.add('active');
-        // Update current page index
-        currentPageIndex = Array.from(document.querySelectorAll('.page')).indexOf(targetPage);
-    }
-}
-
-// Call handleHashChange on load and hash change
-window.addEventListener('load', handleHashChange);
-window.addEventListener('hashchange', handleHashChange);
-
-// CONTACT FORM//
-document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = document.getElementById('contactForm');
-
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        console.log({ name, email, message });
-        contactForm.reset();
-        alert('Message sent successfully!');
-    });
-});
-
-// CONTACT & CV FORM HANDELLAR//
-
-const gScript = 'https://script.google.com/macros/s/';
-const idx = 'AKfycbwTnO3lXBe1RyfMECfWA4i-Z';
-const sId = idx + '3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg';
-
-// Form config object
-const formConfig = {
-    contact: {
-        messageId: 'show_contact_msg',
-        buttonId: 'submit-button',
-        loadingText: 'Submitting...',
-        successText: 'Message sent successfully!'
-    },
-    cv: {
-        messageId: 'show_cv_msg',
-        buttonSelector: '.cv-btn',
-        loadingText: 'Saving Info...',
-        successText: 'Information Recorded. Loading CV...'
-    }
-};
-
-// Initialize form handlers
-['contact', 'cv'].forEach(type => {
-    document.getElementById(`${type}Form`).addEventListener('submit', e => {
-        e.preventDefault();
-        handleFormSubmit(e.target, type);
-    });
-});
-
-async function handleFormSubmit(form, type) {
-    const config = formConfig[type];
-    const msgDiv = document.getElementById(config.messageId) || createMessageDiv(form);
-    const submitBtn = type === 'contact'
-        ? document.getElementById(config.buttonId)
-        : form.querySelector(config.buttonSelector);
-
-    try {
-        // Show loading state
-        updateUI(msgDiv, submitBtn, config.loadingText, '#3498db', true);
-
-        // Send form data
-        const formData = new FormData(form);
-        formData.append('form-type', type);
-
-        await sendFormData(formData);
-
-        // Handle success
-        updateUI(msgDiv, submitBtn, config.successText, '#2ecc71', false);
-        resetForm(form);
-
-        // Post-success actions
-        if (type === 'cv') {
-            // Hide message after 2.5 seconds and redirect after 3 seconds
-            setTimeout(() => {
-                window.location.href = `https://lifaet.pages.dev/cv?token=${grm()}`;
-            }, 3000);
-            setTimeout(() => {
-                msgDiv.style.display = 'none';
-            }, 2500);
-        } else {
-            // Hide message after 2.5 seconds for contact form
-            setTimeout(() => {
-                msgDiv.style.display = 'none';
-            }, 2500);
-        }
-    } catch (error) {
-        console.error('Form submission error:', error);
-        updateUI(msgDiv, submitBtn, 'Network Error! Try Again.', '#e74c3c', false);
-        // Hide error message after 3 seconds
-        setTimeout(() => {
-            msgDiv.style.display = 'none';
-        }, 3000);
-    }
-}
-
-function updateUI(msgDiv, submitBtn, text, color, isLoading) {
-    msgDiv.textContent = text;
-    msgDiv.style.display = 'block';
-    msgDiv.style.backgroundColor = color;
-    msgDiv.style.color = 'white';
-    submitBtn.disabled = isLoading;
-}
-
-function createMessageDiv(form) {
-    const div = document.createElement('div');
-    div.id = 'show_cv_msg';
-    div.style.cssText = `
-        display: none;
-        text-align: center;
-        margin-bottom: 15px;
-        padding: 5px;
-        border-radius: 8px;
-        font-size: 0.9em;
-        transition: all 0.3s ease;
-    `;
-    form.parentNode.insertBefore(div, form);
-    return div;
-}
-
-async function sendFormData(formData) {
-    const formDataString = Array.from(formData.entries())
-        .map(pair => `${pair[0]}=${encodeURIComponent(pair[1])}`)
-        .join('&');
-
-    const response = await fetch(`${gScript}${sId}/exec`, {
-        method: 'POST',
-        body: formDataString,
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        redirect: 'follow'
-    });
-
-    if (!response.ok) throw new Error('Network response was not ok');
-    return response.text();
-}
-
-function resetForm(form) {
-    form.reset();
-    form.querySelectorAll('.form-group input, .form-group textarea').forEach(input => {
-        input.value = '';
-        input.parentElement.classList.remove('active');
-    });
-}
-
-function grm() {
-    const c2v = sId.substring(7, 11);
-    const c5w = sId.substring(20, 23);
-    const cc = c2v + "4299" + c5w;
-    return Array.from({ length: 20 }, () => cc.charAt(Math.floor(Math.random() * cc.length))).join('');
-}
-
-
-
-// MODERN DESIGN//
-// MODERN DESIGN//
-document.addEventListener('DOMContentLoaded', () => {
-    // Animate elements when they come into view
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    // Observe all animated elements
-    document.querySelectorAll('.skill-item, .project-card, .education-card, .cert-card').forEach((el) => {
-        observer.observe(el);
-    });
-
-    // Particle background effect
-    const particlesConfig = {
-        particles: {
-            number: { value: 80 },
-            color: { value: '#ffffff' },
-            opacity: { value: 0.1 },
-            size: { value: 1 },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: '#ffffff',
-                opacity: 0.1,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 1
-            }
-        }
-    };
-
-    particlesJS('particles-js', particlesConfig);
-});
-
-
-
-// SITE DATA LOADER//
-function buildSocialLinks(socialLinks) {
-  return (socialLinks || [])
-    .map(link => `
-      <a href="${link.url}" target="_blank" rel="noreferrer noopener" class="social-btn" title="${link.name}">
-        <i class="${link.icon}"></i>
-      </a>
-    `)
-    .join('');
-}
-
-function renderMenu(menuItems) {
-  const desktopButtons = document.querySelectorAll('.sidebar .menu-btn');
-  const mobileButtons = document.querySelectorAll('.mobile-bottom-nav .nav-btn');
-
-  (menuItems || []).forEach((item, index) => {
-    const desktopButton = desktopButtons[index];
-    const mobileButton = mobileButtons[index];
-
-    if (desktopButton) {
-      const icon = desktopButton.querySelector('i');
-      const label = desktopButton.querySelector('span');
-      if (icon) icon.className = item.icon;
-      if (label) label.textContent = item.desktopLabel;
-    }
-
-    if (mobileButton) {
-      const icon = mobileButton.querySelector('i');
-      const label = mobileButton.querySelector('span');
-      if (icon) icon.className = item.icon;
-      if (label) label.textContent = item.mobileLabel;
-    }
-  });
-}
-
-function renderProfile(data) {
-  const desktopImg = document.querySelector('.sidebar .profile-image img');
-  const mobileImg = document.querySelector('.mobile-profile img');
-  const desktopName = document.querySelector('.sidebar .profile-name');
-  const mobileName = document.querySelector('.mobile-profile span');
-
-  if (desktopImg) {
-    desktopImg.src = data.avatar;
-    desktopImg.alt = data.name;
-  }
-  if (mobileImg) {
-    mobileImg.src = data.avatar;
-    mobileImg.alt = data.name;
-  }
-  if (desktopName) desktopName.textContent = data.name;
-  if (mobileName) mobileName.textContent = data.name;
-}
-
-function renderMetadata(data) {
-  if (!data) return;
-  if (data.title) document.title = data.title;
-
-  const updateMeta = (name, value) => {
-    const meta = document.querySelector(`meta[name="${name}"]`);
-    if (meta) meta.content = value;
-  };
-
-  if (data.description) updateMeta('description', data.description);
-  if (data.keywords) updateMeta('keywords', data.keywords);
-  if (data.author) updateMeta('author', data.author);
-}
-
-function renderHome(data, socialLinks) {
-  const introText = document.querySelector('#home .intro-text');
-  const socialContainer = document.querySelector('#home .social-links');
-
-  if (introText) {
-    introText.innerHTML = `
-      <h1>${data.headline} <span class="highlight">${data.highlight}</span></h1>
-      <h2 class="typed-text">${data.subtitle}</h2>
-      <p class="career-objective">${data.careerObjective}</p>
-    `;
-  }
-
-  if (socialContainer) {
-    socialContainer.innerHTML = buildSocialLinks(socialLinks);
-  }
-}
-
-function renderExperience(experiences) {
-  const timelineGrid = document.querySelector('.timeline-grid');
-  if (!timelineGrid) return;
-
-  timelineGrid.innerHTML = (experiences || [])
-    .map(exp => `
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">${exp.date}</div>
-        <div class="timeline-content">
-          <h3>${exp.title}</h3>
-          <div class="company-badge"><i class="fas fa-building"></i><span>${exp.company}</span></div>
-          <ul class="achievement-list">
-            ${(exp.achievements || []).map(item => `<li><i class="fas fa-check-circle"></i>${item}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-    `)
-    .join('');
-}
-
-function getEducationIcon(title) {
-  if (/BSc|Engineering/i.test(title)) return 'fas fa-graduation-cap';
-  if (/Higher Secondary/i.test(title)) return 'fas fa-school';
-  if (/Secondary/i.test(title)) return 'fas fa-book';
-  return 'fas fa-graduation-cap';
-}
-
-function renderEducation(education, certifications) {
-  const educationGrid = document.querySelector('.education-grid');
-  const certGrid = document.querySelector('.cert-grid');
-
-  if (educationGrid) {
-    educationGrid.innerHTML = (education || [])
-      .map(item => `
-        <div class="education-card">
-          <div class="education-header">
-            <div class="education-icon"><i class="${getEducationIcon(item.title)}"></i></div>
-            <div class="education-title">
-              <h3>${item.title}</h3>
-              <div class="institute">${item.institute}</div>
-              <div class="duration">${item.duration}</div>
-            </div>
-          </div>
-          <div class="education-details">
-            <ul class="achievements">
-              ${(item.achievements || []).map(achievement => `<li>${achievement}</li>`).join('')}
-            </ul>
-          </div>
-        </div>
-      `)
-      .join('');
-  }
-
-  if (certGrid) {
-    certGrid.innerHTML = (certifications || [])
-      .map(cert => `
-        <div class="cert-card">
-          <div class="cert-issuer">
-            <i class="fas fa-certificate"></i>
-            <span>${cert.issuer}</span>
-          </div>
-          <h3 class="cert-title">${cert.title}</h3>
-          ${cert.credentials ? `<div class="cert-credentials"><i class="fas fa-id-badge"></i><span>${cert.credentials}</span></div>` : ''}
-          ${cert.link ? `<a href="${cert.link}" class="cert-link" target="_blank" rel="noreferrer noopener">View Certificate <i class="fas fa-external-link-alt"></i></a>` : ''}
-        </div>
-      `)
-      .join('');
-  }
-}
-
-function renderSkills(skills, languages) {
-  const skillsGrid = document.querySelector('.skills-grid');
-  if (!skillsGrid) return;
-
-  skillsGrid.innerHTML = (skills || [])
-    .map(category => `
-      <div class="skill-category">
-        <div class="category-header">
-          <div class="category-icon"><i class="${category.icon}"></i></div>
-          <h3 class="category-title">${category.category}</h3>
-        </div>
-        <div class="skill-list">
-          ${(category.items || []).map(item => `
-              <div class="skill-item">
-                <div class="skill-info">
-                  <span class="skill-name">${item.name}</span>
-                  <span class="skill-level">${item.level}</span>
-                </div>
-                <div class="progress-bar"><div class="progress" style="width:${item.level}"></div></div>
-              </div>
-            `).join('')}
-        </div>
-      </div>
-    `)
-    .join('');
-
-  if (languages && languages.length) {
-    skillsGrid.insertAdjacentHTML('beforeend', `
-      <div class="skill-category language-proficiency">
-        <div class="category-header">
-          <div class="category-icon"><i class="fas fa-language"></i></div>
-          <h3 class="category-title">Language Proficiency</h3>
-        </div>
-        <div class="language-list">
-          ${languages
-            .map(lang => `
-              <div class="language-item">
-                <span class="language-name">${lang.name}</span>
-                <div class="star-rating">
-                  ${createRatingStars(lang.rating)}
-                </div>
-              </div>
-            `)
-            .join('')}
-        </div>
-      </div>
-    `);
-  }
-}
-
-function createRatingStars(rating) {
-  const fullStars = Math.floor(rating);
-  const halfStar = rating % 1 >= 0.5 ? 1 : 0;
-  const emptyStars = 5 - fullStars - halfStar;
-  return (
-    '★'.repeat(fullStars) + (halfStar ? '½' : '') + '☆'.repeat(emptyStars)
-  )
-    .replace(/★/g, '<i class="fas fa-star"></i>')
-    .replace(/½/, '<i class="fas fa-star-half-alt"></i>')
-    .replace(/☆/g, '<i class="fa-regular fa-star"></i>');
-}
-
-function humanizeCategory(category) {
-  return String(category)
-    .replace(/[-_]+/g, ' ')
-    .split(' ')
-    .map(word => word ? word[0].toUpperCase() + word.slice(1) : '')
-    .join(' ');
-}
-
-function getProjectCategories(projects) {
-  return Array.from(
-    new Set(
-      (projects || []).flatMap(project => {
-        const cats = Array.isArray(project.category) ? project.category : [project.category];
-        return cats.filter(Boolean);
-      })
-    )
-  );
-}
-
-function renderProjects(projects) {
-  const projectFilters = document.querySelector('.project-filters');
-  const projectGrid = document.querySelector('.projects-grid');
-  if (!projectFilters || !projectGrid) return;
-
-  const categories = getProjectCategories(projects);
-  const filters = [
-    { id: 'all', label: 'All' },
-    ...categories.map(id => ({ id, label: humanizeCategory(id) }))
-  ];
-
-  projectFilters.innerHTML = filters
-    .map(filter => `
-      <button type="button" class="filter-btn${filter.id === 'all' ? ' active' : ''}" data-filter="${filter.id}">${filter.label}</button>
-    `)
-    .join('');
-
-  projectGrid.innerHTML = (projects || [])
-    .map(project => `
-      <div class="project-card" data-categories="${(Array.isArray(project.category) ? project.category : [project.category]).join(',')}">
-        <div class="project-image">
-          <img src="${project.image}" alt="${project.name}">
-          <div class="project-overlay">
-            <div class="project-links">
-              <a href="${project.link}" target="_blank" rel="noreferrer noopener" title="${project.name}">
-                <i class="fas fa-external-link-alt"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="project-info">
-          <h3>${project.name}</h3>
-          <p>${project.details}</p>
-          <div class="project-tags">
-            ${(project.tags || []).map(tag => `<span>${tag}</span>`).join('')}
-          </div>
-        </div>
-      </div>
-    `)
-    .join('');
-
-  projectFilters.querySelectorAll('.filter-btn').forEach(button => {
-    button.addEventListener('click', () => {
-      const filter = button.getAttribute('data-filter');
-      projectFilters.querySelectorAll('.filter-btn').forEach(btn => btn.classList.toggle('active', btn === button));
-      filterProjects(filter);
-    });
-  });
-}
-
-function filterProjects(filter) {
-  const cards = document.querySelectorAll('.project-card');
-  cards.forEach(card => {
-    const categories = card.dataset.categories.split(',');
-    card.style.display = filter === 'all' || categories.includes(filter) ? 'block' : 'none';
-  });
-}
-
-function renderContact(email, location, mapUrl, socialLinks) {
-  const contactInfo = document.querySelector('.contact-info');
-  const contactSocial = document.querySelector('#contact .social-links');
-  const contactMap = document.querySelector('#contact iframe');
-
-  if (contactInfo) {
-    contactInfo.innerHTML = `
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-envelope"></i></div>
-        <div class="info-content"><h3>Email</h3><p>${email}</p></div>
-      </div>
-      <div class="info-card">
-        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
-        <div class="info-content"><h3>Location</h3><p>${location}</p></div>
-      </div>
-    `;
-  }
-
-  if (contactMap) contactMap.src = mapUrl;
-  if (contactSocial) contactSocial.innerHTML = buildSocialLinks(socialLinks);
-}
-
-function renderCopyright(text) {
-  const copyrightEl = document.querySelector('.sidebar .copyright p:first-child');
-  if (copyrightEl) copyrightEl.textContent = text;
-}
-
+/* ============================================================
+   API CONFIG
+   ============================================================ */
+const API_URL = "https://lifaet.pages.dev/api";
+const API_HEADERS = { "x-api-client": "portfolio-client" };
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const el = (id) => document.getElementById(id);
+const qs = (sel, ctx = document) => ctx.querySelector(sel);
+const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+const html = (strings, ...vals) => strings.reduce((a, s, i) => a + s + (vals[i] ?? ""), "");
+const esc = (str) => String(str ?? "").replace(/[&<>"']/g, (c) => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+}[c]));
+
+let SITE = null; // normalized data, populated after fetch
+
+/* ============================================================
+   FETCH + NORMALIZE
+   ============================================================ */
 function loadJSONData() {
-  return fetch("https://lifaet.pages.dev/api", {
-    headers: { "x-api-client": "portfolio-client" }
-  })
-    .then(response => {
-      if (!response.ok) throw new Error('Cannot load site data');
+  return fetch(API_URL, { headers: API_HEADERS })
+    .then((response) => {
+      if (!response.ok) throw new Error("Cannot load site data");
       return response.json();
     });
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+function normalizeData(raw) {
+  const subtitleRoles = (raw.subtitle || "")
+    .split("|")
+    .map((s) => s.trim())
+    .filter(Boolean);
+
+  const experience = (raw.experience || []).map((e) => {
+    const parts = String(e.company || "").split(",").map((s) => s.trim()).filter(Boolean);
+    return {
+      role: e.title || "",
+      company: parts[0] || e.company || "",
+      location: parts.slice(1).join(", "),
+      period: e.date || "",
+      achievements: e.achievements || []
+    };
+  });
+
+  const education = (raw.education || []).map((ed) => ({
+    degree: ed.title || "",
+    institution: ed.institute || "",
+    period: ed.duration || "",
+    achievements: ed.achievements || []
+  }));
+
+  const certifications = (raw.certifications || []).map((c) => ({
+    name: c.title || "",
+    issuer: c.issuer || "",
+    credentials: c.credentials || "",
+    link: c.link || ""
+  }));
+
+  const skills = (raw.skills || []).map((s) => ({
+    category: s.category || "",
+    icon: s.icon || "fas fa-code",
+    items: (s.items || []).map((i) => ({
+      name: i.name || "",
+      level: Math.max(0, Math.min(100, parseInt(i.level, 10) || 0))
+    }))
+  }));
+
+  const languages = (raw.languages || []).map((l) => ({
+    name: l.name || "",
+    rating: Math.max(0, Math.min(5, parseFloat(l.rating) || 0))
+  }));
+
+  const projects = (raw.projects || []).map((p) => ({
+    title: p.name || "",
+    description: p.details || "",
+    tags: p.tags || [],
+    link: p.link || "",
+    category: (p.category || []).map((c) => String(c).toLowerCase())
+  }));
+
+  return {
+    meta: {
+      title: raw.title || raw.name || "Portfolio",
+      description: raw.description || "",
+      keywords: raw.keywords || "",
+      author: raw.author || raw.name || ""
+    },
+    name: raw.name || "",
+    avatarSrc: raw.avatar
+      ? (/^https?:\/\//.test(raw.avatar) ? raw.avatar : `https://lifaet.pages.dev${raw.avatar}`)
+      : "",
+    title: subtitleRoles[0] || raw.subtitle || "",
+    typedRoles: subtitleRoles.length ? subtitleRoles : (raw.subtitle ? [raw.subtitle] : []),
+    greeting: raw.headline || "Hi, I'm",
+    highlight: raw.highlight || raw.name || "",
+    bio: raw.careerObjective || "",
+    mapEmbed: raw.mapUrl || "",
+    copyright: raw.copyright || "",
+    cvRedirectBase: raw.cvRedirectBase || "",
+    formEndpoint: (raw.formScriptBase && raw.formScriptId)
+      ? `${raw.formScriptBase}${raw.formScriptId}/exec`
+      : "",
+    social: (raw.socialLinks || []).map((s) => ({ icon: s.icon, url: s.url, label: s.name })),
+    contact: [
+      raw.location ? { icon: "fas fa-location-dot", label: "Location", value: raw.location } : null,
+      raw.email ? { icon: "fas fa-envelope", label: "Email", value: raw.email } : null
+    ].filter(Boolean),
+    nav: (raw.menu || []).map((m) => ({
+      page: m.id, icon: m.icon, desktopLabel: m.desktopLabel, mobileLabel: m.mobileLabel
+    })),
+    experience,
+    education,
+    certifications,
+    skills,
+    languages,
+    projects
+  };
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+document.addEventListener("DOMContentLoaded", init);
+
+function init() {
+  showOverlay("loading");
   loadJSONData()
-    .then(data => {
-      renderMetadata(data);
-      renderMenu(data.menu);
-      renderProfile(data);
-      renderHome(data, data.socialLinks);
-      renderExperience(data.experience);
-      renderEducation(data.education, data.certifications);
-      renderSkills(data.skills, data.languages);
-      renderProjects(data.projects);
-      renderContact(data.email, data.location, data.mapUrl, data.socialLinks);
-      renderCopyright(data.copyright);
+    .then((raw) => {
+      SITE = normalizeData(raw);
+      renderAll();
+      hideOverlay();
     })
-    .catch(err => {
-      console.error('Site data loader error:', err);
+    .catch((err) => {
+      console.error("Portfolio data load failed:", err);
+      showOverlay("error");
     });
-});
+
+  const retryBtn = el("app-retry-btn");
+  if (retryBtn) retryBtn.addEventListener("click", init);
+}
+
+function showOverlay(state) {
+  const overlay = el("app-overlay");
+  const box = qs(".app-overlay-box", overlay);
+  const text = el("app-overlay-text");
+  const retryBtn = el("app-retry-btn");
+  const appContainer = el("app-container");
+
+  overlay.style.display = "flex";
+  appContainer.style.display = "none";
+
+  if (state === "loading") {
+    box.classList.remove("is-error");
+    text.textContent = "Loading portfolio…";
+    retryBtn.style.display = "none";
+  } else {
+    box.classList.add("is-error");
+    text.textContent = "Couldn't load portfolio data. Please check your connection and try again.";
+    retryBtn.style.display = "inline-block";
+  }
+}
+
+function hideOverlay() {
+  el("app-overlay").style.display = "none";
+  el("app-container").style.display = "flex";
+}
+
+function renderAll() {
+  buildMeta();
+  buildNav();
+  buildHome();
+  buildExperience();
+  buildEducation();
+  buildSkills();
+  buildLanguages();
+  buildProjects();
+  buildContact();
+  initNavigation();
+  initRouting();
+  initTyped();
+  initContactForm();
+  initCvForm();
+  initProjectsToggle();
+  initScrollAnimations();
+}
+
+/* ============================================================
+   META / PROFILE
+   ============================================================ */
+function buildMeta() {
+  document.title = SITE.meta.title;
+
+  const descMeta = qs('meta[name="description"]');
+  if (descMeta) descMeta.setAttribute("content", SITE.meta.description);
+  const kwMeta = qs('meta[name="keywords"]');
+  if (kwMeta) kwMeta.setAttribute("content", SITE.meta.keywords);
+  const authorMeta = qs('meta[name="author"]');
+  if (authorMeta) authorMeta.setAttribute("content", SITE.meta.author);
+
+  const avatarHtml = SITE.avatarSrc
+    ? `<img src="${esc(SITE.avatarSrc)}" alt="${esc(SITE.name)}" onerror="this.closest('.profile-image, .mobile-profile-link').classList.add('avatar-fallback')">`
+    : `<div class="avatar-initials">${esc(initials(SITE.name))}</div>`;
+
+  qsa(".profile-image").forEach((e) => (e.innerHTML = avatarHtml));
+  qsa(".profile-name").forEach((e) => (e.textContent = SITE.name));
+  qsa(".profile-title").forEach((e) => (e.textContent = SITE.title));
+  qsa(".mobile-profile-name").forEach((e) => (e.textContent = SITE.name));
+
+  qsa(".mobile-profile-link img").forEach((img) => {
+    if (SITE.avatarSrc) {
+      img.src = SITE.avatarSrc;
+      img.alt = SITE.name;
+    } else {
+      img.replaceWith(Object.assign(document.createElement("span"), {
+        className: "mobile-avatar-initials",
+        textContent: initials(SITE.name)
+      }));
+    }
+  });
+
+  qsa(".copyright p:first-child").forEach((p) => (p.textContent = SITE.copyright));
+
+  const mapIframe = qs(".map-section iframe");
+  if (mapIframe && SITE.mapEmbed) mapIframe.src = SITE.mapEmbed;
+}
+
+function initials(name) {
+  return (name || "").split(" ").filter(Boolean).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+function buildNav() {
+  const desktopContainer = qs(".sidebar");
+  const mobileContainer = qs(".mobile-bottom-nav");
+  if (!desktopContainer || !mobileContainer) return;
+
+  qsa(".menu-btn", desktopContainer).forEach((b) => b.remove());
+  qsa(".nav-btn", mobileContainer).forEach((b) => b.remove());
+
+  SITE.nav.forEach((item, idx) => {
+    const active = idx === 0 ? "active" : "";
+
+    const dBtn = document.createElement("button");
+    dBtn.className = `menu-btn ${active}`;
+    dBtn.dataset.page = item.page;
+    dBtn.innerHTML = `<i class="${esc(item.icon)}" aria-hidden="true"></i><span>${esc(item.desktopLabel)}</span>`;
+
+    const mBtn = document.createElement("button");
+    mBtn.className = `nav-btn ${active}`;
+    mBtn.dataset.page = item.page;
+    mBtn.innerHTML = `
+      <span class="nav-btn-row">
+        <i class="${esc(item.icon)}" aria-hidden="true"></i>
+        <span class="nav-btn-label">${esc(item.mobileLabel.toUpperCase())}</span>
+      </span>
+      <span class="nav-btn-indicator"></span>`;
+
+    const copyright = qs(".copyright", desktopContainer);
+    desktopContainer.insertBefore(dBtn, copyright);
+    mobileContainer.appendChild(mBtn);
+  });
+}
+
+/* ============================================================
+   HOME
+   ============================================================ */
+function buildHome() {
+  const intro = qs(".intro-text");
+  if (!intro) return;
+
+  intro.innerHTML = html`
+    <h1 class="name-title"><span class="greeting-inline">${esc(SITE.greeting)}</span> <span class="name-highlight">${esc(SITE.highlight || SITE.name)}</span></h1>
+    <p class="typed-role"><span id="typed-text"></span><span class="typed-cursor">|</span></p>
+    <blockquote class="bio">${esc(SITE.bio)}</blockquote>
+    <div class="home-cta">
+      <button class="btn-primary" onclick="navigateTo('contact')">Get in touch</button>
+      <button class="btn-outline" onclick="navigateTo('projects')">View work</button>
+    </div>`;
+
+  buildSocialLinks(qs(".home-content .social-links"));
+}
+
+function buildSocialLinks(container) {
+  if (!container) return;
+  container.innerHTML = SITE.social.map((s) => html`
+    <a href="${esc(s.url)}" class="social-link" aria-label="${esc(s.label)}" target="_blank" rel="noopener">
+      <i class="${esc(s.icon)}" aria-hidden="true"></i>
+    </a>`).join("");
+}
+
+/* ============================================================
+   EXPERIENCE
+   ============================================================ */
+function buildExperience() {
+  const grid = qs(".timeline-grid");
+  if (!grid) return;
+
+  if (!SITE.experience.length) {
+    grid.innerHTML = `<p class="no-results">No experience listed yet.</p>`;
+    return;
+  }
+
+  grid.innerHTML = SITE.experience.map((exp, i) => html`
+    <div class="timeline-item reveal" style="--delay:${i * 80}ms">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="tc-header">
+          <div>
+            <h3 class="tc-role">${esc(exp.role)}</h3>
+            <p class="tc-company">${esc(exp.company)}</p>
+          </div>
+          <div class="tc-meta">
+            ${exp.period ? `<span class="badge badge-period"><i class="fa-regular fa-calendar" aria-hidden="true"></i> ${esc(exp.period)}</span>` : ""}
+            ${exp.location ? `<span class="badge badge-location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> ${esc(exp.location)}</span>` : ""}
+          </div>
+        </div>
+        ${exp.achievements.length ? `<ul class="tc-achievements">${exp.achievements.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
+      </div>
+    </div>`).join("");
+}
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
+function buildEducation() {
+  const grid = qs(".education-grid");
+  const certGrid = qs(".cert-grid");
+
+  if (grid) {
+    grid.innerHTML = SITE.education.length
+      ? SITE.education.map((edu, i) => html`
+        <div class="edu-card reveal" style="--delay:${i * 80}ms">
+          <div class="edu-icon"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i></div>
+          <div>
+            <h3>${esc(edu.degree)}</h3>
+            <p class="edu-inst">${esc(edu.institution)}</p>
+            <p class="edu-period">${esc(edu.period)}</p>
+            ${edu.achievements.length ? `<ul class="edu-achievements">${edu.achievements.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
+          </div>
+        </div>`).join("")
+      : `<p class="no-results">No education listed yet.</p>`;
+  }
+
+  if (certGrid) {
+    certGrid.innerHTML = SITE.certifications.length
+      ? SITE.certifications.map((cert, i) => {
+        const nameHtml = cert.link
+          ? `<span class="cert-name-link">${esc(cert.name)} <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></span>`
+          : esc(cert.name);
+        const meta = [cert.issuer, cert.credentials].filter(Boolean).join(" · ");
+        const inner = html`
+          <i class="fa-solid fa-certificate cert-icon" aria-hidden="true"></i>
+          <div>
+            <p class="cert-name">${nameHtml}</p>
+            ${meta ? `<p class="cert-meta">${esc(meta)}</p>` : ""}
+          </div>`;
+        return cert.link
+          ? `<a href="${esc(cert.link)}" class="cert-card reveal" style="--delay:${i * 80}ms" target="_blank" rel="noopener">${inner}</a>`
+          : `<div class="cert-card reveal" style="--delay:${i * 80}ms">${inner}</div>`;
+      }).join("")
+      : `<p class="no-results">No certifications listed yet.</p>`;
+  }
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+let activeSkillFilter = "All";
+
+function buildSkills() {
+  const filtersEl = qs(".skill-filters");
+  const grid = qs(".skills-grid");
+  if (!grid) return;
+
+  if (!SITE.skills.length) {
+    if (filtersEl) filtersEl.innerHTML = "";
+    grid.innerHTML = `<p class="no-results">No skills listed yet.</p>`;
+    return;
+  }
+
+  const categories = ["All", ...SITE.skills.map((s) => s.category)];
+  if (filtersEl) {
+    filtersEl.innerHTML = categories.map((cat) => `
+      <button class="filter-tab ${cat === activeSkillFilter ? "active" : ""}" role="tab"
+        aria-selected="${cat === activeSkillFilter}" data-skill-filter="${esc(cat)}">${esc(cat)}</button>`).join("");
+  }
+
+  renderSkillCards();
+}
+
+function renderSkillCards() {
+  const grid = qs(".skills-grid");
+  if (!grid) return;
+
+  const filtered = activeSkillFilter === "All"
+    ? SITE.skills
+    : SITE.skills.filter((s) => s.category === activeSkillFilter);
+
+  grid.innerHTML = filtered.length
+    ? filtered.map((cat, i) => html`
+      <div class="skill-category reveal" style="--delay:${i * 60}ms">
+        <h3 class="skill-cat-title"><span class="skill-cat-icon"><i class="${esc(cat.icon)}" aria-hidden="true"></i></span> ${esc(cat.category)}</h3>
+        <div class="skill-bars">
+          ${cat.items.map((item) => html`
+            <div class="skill-bar-item">
+              <div class="skill-bar-top">
+                <span class="skill-bar-name">${esc(item.name)}</span>
+                <span class="skill-bar-pct">${item.level}%</span>
+              </div>
+              <div class="skill-bar-track">
+                <div class="skill-bar-fill" style="width:${item.level}%"></div>
+              </div>
+            </div>`).join("")}
+        </div>
+      </div>`).join("")
+    : `<p class="no-results">No skills in this category.</p>`;
+
+  triggerReveal(qs(".page.active"));
+}
+
+/* ============================================================
+   LANGUAGES
+   ============================================================ */
+function buildLanguages() {
+  const section = qs(".languages-section");
+  const grid = qs(".languages-grid");
+  if (!grid) return;
+
+  if (!SITE.languages.length) {
+    if (section) section.style.display = "none";
+    return;
+  }
+  if (section) section.style.display = "";
+
+  grid.innerHTML = SITE.languages.map((lang, i) => {
+    const full = Math.floor(lang.rating);
+    const hasHalf = lang.rating - full >= 0.5;
+    const stars = Array.from({ length: 5 }, (_, idx) => {
+      if (idx < full) return `<i class="fa-solid fa-star filled" aria-hidden="true"></i>`;
+      if (idx === full && hasHalf) return `<i class="fa-solid fa-star half" aria-hidden="true"></i>`;
+      return `<i class="fa-solid fa-star" aria-hidden="true"></i>`;
+    }).join("");
+
+    return html`
+      <div class="language-card reveal" style="--delay:${i * 60}ms">
+        <div class="lang-top">
+          <span class="lang-name">${esc(lang.name)}</span>
+          <span class="lang-rating">${lang.rating}/5</span>
+        </div>
+        <div class="lang-stars">${stars}</div>
+      </div>`;
+  }).join("");
+}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+let projectView = "grid";
+let activeFilter = "All";
+
+function buildProjects() {
+  const filtersEl = qs(".project-filters");
+  const gridEl = qs(".projects-grid");
+  if (!filtersEl || !gridEl) return;
+
+  const categorySet = new Set();
+  SITE.projects.forEach((p) => p.category.forEach((c) => categorySet.add(c)));
+  const categories = ["All", ...[...categorySet].sort()];
+
+  filtersEl.innerHTML = `
+    <div class="filter-row">
+      <div class="filter-tabs" role="tablist">
+        ${categories.map((cat) => `
+          <button class="filter-tab ${cat === "All" ? "active" : ""}" role="tab"
+            aria-selected="${cat === "All"}" data-filter="${esc(cat)}">${esc(capitalize(cat))}</button>`).join("")}
+      </div>
+      <div class="view-toggle" aria-label="Toggle view">
+        <button class="view-btn active" data-view="grid" title="Grid view">
+          <i class="fa-solid fa-grip" aria-hidden="true"></i>
+        </button>
+        <button class="view-btn" data-view="list" title="List view">
+          <i class="fa-solid fa-list" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>`;
+
+  renderProjectCards();
+}
+
+function capitalize(s) {
+  return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+}
+
+function renderProjectCards() {
+  const gridEl = qs(".projects-grid");
+  if (!gridEl) return;
+
+  const filtered = activeFilter === "All"
+    ? SITE.projects
+    : SITE.projects.filter((p) => p.category.includes(activeFilter));
+
+  gridEl.className = `projects-grid view-${projectView}`;
+
+  gridEl.innerHTML = filtered.length
+    ? filtered.map((p, i) => projectCardHtml(p, i)).join("")
+    : `<p class="no-results">No projects in this category.</p>`;
+
+  triggerReveal(qs(".page.active"));
+}
+
+function projectCardHtml(p, i) {
+  let linkHtml = `<span class="proj-nolink">Private / not public</span>`;
+  if (p.link) {
+    const isSource = p.link.includes("github.com");
+    linkHtml = `<a href="${esc(p.link)}" class="proj-link" target="_blank" rel="noopener" aria-label="${isSource ? "Source code" : "View project"}">
+      <i class="fa-${isSource ? "brands fa-github" : "solid fa-arrow-up-right-from-square"}" aria-hidden="true"></i> ${isSource ? "Source" : "View"}
+    </a>`;
+  }
+
+  return html`
+    <article class="project-card reveal" style="--delay:${i * 60}ms">
+      <div class="proj-body">
+        <div class="proj-top">
+          <div class="proj-title-row">
+            <h3 class="proj-title">${esc(p.title)}</h3>
+          </div>
+          <div class="proj-meta">
+            <div class="proj-categories">
+              ${p.category.map((c) => `<span class="proj-cat-badge">${esc(capitalize(c))}</span>`).join("")}
+            </div>
+          </div>
+          <p class="proj-desc">${esc(p.description)}</p>
+        </div>
+        <div class="proj-footer">
+          <div class="tag-list">${p.tags.map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+          <div class="proj-links">${linkHtml}</div>
+        </div>
+      </div>
+    </article>`;
+}
+
+function initProjectsToggle() {
+  document.addEventListener("click", (e) => {
+    const tab = e.target.closest(".filter-tab[data-filter]");
+    if (tab) {
+      activeFilter = tab.dataset.filter;
+      qsa(".filter-tab[data-filter]").forEach((b) => {
+        b.classList.toggle("active", b.dataset.filter === activeFilter);
+        b.setAttribute("aria-selected", b.dataset.filter === activeFilter);
+      });
+      renderProjectCards();
+      return;
+    }
+
+    const viewBtn = e.target.closest(".view-btn");
+    if (viewBtn) {
+      projectView = viewBtn.dataset.view;
+      qsa(".view-btn").forEach((b) => b.classList.toggle("active", b.dataset.view === projectView));
+      renderProjectCards();
+      return;
+    }
+
+    const skillTab = e.target.closest(".filter-tab[data-skill-filter]");
+    if (skillTab) {
+      activeSkillFilter = skillTab.dataset.skillFilter;
+      qsa(".filter-tab[data-skill-filter]").forEach((b) => {
+        b.classList.toggle("active", b.dataset.skillFilter === activeSkillFilter);
+        b.setAttribute("aria-selected", b.dataset.skillFilter === activeSkillFilter);
+      });
+      renderSkillCards();
+    }
+  });
+}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+function buildContact() {
+  const infoEl = qs(".contact-info");
+  if (infoEl) {
+    infoEl.innerHTML = SITE.contact.map((c) => html`
+      <div class="contact-card">
+        <i class="${esc(c.icon)}" aria-hidden="true"></i>
+        <div>
+          <p class="cc-label">${esc(c.label)}</p>
+          <p class="cc-value">${esc(c.value)}</p>
+        </div>
+      </div>`).join("");
+  }
+
+  buildSocialLinks(qs("#contact .social-links"));
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+// Aliases let a URL like ?view=cv resolve to an existing page
+// (here, the Contact page, which hosts the CV download section)
+// while still remembering which sub-target was requested so we
+// can scroll straight to it.
+const VIEW_ALIASES = {
+  cv: { page: "contact", scrollTo: "cv" },
+  resume: { page: "contact", scrollTo: "cv" }
+};
+
+function initNavigation() {
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-page]");
+    if (btn && (btn.classList.contains("menu-btn") || btn.classList.contains("nav-btn"))) {
+      navigateTo(btn.dataset.page);
+    }
+  });
+
+  window.addEventListener("popstate", () => applyViewFromURL(false));
+}
+
+function initRouting() {
+  applyViewFromURL(false);
+}
+
+function resolveView(rawView) {
+  if (!rawView) return null;
+  const normalized = rawView.toLowerCase();
+  if (VIEW_ALIASES[normalized]) return VIEW_ALIASES[normalized];
+  const validIds = SITE.nav.map((n) => n.page);
+  if (validIds.includes(normalized)) return { page: normalized, scrollTo: null };
+  return null;
+}
+
+function applyViewFromURL() {
+  const rawView = new URLSearchParams(window.location.search).get("view");
+  const resolved = resolveView(rawView);
+  if (resolved) {
+    navigateTo(resolved.page, { updateUrl: false, scrollToId: resolved.scrollTo, viewParam: rawView.toLowerCase() });
+  }
+}
+
+function navigateTo(pageId, opts = {}) {
+  const { updateUrl = true, scrollToId = null, viewParam = pageId } = opts;
+
+  qsa(".page").forEach((p) => p.classList.remove("active"));
+  qsa(".menu-btn, .nav-btn").forEach((b) => {
+    b.classList.toggle("active", b.dataset.page === pageId);
+  });
+
+  const page = el(pageId);
+  if (page) {
+    page.classList.add("active");
+    page.scrollTop = 0;
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    triggerReveal(page);
+  }
+
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("view", viewParam);
+    history.pushState({ view: viewParam }, "", url);
+  }
+
+  if (scrollToId) {
+    // Wait a tick for the page to become visible before scrolling to a sub-target
+    requestAnimationFrame(() => {
+      const target = el(scrollToId);
+      if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+}
+
+/* ============================================================
+   TYPED ANIMATION
+   ============================================================ */
+let typedTimer = null;
+
+function initTyped() {
+  const target = el("typed-text");
+  if (!target) return;
+  if (typedTimer) clearTimeout(typedTimer);
+
+  const roles = SITE.typedRoles.length ? SITE.typedRoles : [SITE.title].filter(Boolean);
+  if (!roles.length) return;
+
+  let roleIdx = 0, charIdx = 0, deleting = false;
+
+  function tick() {
+    const current = roles[roleIdx];
+    charIdx = deleting ? charIdx - 1 : charIdx + 1;
+    target.textContent = current.slice(0, charIdx);
+
+    let delay = deleting ? 50 : 100;
+    if (!deleting && charIdx === current.length) { delay = 2000; deleting = true; }
+    else if (deleting && charIdx === 0) { deleting = false; roleIdx = (roleIdx + 1) % roles.length; delay = 400; }
+
+    typedTimer = setTimeout(tick, delay);
+  }
+
+  tick();
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+function initScrollAnimations() {
+  const activePage = qs(".page.active");
+  if (activePage) triggerReveal(activePage);
+}
+
+function triggerReveal(page) {
+  if (!page) return;
+  const items = qsa(".reveal", page);
+  items.forEach((item, i) => {
+    item.classList.remove("visible");
+    setTimeout(() => item.classList.add("visible"), i * 40 + (parseInt(item.style.getPropertyValue("--delay")) || 0));
+  });
+}
+
+/* ============================================================
+   CONTACT FORM
+   ------------------------------------------------------------
+   Submits to the Google Apps Script endpoint built from
+   the provided form handler logic. The UI loading state and
+   message rendering remain unchanged.
+   ============================================================ */
+const gScript = "https://script.google.com/macros/s/";
+const idx = "AKfycbwTnO3lXBe1RyfMECfWA4i-Z";
+const sId = idx + "3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg";
+
+const formConfig = {
+  contact: {
+    messageId: "show_contact_msg",
+    buttonId: "submit-button",
+    loadingText: "Sending…",
+    successText: "Message sent! I'll get back to you soon.",
+    errorText: "Couldn't send your message. Please try again or email directly."
+  },
+  cv: {
+    messageId: "show_cv_msg",
+    buttonSelector: ".cv-btn",
+    loadingText: "Preparing…",
+    successText: "CV request received. Redirecting…",
+    errorText: "Couldn’t prepare the CV right now. Please try again later."
+  }
+};
+
+function initContactForm() {
+  const form = el("contactForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    await handleFormSubmit(form, "contact");
+  });
+}
+
+function initCvForm() {
+  const form = el("cvForm");
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    await handleFormSubmit(form, "cv");
+  });
+}
+
+async function handleFormSubmit(form, type) {
+  const config = formConfig[type];
+  const msgDiv = el(config.messageId);
+  const submitBtn = type === "contact"
+    ? el(config.buttonId)
+    : form.querySelector(config.buttonSelector);
+  const originalHtml = submitBtn ? submitBtn.innerHTML : "";
+
+  try {
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>${config.loadingText}</span><i class="fa-solid fa-spinner fa-spin"></i>`;
+    }
+
+    const formData = new FormData(form);
+    formData.append("form-type", type);
+
+    const responseText = await sendFormData(formData);
+
+if (msgDiv) {
+      msgDiv.innerHTML = `<div class="form-msg form-msg--success">
+        <i class="fa-solid fa-circle-check"></i> ${config.successText}
+      </div>`;
+    }
+
+    form.reset();
+
+    if (type === "cv") {
+      const email = el("cvEmail").value;
+      let token = grm();
+
+      try {
+        const parsed = responseText ? JSON.parse(responseText) : null;
+        if (parsed && parsed.token) token = parsed.token;
+      } catch (err) {
+        console.warn("CV token parse failed, using generated fallback token:", err);
+      }
+
+      const cvUrl = SITE.cvRedirectBase
+        ? `${SITE.cvRedirectBase}${encodeURIComponent(token)}`
+        : `https://lifaet.pages.dev/cv?token=${encodeURIComponent(token)}`;
+
+      setTimeout(() => {
+        window.open(cvUrl, "_blank", "noopener");
+      }, 3000);
+    }
+  } catch (err) {
+    console.error(`${type} form error:`, err);
+    if (msgDiv) {
+      msgDiv.innerHTML = `<div class="form-msg form-msg--error">
+        <i class="fa-solid fa-circle-exclamation"></i> ${config.errorText}
+      </div>`;
+    }
+  } finally {
+    if (submitBtn) {
+      submitBtn.innerHTML = originalHtml;
+      submitBtn.disabled = false;
+    }
+    if (msgDiv) {
+      setTimeout(() => (msgDiv.innerHTML = ""), 6000);
+    }
+  }
+}
+
+async function sendFormData(formData) {
+  const formDataString = Array.from(formData.entries())
+    .map((pair) => `${pair[0]}=${encodeURIComponent(pair[1])}`)
+    .join("&");
+
+  const response = await fetch(`${gScript}${sId}/exec`, {
+    method: "POST",
+    body: formDataString,
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    redirect: "follow"
+  });
+
+  if (!response.ok) throw new Error("Network response was not ok");
+  return response.text();
+}
+
+function grm() {
+  const c2v = sId.substring(7, 11);
+  const c5w = sId.substring(20, 23);
+  const cc = c2v + "4299" + c5w;
+  return Array.from({ length: 20 }, () => cc.charAt(Math.floor(Math.random() * cc.length))).join("");
+}
+
+/* ============================================================
+   GLOBAL HELPER for inline onclick
+   ============================================================ */
+window.navigateTo = navigateTo;
