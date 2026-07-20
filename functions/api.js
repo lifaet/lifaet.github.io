@@ -11,12 +11,12 @@ export async function onRequest(context) {
     return new Response(null, { status: 204, headers: CORS });
   }
 
-  if (request.headers.get("x-api-client") !== "portfolio-client") {
-    return new Response(JSON.stringify({ error: "Forbidden" }), {
-      status: 403,
-      headers: { "Content-Type": "application/json", ...CORS },
-    });
-  }
+  // if (request.headers.get("x-api-client") !== "portfolio-client") {
+  //   return new Response(JSON.stringify({ error: "Forbidden" }), {
+  //     status: 403,
+  //     headers: { "Content-Type": "application/json", ...CORS },
+  //   });
+  // }
 
   // ── R2 helpers ──────────────────────────────────────────────────────────────
 
