@@ -154,7 +154,7 @@ function showOverlay(state) {
 
   if (state === "loading") {
     box.classList.remove("is-error");
-    text.textContent = "Loading portfolio…";
+    text.textContent = "Loading …";
     retryBtn.style.display = "none";
   } else {
     box.classList.add("is-error");
