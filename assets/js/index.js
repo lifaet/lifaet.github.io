@@ -89,9 +89,7 @@ function normalizeData(raw) {
       author: raw.author || raw.name || ""
     },
     name: raw.name || "",
-    avatarSrc: raw.avatar
-      ? (/^https?:\/\//.test(raw.avatar) ? raw.avatar : `https://lifaet.pages.dev${raw.avatar}`)
-      : "",
+    avatarSrc: raw.avatar || "",
     title: subtitleRoles[0] || raw.subtitle || "",
     typedRoles: subtitleRoles.length ? subtitleRoles : (raw.subtitle ? [raw.subtitle] : []),
     greeting: raw.headline || "Hi, I'm",
@@ -616,11 +614,11 @@ function initNavigation() {
     }
   });
 
-  window.addEventListener("popstate", () => applyViewFromURL(false));
+  window.addEventListener("popstate", () => applyViewFromURL());
 }
 
 function initRouting() {
-  applyViewFromURL(false);
+  applyViewFromURL();
 }
 
 function resolveView(rawView) {
@@ -727,14 +725,23 @@ function triggerReveal(page) {
    the provided form handler logic. The UI loading state and
    message rendering remain unchanged.
    ============================================================ */
-const gScript = "https://script.google.com/macros/s/";
-const idx = "AKfycbwTnO3lXBe1RyfMECfWA4i-Z";
-const sId = idx + "3dSgHApZGgJYHGkXkQNrEwJM1feXgOGz7HTuSTLm6Xggg";
+/* ============================================================
+   CONTACT + CV FORMS
+   ------------------------------------------------------------
+   Both forms POST to the same Google Apps Script endpoint —
+   SITE.formEndpoint, which normalizeData() already builds from
+   the API's formScriptBase + formScriptId. A "form-type" field
+   tells the script which form was submitted.
 
-const formConfig = {
+   Body is sent as `text/plain` (not multipart FormData) so the
+   browser treats it as a CORS "simple request" — Apps Script
+   doesn't handle preflight OPTIONS requests, so this avoids a
+   blocked call.
+   ============================================================ */
+const FORM_CONFIG = {
   contact: {
     messageId: "show_contact_msg",
-    buttonId: "submit-button",
+    buttonSelector: "#submit-button",
     loadingText: "Sending…",
     successText: "Message sent! I'll get back to you soon.",
     errorText: "Couldn't send your message. Please try again or email directly."
@@ -744,117 +751,113 @@ const formConfig = {
     buttonSelector: ".cv-btn",
     loadingText: "Preparing…",
     successText: "CV request received. Redirecting…",
-    errorText: "Couldn’t prepare the CV right now. Please try again later."
+    errorText: "Couldn't prepare the CV right now. Please try again later."
   }
 };
 
 function initContactForm() {
   const form = el("contactForm");
   if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    await handleFormSubmit(form, "contact");
+    handleFormSubmit(form, "contact");
   });
 }
 
 function initCvForm() {
   const form = el("cvForm");
   if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
-    await handleFormSubmit(form, "cv");
+    handleFormSubmit(form, "cv");
   });
 }
 
 async function handleFormSubmit(form, type) {
-  const config = formConfig[type];
+  const config = FORM_CONFIG[type];
   const msgDiv = el(config.messageId);
-  const submitBtn = type === "contact"
-    ? el(config.buttonId)
-    : form.querySelector(config.buttonSelector);
+  const submitBtn = form.querySelector(config.buttonSelector);
   const originalHtml = submitBtn ? submitBtn.innerHTML : "";
 
+  const setBusy = (busy) => {
+    if (!submitBtn) return;
+    submitBtn.disabled = busy;
+    submitBtn.innerHTML = busy
+      ? `<span>${config.loadingText}</span><i class="fa-solid fa-spinner fa-spin"></i>`
+      : originalHtml;
+  };
+
+  const showMessage = (kind, text) => {
+    if (!msgDiv) return;
+    const icon = kind === "success" ? "fa-circle-check" : "fa-circle-exclamation";
+    msgDiv.innerHTML = `<div class="form-msg form-msg--${kind}"><i class="fa-solid ${icon}"></i> ${text}</div>`;
+    setTimeout(() => (msgDiv.innerHTML = ""), 6000);
+  };
+  if (!SITE.formEndpoint) {
+    console.error(`${type} form: no formEndpoint available from the API`);
+    showMessage("error", config.errorText);
+    return;
+  }
+
+  setBusy(true);
   try {
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = `<span>${config.loadingText}</span><i class="fa-solid fa-spinner fa-spin"></i>`;
-    }
-
-    const formData = new FormData(form);
-    formData.append("form-type", type);
-
-    const responseText = await sendFormData(formData);
-
-if (msgDiv) {
-      msgDiv.innerHTML = `<div class="form-msg form-msg--success">
-        <i class="fa-solid fa-circle-check"></i> ${config.successText}
-      </div>`;
-    }
-
+    const cvEmail = type === "cv" ? el("cvEmail")?.value || "" : "";
+    const responseText = await postForm(SITE.formEndpoint, form, type);
+    showMessage("success", config.successText);
     form.reset();
-
-    if (type === "cv") {
-      const email = el("cvEmail").value;
-      let token = grm();
-
-      try {
-        const parsed = responseText ? JSON.parse(responseText) : null;
-        if (parsed && parsed.token) token = parsed.token;
-      } catch (err) {
-        console.warn("CV token parse failed, using generated fallback token:", err);
-      }
-
-      const cvUrl = SITE.cvRedirectBase
-        ? `${SITE.cvRedirectBase}${encodeURIComponent(token)}`
-        : `https://lifaet.pages.dev/cv?token=${encodeURIComponent(token)}`;
-
-      setTimeout(() => {
-        window.open(cvUrl, "_blank", "noopener");
-      }, 3000);
-    }
+    if (type === "cv") redirectToCv(responseText, cvEmail);
   } catch (err) {
     console.error(`${type} form error:`, err);
-    if (msgDiv) {
-      msgDiv.innerHTML = `<div class="form-msg form-msg--error">
-        <i class="fa-solid fa-circle-exclamation"></i> ${config.errorText}
-      </div>`;
-    }
+    showMessage("error", config.errorText);
   } finally {
-    if (submitBtn) {
-      submitBtn.innerHTML = originalHtml;
-      submitBtn.disabled = false;
-    }
-    if (msgDiv) {
-      setTimeout(() => (msgDiv.innerHTML = ""), 6000);
-    }
+    setBusy(false);
   }
 }
 
-async function sendFormData(formData) {
-  const formDataString = Array.from(formData.entries())
-    .map((pair) => `${pair[0]}=${encodeURIComponent(pair[1])}`)
+async function postForm(endpoint, form, type) {
+  const formData = new FormData(form);
+  formData.append("form-type", type);
+  const body = Array.from(formData.entries())
+    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
     .join("&");
 
-  const response = await fetch(`${gScript}${sId}/exec`, {
+  const response = await fetch(endpoint, {
     method: "POST",
-    body: formDataString,
-    headers: { "Content-Type": "text/plain;charset=utf-8" },
-    redirect: "follow"
+    body,
+    headers: { "Content-Type": "text/plain;charset=utf-8" }
   });
-
-  if (!response.ok) throw new Error("Network response was not ok");
+  if (!response.ok) throw new Error(`Form submission failed (${response.status})`);
   return response.text();
 }
 
+function redirectToCv(responseText) {
+  if (!SITE.cvRedirectBase) {
+    console.error("No cvRedirectBase available from the API");
+    return;
+  }
+
+  // The Apps Script may reply with JSON containing a real token.
+  // If it doesn't (or the reply isn't JSON), fall back to the
+  // requester's own email, captured before the form was reset.
+  let token = grm();
+  try {
+    const parsed = responseText ? JSON.parse(responseText) : null;
+    if (parsed && parsed.token) token = parsed.token;
+  } catch {
+    // response wasn't JSON — keep the email fallback
+  }
+
+  const cvUrl = `${SITE.cvRedirectBase}${encodeURIComponent(token)}`;
+  setTimeout(() => window.open(cvUrl, "_blank", "noopener"), 1200);
+}
+
 function grm() {
-  const c2v = sId.substring(7, 11);
-  const c5w = sId.substring(20, 23);
+  const id = SITE.formScriptId || "";
+  const c2v = id.substring(7, 11);
+  const c5w = id.substring(20, 23);
   const cc = c2v + "4299" + c5w;
   return Array.from({ length: 20 }, () => cc.charAt(Math.floor(Math.random() * cc.length))).join("");
 }
-
 /* ============================================================
    GLOBAL HELPER for inline onclick
    ============================================================ */
