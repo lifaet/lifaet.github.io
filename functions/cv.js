@@ -7,7 +7,7 @@ export async function onRequest({ request, env }) {
         const html = `<!DOCTYPE html>
         <html lang="en">
             <head>
-                <title>Curriculum Vitae (CV)</title>
+                <title>Curriculum Vitae</title>
                 <style>
                     html, body { margin: 0; padding: 0; height: 100%; font-family: sans-serif; }
                     .toolbar {
