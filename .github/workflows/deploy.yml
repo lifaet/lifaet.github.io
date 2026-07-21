@@ -16,6 +16,6 @@ jobs:
 
       - run: |
           git config --global user.email "lifaethossain@gmail.com"
-          git config --global user.name "Lifaet Hossain Zim Workflows"
+          git config --global user.name "lifaet"
           git remote add prod https://x-access-token:${{ secrets.PROD_REPO_TOKEN }}@github.com/lifaet/lifaet.github.io.git
           git push prod production:main
