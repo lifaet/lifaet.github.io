@@ -13,6 +13,7 @@ jobs:
         with:
           ref: production
           fetch-depth: 0
+          persist-credentials: false
 
       - run: |
           git config --global user.email "lifaethossain@gmail.com"
