@@ -1,0 +1,21 @@
+name: Deploy to Production Repo
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  push-to-production:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: production
+          fetch-depth: 0
+
+      - run: |
+          git config --global user.email "lifaethossain@gmail.com"
+          git config --global user.name "Lifaet Hossain Zim Workflows"
+          git remote add prod https://x-access-token:${{ secrets.PROD_REPO_TOKEN }}@github.com/lifaet/lifaet.github.io.git
+          git push prod production:main
